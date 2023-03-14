@@ -1,3 +1,5 @@
+@use '../../mixins/shadow.scss' as shadows;
+
 .daio-button {
     background-color: var(--primary-color);
     color: var(--on-surface);
@@ -7,5 +9,7 @@
     cursor: pointer;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: .85rem;
-    font-weight: 500;
+    font-weight: 400;
+
+    @include shadows.daio-shadow;
 }

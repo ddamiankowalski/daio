@@ -1,0 +1,47 @@
+{
+  "name": "daio-ui",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "daio-ui/src",
+  "prefix": "daio",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "daio-ui/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "daio-ui/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "daio-ui/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "daio-ui/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["daio-ui/**/*.ts", "daio-ui/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

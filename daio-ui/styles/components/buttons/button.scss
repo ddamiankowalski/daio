@@ -9,7 +9,27 @@
     cursor: pointer;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: .85rem;
-    font-weight: 400;
+    font-weight: 500;
+    transition: outline .1s, filter .3s ease-in-out, transform .3s ease-in-out;
 
     @include shadows.daio-shadow;
+
+    &:focus {
+        outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
+    }
+
+    &:hover:not(:focus) {
+        @include shadows.daio-shadow-hover;
+        transform: translateY(-.1rem);
+    }
+
+    &--disabled {
+        pointer-events: none;
+        background-color: var(--disabled-grey);
+        color: var(--disabled-deep-grey);
+    }
+
+    &--loading {
+        pointer-events: none;
+    }
 }

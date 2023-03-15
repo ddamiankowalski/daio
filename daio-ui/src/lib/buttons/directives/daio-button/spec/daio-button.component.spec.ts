@@ -6,9 +6,17 @@ describe('DaioButtonDirective', () => {
     let fixture: ComponentFixture<ParentMockComponent>;
     let buttonElement: HTMLButtonElement;
 
+    const setDirectiveInput = (inputName: string, value: any): void => {
+        (fixture.componentInstance.directive as any)[inputName] = value;
+    };
+
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [DaioButtonDirective, ParentMockComponent, ParentMockWrongComponent]
+            imports: [
+                DaioButtonDirective, 
+                ParentMockComponent, 
+                ParentMockWrongComponent
+            ]
         });
         fixture = TestBed.createComponent(ParentMockComponent);
         buttonElement = fixture.nativeElement.querySelector('button');
@@ -28,7 +36,18 @@ describe('DaioButtonDirective', () => {
     });
 
     it('checks if a button is disabled correctly', () => {
-        fixture.componentInstance.directive.disabled = true;
+        setDirectiveInput('disabled', true)
         expect(buttonElement.classList.contains('daio-button--disabled')).toBe(true);
+
+        setDirectiveInput('disabled', false)
+        expect(buttonElement.classList.contains('daio-button--disabled')).toBe(false);
+    });
+
+    it('sets the loading class if loading is specified', () => {
+        setDirectiveInput('loading', true)
+        expect(buttonElement.classList.contains('daio-button--loading')).toBe(true);
+
+        setDirectiveInput('loading', false)
+        expect(buttonElement.classList.contains('daio-button--loading')).toBe(false);
     });
 });

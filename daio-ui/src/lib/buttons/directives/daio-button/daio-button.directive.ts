@@ -60,12 +60,12 @@ export class DaioButtonDirective implements AfterViewInit {
             this.loadingAnimationRunning = true;
             const keyframes = [ { transform: "rotate(0) scale(1)" }, { transform: "rotate(360deg) scale(0)" } ];
             const options = { duration: 2000 };
-            const animation = this.textHTMLElement.animate(keyframes, options);
-            console.log(animation);
-            animation.onfinish = () => {
-                console.log('finised');
-                this.loadingAnimationRunning = false;
-            }
+            //const animation = this.textHTMLElement.animate(keyframes, options);
+            // console.log(animation);
+            // animation.onfinish = () => {
+            //     console.log('finised');
+            //     this.loadingAnimationRunning = false;
+            // }
         } catch (err) {
             new Error('An error occurred while trying to animate');
         }

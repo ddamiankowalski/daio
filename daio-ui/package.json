@@ -2,6 +2,7 @@
   "name": "daio-ui",
   "version": "0.0.1",
   "peerDependencies": {
+    "@angular/animations": "~15.2.0",
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"
   },

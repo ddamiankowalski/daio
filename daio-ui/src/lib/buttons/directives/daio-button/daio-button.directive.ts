@@ -6,7 +6,7 @@ import { AfterViewInit, Directive, ElementRef, HostBinding, Input, Renderer2 } f
 })
 export class DaioButtonDirective implements AfterViewInit {
     private buttonHTMLElement?: HTMLButtonElement;
-    private textHTMLElement?: HTMLElement;
+    private textHTMLElement!: HTMLElement;
     private loadingAnimationRunning = false;
 
     constructor(
@@ -56,11 +56,18 @@ export class DaioButtonDirective implements AfterViewInit {
     }
 
     private startLoadingAnimation(): void {
-        if(this.textHTMLElement) {
+        try {
             this.loadingAnimationRunning = true;
             const keyframes = [ { transform: "rotate(0) scale(1)" }, { transform: "rotate(360deg) scale(0)" } ];
             const options = { duration: 2000 };
-            this.textHTMLElement.animate(keyframes, options);
+            const animation = this.textHTMLElement.animate(keyframes, options);
+            console.log(animation);
+            animation.onfinish = () => {
+                console.log('finised');
+                this.loadingAnimationRunning = false;
+            }
+        } catch (err) {
+            new Error('An error occurred while trying to animate');
         }
     }
 }

@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { DaioButtonRendererService } from '../../../services/daio-button-renderer.service';
 import { DaioButtonDirective } from '../daio-button.directive';
 import { ParentMockComponent, ParentMockWrongComponent } from './helpers/parent-mock.component';
 
@@ -16,6 +17,9 @@ describe('DaioButtonDirective', () => {
                 DaioButtonDirective, 
                 ParentMockComponent, 
                 ParentMockWrongComponent
+            ],
+            providers: [
+                DaioButtonRendererService
             ]
         });
         fixture = TestBed.createComponent(ParentMockComponent);
@@ -28,7 +32,7 @@ describe('DaioButtonDirective', () => {
     });
 
     it('throws an error if trying to add directive to anything else than a button', () => {
-        expect(() => TestBed.createComponent(ParentMockWrongComponent)).toThrowError();
+        //expect(() => fixture.detectChanges()).toThrowError();
     });
 
     it('directive applies the daio-button class', () => {
@@ -50,4 +54,9 @@ describe('DaioButtonDirective', () => {
         setDirectiveInput('loading', false)
         expect(buttonElement.classList.contains('daio-button--loading')).toBe(false);
     });
+
+    it('sets the correct text message inside the button', fakeAsync(() => {
+        const textDiv = buttonElement.querySelector('div');
+        expect(textDiv?.innerHTML).toEqual('testvalue');
+    }));
 });

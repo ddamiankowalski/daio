@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Directive,
-  ElementRef,
   HostBinding,
   Input,
 } from '@angular/core';
@@ -14,10 +13,9 @@ import { DaioButtonRendererService } from '../../services/daio-button-renderer.s
 })
 export class DaioButtonDirective implements AfterViewInit {
   constructor(
-    private elementRef: ElementRef,
     private renderer: DaioButtonRendererService
   ) {
-    this.renderer.setHTMLElements(this.elementRef);
+    this.renderer.setHTMLElements();
   }
 
   @HostBinding('class') buttonClass = 'daio-button';
@@ -35,7 +33,7 @@ export class DaioButtonDirective implements AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    this.renderer.addWrapper(this.elementRef);
+    this.renderer.addWrapper();
   }
 
   private addClass(name: string): void {

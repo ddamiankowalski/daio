@@ -14,4 +14,8 @@ export class AppComponent implements OnInit {
       this.isLoading = true;
     }, 2000)
   }
+
+  handler() {
+    console.log('hmm');
+  }
 }

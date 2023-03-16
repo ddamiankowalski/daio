@@ -6,6 +6,8 @@ export class DaioButtonRendererService {
 
     private buttonHTMLElement?: HTMLButtonElement;
     private textHTMLElement?: HTMLElement; 
+    private loadingHTMLElement?: HTMLDivElement;
+    private elementLoading?: boolean;
 
     public setHTMLElements(): void {
         this.buttonHTMLElement = this.elementRef.nativeElement;
@@ -29,6 +31,11 @@ export class DaioButtonRendererService {
         }
     }
 
+    public setLoading(loadingValue: boolean) {
+        loadingValue ? this.createLoadingElements() : this.removeLoadingElements();
+        this.elementLoading = loadingValue;
+    }
+
     private createTextElement(): void {
         this.textHTMLElement = this.renderer.createElement('div');
         this.renderer.addClass(this.textHTMLElement, 'daio-button__text');
@@ -38,6 +45,22 @@ export class DaioButtonRendererService {
         this.renderer.appendChild(this.textHTMLElement,  this.renderer.createText(this.elementRef.nativeElement.innerHTML));
         this.elementRef.nativeElement.innerHTML = '';
         this.renderer.appendChild(this.elementRef.nativeElement, this.textHTMLElement);
+    }
+
+    private createLoadingElements(): void {
+        this.loadingHTMLElement = this.renderer.createElement('div');
+        this.renderer.addClass(this.loadingHTMLElement, 'daio-button__loader');
+        this.renderer.appendChild(this.elementRef.nativeElement, this.loadingHTMLElement);
+
+        for(let spinnerNode = 0; spinnerNode < 4; spinnerNode++) {
+            this.renderer.appendChild(this.loadingHTMLElement, this.renderer.createElement('div'));
+        }
+    }
+
+    private removeLoadingElements(): void {
+        if(!this.elementLoading === false) {
+            this.renderer.removeChild(this.buttonHTMLElement, this.loadingHTMLElement);
+        }
     }
 
     private validateNodes(): void {

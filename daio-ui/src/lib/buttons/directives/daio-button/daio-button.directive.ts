@@ -9,16 +9,16 @@ import { DaioButtonRendererService } from '../../services/daio-button-renderer.s
 @Directive({
   standalone: true,
   selector: '[daioButton]',
-  providers: [DaioButtonRendererService],
+  providers: [DaioButtonRendererService]
 })
 export class DaioButtonDirective implements AfterViewInit {
+  @HostBinding('class') buttonClass = 'daio-button';
+
   constructor(
     private renderer: DaioButtonRendererService
   ) {
     this.renderer.setHTMLElements();
   }
-
-  @HostBinding('class') buttonClass = 'daio-button';
 
   @Input() set disabled(isDisabled: boolean) {
     isDisabled
@@ -27,6 +27,8 @@ export class DaioButtonDirective implements AfterViewInit {
   }
 
   @Input() set loading(isLoading: boolean) {
+    this.renderer.setLoading(isLoading);
+
     isLoading
       ? this.addClass('daio-button--loading')
       : this.removeClass('daio-button--loading');

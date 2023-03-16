@@ -1,0 +1,86 @@
+.daio-button__loader {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: scale(30%) translate(-50%, -50%);
+    transform-origin: 0 0;
+
+    animation: daio-button-loader-swipe 1s;
+}
+
+.daio-button__loader div {
+    animation: daio-button-loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+}
+
+.daio-button__loader div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    margin: -4px 0 0 -4px;
+}
+
+.daio-button__loader div:nth-child(1) {
+    animation-delay: -0.036s;
+}
+
+.daio-button__loader div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+}
+
+.daio-button__loader div:nth-child(2) {
+    animation-delay: -0.108s;
+}
+
+.daio-button__loader div:nth-child(2):after {
+    top: 71px;
+    left: 48px;
+}
+
+.daio-button__loader div:nth-child(3) {
+    animation-delay: -0.18s;
+}
+
+.daio-button__loader div:nth-child(3):after {
+    top: 71px;
+    left: 32px;
+}
+
+.daio-button__loader div:nth-child(4) {
+    animation-delay: -0.252s;
+}
+
+.daio-button__loader div:nth-child(4):after {
+    top: 63px;
+    left: 17px;
+}
+
+@keyframes daio-button-loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes daio-button-loader-swipe {
+    0% {
+        opacity: 0;
+        transform: scale(30%) translate(-50%, -25%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(30%) translate(-50%, -50%);
+    }
+}

@@ -32,7 +32,8 @@ describe('DaioButtonDirective', () => {
     });
 
     it('throws an error if trying to add directive to anything else than a button', () => {
-        //expect(() => fixture.detectChanges()).toThrowError();
+        const fixture = TestBed.createComponent(ParentMockWrongComponent);
+        expect(() => fixture.detectChanges()).toThrowError();
     });
 
     it('directive applies the daio-button class', () => {

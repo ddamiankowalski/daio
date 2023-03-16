@@ -49,4 +49,11 @@ describe('DaioButtonRendererService', () => {
         expect(addClassMock.mock.calls[0][0]).toEqual(expectedElementRef.nativeElement);
         expect(addClassMock.mock.calls[0][1]).toBe('testclass');
     });
+
+    it('removes the class from the host button element', () => {
+        buttonRendererService.removeClass('testclassremove');
+        expect(renderer2Mock.removeClass).toHaveBeenCalled();
+        expect(removeClassMock.mock.calls[0][0]).toEqual(expectedElementRef.nativeElement);
+        expect(removeClassMock.mock.calls[0][1]).toBe('testclassremove');
+    });
 });

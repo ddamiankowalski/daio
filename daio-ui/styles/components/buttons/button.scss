@@ -1,4 +1,5 @@
 @use '../../mixins/shadow.scss' as shadows;
+@use './button-loader.scss';
 
 .daio-button {
     background-color: var(--primary-color);
@@ -11,6 +12,7 @@
     font-size: .85rem;
     font-weight: 500;
     transition: outline .1s, filter .3s ease-in-out, transform .3s ease-in-out;
+    user-select: none;
 
     @include shadows.daio-shadow;
 
@@ -34,6 +36,7 @@
 
         & > .daio-button__text {
             opacity: 0;
+            transform: translateY(-.5rem);
         }
     }
 

@@ -8,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'daio';
   isLoading = false;
+  isDisabled = false;
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoading = true;
-    }, 2000)
+    console.log('minti')
   }
 
   handler() {
-    console.log('hmm');
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 700)
   }
 }

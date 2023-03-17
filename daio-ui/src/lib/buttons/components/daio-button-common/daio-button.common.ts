@@ -1,35 +1,20 @@
-import { AfterViewInit, Directive, Input } from "@angular/core";
-import { DaioButtonRendererService } from "../../services/daio-renderer.service";
+import { DaioRendererService } from "../../services/daio-renderer.service";
 
-@Directive()
-export class DaioButtonCommon implements AfterViewInit {
+export abstract class DaioButtonCommonComponent {
+    protected isLoading = false;
+
     constructor(
-        private renderer: DaioButtonRendererService
+        protected renderer: DaioRendererService
     ) {}
 
-    @Input() set disabled(isDisabled: boolean) {
-        isDisabled
-            ? this.addClass('daio-button--disabled')
-            : this.removeClass('daio-button--disabled');
-    }
+    abstract set disabled(isDisabled: boolean);
+    abstract set loading(isLoading: boolean);
 
-    @Input() set loading(isLoading: boolean) {
-        this.renderer.setLoading(isLoading);
-    
-        isLoading
-          ? this.addClass('daio-button--loading')
-          : this.removeClass('daio-button--loading');
-    }
-
-    public ngAfterViewInit(): void {
-        this.renderer.addWrapper();
-    }
-
-    private addClass(name: string): void {
+    protected addClass(name: string): void {
         this.renderer.addClass(name);
-      }
+    }
     
-    private removeClass(name: string): void {
+    protected removeClass(name: string): void {
         this.renderer.removeClass(name);
     }
 }

@@ -6,6 +6,7 @@ import {
 import { NgIf } from '@angular/common';
 import { DaioRendererService } from '../../services/daio-renderer.service';
 import { DaioButtonLoaderComponent } from '../daio-button-loader/daio-button-loader.component';
+import { DaioButtonCommonComponent } from '../daio-button-common/daio-button.common';
 
 @Component({
   standalone: true,
@@ -14,14 +15,14 @@ import { DaioButtonLoaderComponent } from '../daio-button-loader/daio-button-loa
   providers: [DaioRendererService],
   imports: [DaioButtonLoaderComponent, NgIf]
 })
-export class DaioButtonComponent {
+export class DaioButtonComponent extends DaioButtonCommonComponent {
   @HostBinding('class') buttonClass = 'daio-button';
 
-  protected isLoading = false;
-
   constructor(
-    private renderer: DaioRendererService
-  ) {}
+    protected override renderer: DaioRendererService
+  ) {
+    super(renderer);
+  }
 
   @Input() set disabled(isDisabled: boolean) {
     isDisabled
@@ -35,13 +36,5 @@ export class DaioButtonComponent {
       : this.removeClass('daio-button--loading');
 
       this.isLoading = isLoading;
-  }
-
-  private addClass(name: string): void {
-    this.renderer.addClass(name);
-  }
-
-  private removeClass(name: string): void {
-    this.renderer.removeClass(name);
   }
 }

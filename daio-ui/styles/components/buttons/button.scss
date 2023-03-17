@@ -34,7 +34,7 @@
     &--loading {
         pointer-events: none;
 
-        & > .daio-button__text {
+        & .daio-button__text {
             opacity: 0;
             transform: translateY(-.5rem);
         }

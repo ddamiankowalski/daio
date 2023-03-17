@@ -8,7 +8,7 @@
     transform: scale(30%) translate(-50%, -50%);
     transform-origin: 0 0;
 
-    animation: daio-button-loader-swipe 1s;
+    animation: daio-button-loader-slide .8s cubic-bezier(0.5, 0, 0.5, 1) 1;
 }
 
 .daio-button__loader div {
@@ -20,8 +20,8 @@
     content: " ";
     display: block;
     position: absolute;
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: #fff;
     margin: -4px 0 0 -4px;
@@ -63,6 +63,15 @@
     left: 17px;
 }
 
+.daio-button__loader div:nth-child(5) {
+    animation-delay: -0.324s;
+}
+
+.daio-button__loader div:nth-child(5):after {
+    top: 47px;
+    left: 11px;
+}
+
 @keyframes daio-button-loader {
     0% {
         transform: rotate(0deg);
@@ -73,14 +82,16 @@
     }
 }
 
-@keyframes daio-button-loader-swipe {
+@keyframes daio-button-loader-slide {
     0% {
         opacity: 0;
-        transform: scale(30%) translate(-50%, -25%);
+        transform: scale(30%) translate(-50%, -30%);
+        transform-origin: 0 0;
     }
 
     100% {
         opacity: 1;
         transform: scale(30%) translate(-50%, -50%);
+        transform-origin: 0 0;
     }
 }

@@ -32,11 +32,13 @@ describe('DaioButtonDirective', () => {
     });
 
     it('the disabled class is applied to the button component', () => {
-        setComponentInput('disabled', true)
-        expect(fixture.debugElement.classes['daio-button--disabled']).toBe(true);
+        fixture.debugElement.nativeElement.setAttribute('disabled', true);
+        fixture.detectChanges();
+        expect(fixture.debugElement.attributes['disabled']).toBe('true');
 
-        setComponentInput('disabled', false)
-        expect(fixture.debugElement.classes['daio-button--disabled']).toBe(undefined);
+        fixture.debugElement.nativeElement.setAttribute('disabled', false);
+        fixture.detectChanges();
+        expect(fixture.debugElement.attributes['disabled']).toBe('false');
     });
 
     it('sets the loading class on the component instance', () => {

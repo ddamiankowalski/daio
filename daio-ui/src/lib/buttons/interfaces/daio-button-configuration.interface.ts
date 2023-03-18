@@ -1,0 +1,1 @@
+export type IDaioButtonColor = 'primary' | 'destructive' | 'info' | 'success';

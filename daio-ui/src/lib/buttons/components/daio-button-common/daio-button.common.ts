@@ -1,3 +1,4 @@
+import { IDaioButtonColor } from "../../interfaces/daio-button-configuration.interface";
 import { DaioRendererService } from "../../services/daio-renderer.service";
 
 export abstract class DaioButtonCommonComponent {
@@ -7,8 +8,8 @@ export abstract class DaioButtonCommonComponent {
         protected renderer: DaioRendererService
     ) {}
 
-    abstract set disabled(isDisabled: boolean);
     abstract set loading(isLoading: boolean);
+    abstract set color(value: IDaioButtonColor);
 
     protected addClass(name: string): void {
         this.renderer.addClass(name);

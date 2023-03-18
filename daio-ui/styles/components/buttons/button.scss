@@ -5,6 +5,9 @@
 @include flat.button-flat;
 
 .daio-button {
+    min-width: 0;
+    white-space: nowrap;
+
     background-color: var(--primary-color);
     color: var(--on-surface);
     border-radius: .5rem;
@@ -28,7 +31,7 @@
         transform: translateY(-.1rem);
     }
 
-    &--disabled {
+    &:disabled {
         pointer-events: none;
         background-color: var(--disabled-grey);
         color: var(--disabled-deep-grey);
@@ -45,5 +48,29 @@
 
     &__text {
         transition: all .5s;
+    }
+
+    &--success {
+        background-color: var(--success-color);
+
+        &:focus {
+            outline: .2rem solid rgba($color: #2ED573, $alpha: .25);
+        }
+    }
+
+    &--info {
+        background-color: var(--info-color);
+        
+        &:focus {
+            outline: .2rem solid rgba($color: #FFA502, $alpha: .25);
+        }
+    }
+
+    &--destructive {
+        background-color: var(--destructive-color);
+        
+        &:focus {
+            outline: .2rem solid rgba($color: #FF4757, $alpha: .25);
+        }
     }
 }

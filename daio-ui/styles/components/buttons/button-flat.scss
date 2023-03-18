@@ -1,5 +1,6 @@
 @mixin button-flat {
     .daio-button-flat {
+        white-space: nowrap;
         position: relative;
         color: var(--primary-color);
         background-color: var(--on-surface);
@@ -10,14 +11,16 @@
         font-weight: 500;
         font-size: 0.85rem;
         cursor: pointer;
+        user-select: none;
+        outline: none;
 
-        transition: background-color .3s ease, outline .2s ease;
+        transition: outline .3s ease, filter .3s ease-in-out, transform .3s ease-in-out;
 
         &:focus {
             outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
         }
 
-        &:hover {
+        &:hover:not(:disabled) {
             background-color: var(--hover-flat);
             transition: background-color .3s ease;
 
@@ -30,9 +33,52 @@
             background-color: var(--focus-flat);
             transition: background-color .1s ease;
         }
+
+        &:disabled {
+            background-color: transparent;
+            color: var(--disabled-flat-grey);
+            background-color: transparent;
+            border-color: var(--disabled-flat-grey);
+            pointer-events: none;
+            cursor: unset;
+
+            & .daio-button__loader div:after {
+                background: var(--disabled-flat-grey);
+            }
+        }
     
         .daio-button__loader div:after {
             background: var(--primary-color);
+        }
+
+        &--success {
+            color: var(--success-color);
+            border-color: var(--success-color);
+            transition: outline .3s ease;
+    
+            &:focus {
+                outline-color: rgba($color: #2ED573, $alpha: .25);
+            }
+        }
+    
+        &--info {
+            color: var(--info-color);
+            border-color: var(--info-color);
+            transition: outline .3s ease;
+            
+            &:focus {
+                outline-color: rgba($color: #FFA502, $alpha: .25);
+            }
+        }
+    
+        &--destructive {
+            color: var(--destructive-color);
+            border-color: var(--destructive-color);
+            transition: outline .3s ease;
+            
+            &:focus {
+                outline-color: rgba($color: #FF4757, $alpha: .25);
+            }
         }
     }
 }

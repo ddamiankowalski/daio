@@ -1,5 +1,6 @@
 import { NgIf } from "@angular/common";
 import { Component, HostBinding, Input } from "@angular/core";
+import { IDaioButtonColor } from "../../interfaces/daio-button-configuration.interface";
 import { DaioRendererService } from "../../services/daio-renderer.service";
 import { DaioButtonCommonComponent } from "../daio-button-common/daio-button.common";
 import { DaioButtonLoaderComponent } from "../daio-button-loader/daio-button-loader.component";
@@ -19,12 +20,6 @@ export class DaioButtonFlatComponent extends DaioButtonCommonComponent {
     ) {
       super(renderer);
     }
-
-    @Input() set disabled(isDisabled: boolean) {
-        isDisabled
-          ? this.addClass('daio-button--disabled')
-          : this.removeClass('daio-button--disabled');
-    }
     
     @Input() set loading(isLoading: boolean) {
         isLoading
@@ -32,5 +27,9 @@ export class DaioButtonFlatComponent extends DaioButtonCommonComponent {
           : this.removeClass('daio-button--loading');
     
           this.isLoading = isLoading;
+    }
+
+    @Input() set color(value: IDaioButtonColor) {
+      this.addClass(`daio-button-flat--` + value);
     }
 }

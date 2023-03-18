@@ -1,5 +1,14 @@
-<section class="button-container">
-    <button daioButton [disabled]="true">Disabled button</button>
-    <button daioButton [loading]="isLoading" (click)="handler()">Click me</button>
-    <button daioFlatButton [loading]="isLoading" (click)="handler()">Flat button</button>
-</section>
+<div class="button-container">
+    <section>
+        <button daioButton [disabled]="true">Disabled button</button>
+        <button daioButton [loading]="isLoading" (click)="handler()">Click me</button>
+        <button daioFlatButton [loading]="isLoading" [disabled]="true" (click)="handler()">Flat button</button>
+        <button daioFlatButton color="info">Flat button</button>
+        <button daioFlatButton color="destructive">Flat button</button>
+    </section>
+    <section>
+        <button daioButton color="destructive">Destructive</button>
+        <button daioButton color="success">Success</button>
+        <button daioButton color="info">Info</button>
+    </section>
+</div>

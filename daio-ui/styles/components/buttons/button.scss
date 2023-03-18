@@ -1,5 +1,8 @@
 @use '../../mixins/shadow.scss' as shadows;
 @use './button-loader.scss';
+@use './button-flat.scss' as flat;
+
+@include flat.button-flat;
 
 .daio-button {
     background-color: var(--primary-color);
@@ -11,7 +14,7 @@
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: .85rem;
     font-weight: 500;
-    transition: outline .1s, filter .3s ease-in-out, transform .3s ease-in-out;
+    transition: outline .1s ease, filter .3s ease-in-out, transform .3s ease-in-out;
     user-select: none;
 
     @include shadows.daio-shadow;

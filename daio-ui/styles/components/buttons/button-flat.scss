@@ -1,0 +1,38 @@
+@mixin button-flat {
+    .daio-button-flat {
+        position: relative;
+        color: var(--primary-color);
+        background-color: var(--on-surface);
+        padding: 0.8rem 1.5rem;
+        border: 1px solid var(--primary-color);
+        border-radius: .5rem;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-weight: 500;
+        font-size: 0.85rem;
+        cursor: pointer;
+
+        transition: background-color .3s ease, outline .2s ease;
+
+        &:focus {
+            outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
+        }
+
+        &:hover {
+            background-color: var(--hover-flat);
+            transition: background-color .3s ease;
+
+            & .daio-button__text {
+                text-decoration: underline;
+            }
+        }
+
+        &:active {
+            background-color: var(--focus-flat);
+            transition: background-color .1s ease;
+        }
+    
+        .daio-button__loader div:after {
+            background: var(--primary-color);
+        }
+    }
+}

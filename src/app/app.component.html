@@ -19,4 +19,26 @@
         <button daioBasicButton color="destructive">Destructive button</button>
         <button daioBasicButton color="destructive" [disabled]="true">Disabled</button>
     </section>
+    <section>
+        <button daioButton [loading]="isLoading" color="primary">
+            <daio-icon iconName="user"></daio-icon>
+            Destructive
+        </button>
+        <button daioButton color="destructive">
+            <daio-icon iconName="layer-group"></daio-icon>
+            Destructive
+        </button>
+        <button daioButton color="success">
+            <daio-icon iconName="pencil"></daio-icon>
+            Success
+        </button>
+        <button daioButton color="info">
+            <daio-icon iconName="cube"></daio-icon>
+            Info
+        </button>
+        <button daioButton color="info" [disabled]="true">
+            <daio-icon iconName="palette"></daio-icon>
+            Disabled
+        </button>
+    </section>
 </div>

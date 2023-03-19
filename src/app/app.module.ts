@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DaioButtonComponent, DaioButtonFlatComponent, DaioButtonBasicComponent } from 'daio-ui';
+import { DaioButtonComponent, DaioButtonFlatComponent, DaioButtonBasicComponent, DaioIconComponent } from 'daio-ui';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     DaioButtonComponent,
     DaioButtonFlatComponent,
-    DaioButtonBasicComponent
+    DaioButtonBasicComponent,
+    DaioIconComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

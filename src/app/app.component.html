@@ -1,6 +1,6 @@
 <div class="button-container">
     <section>
-        <button daioButton [disabled]="true">Disabled button</button>
+        <button daioButton [disabled]="true" (click)="handler()">Disabled button</button>
         <button daioButton [loading]="isLoading" (click)="handler()">Click me</button>
         <button daioFlatButton [loading]="isLoading" [disabled]="true" (click)="handler()">Flat button</button>
         <button daioFlatButton color="info">Flat button</button>

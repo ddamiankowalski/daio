@@ -8,5 +8,5 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/
     templateUrl: './daio-button-loader.component.html'
 })
 export class DaioButtonLoaderComponent {
-
+    
 }

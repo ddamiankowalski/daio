@@ -1,14 +1,22 @@
 <div class="button-container">
     <section>
-        <button daioButton [disabled]="true" (click)="handler()">Disabled button</button>
-        <button daioButton [loading]="isLoading" (click)="handler()">Click me</button>
-        <button daioFlatButton [loading]="isLoading" [disabled]="true" (click)="handler()">Flat button</button>
-        <button daioFlatButton color="info">Flat button</button>
-        <button daioFlatButton color="destructive">Flat button</button>
+        <button daioFlatButton [loading]="isLoading" (click)="handler()">Click me</button>
+        <button daioFlatButton color="info">Info button</button>
+        <button daioFlatButton color="destructive">Destructive button</button>
+        <button daioFlatButton color="success">Destructive button</button>
+        <button daioFlatButton [loading]="isLoading" [disabled]="true" (click)="handler()">Disabled</button>
     </section>
     <section>
+        <button daioButton [loading]="isLoading" color="primary">Destructive</button>
         <button daioButton color="destructive">Destructive</button>
         <button daioButton color="success">Success</button>
         <button daioButton color="info">Info</button>
+        <button daioButton color="info" [disabled]="true">Disabled</button>
+    </section>
+    <section>
+        <button daioBasicButton>Basic button</button>
+        <button daioBasicButton color="info">Info button</button>
+        <button daioBasicButton color="destructive">Destructive button</button>
+        <button daioBasicButton color="destructive" [disabled]="true">Disabled</button>
     </section>
 </div>

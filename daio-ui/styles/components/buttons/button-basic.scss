@@ -1,0 +1,97 @@
+@mixin button-basic {
+    .daio-button-basic {
+        border: none;
+        padding: .8rem 1.5rem;
+        background-color: transparent;
+        color: var(--primary-color);
+        border-radius: .5rem;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: .85rem;
+        font-weight: 500;
+        cursor: pointer;
+
+        transition: background-color .3s ease;
+
+        &:hover {
+            background-color: rgba($color: #3742FA, $alpha: .1);
+        }
+
+        &:active {
+            background-color: rgba($color: #3742FA, $alpha: .2);
+        }
+
+        &:focus:not(:active) {
+            background-color: rgba($color: #3742FA, $alpha: .08);
+        }
+
+        &.daio-button--destructive {
+            color: var(--destructive-color);
+            background-color: transparent;
+
+            &:hover {
+                background-color: rgba($color: #FF4757, $alpha: .1);
+            }
+
+            &:active {
+                background-color: rgba($color: #FF4757, $alpha: .2);
+            }
+    
+            &:focus:not(:active) {
+                background-color: rgba($color: #FF4757, $alpha: .08);
+            }
+
+            &:focus {
+                outline: none;
+
+            }
+        }
+
+        &.daio-button--success {
+            color: var(--success-color);
+            background-color: transparent;
+
+            &:hover {
+                background-color: rgba($color: #2ED573, $alpha: .1);
+            }
+
+            &:active {
+                background-color: rgba($color: #2ED573, $alpha: .2);
+            }
+    
+            &:focus:not(:active) {
+                background-color: rgba($color: #2ED573, $alpha: .08);
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &.daio-button--info {
+            color: var(--info-color);
+            background-color: transparent;
+
+            &:hover {
+                background-color: rgba($color: #FFA502, $alpha: .1);
+            }
+
+            &:active {
+                background-color: rgba($color: #FFA502, $alpha: .2);
+            }
+    
+            &:focus:not(:active) {
+                background-color: rgba($color: #FFA502, $alpha: .08);
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &:disabled {
+            pointer-events: none;
+            color: var(--disabled-flat-grey);
+
+        }
+    }
+}

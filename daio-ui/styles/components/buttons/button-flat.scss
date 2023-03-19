@@ -18,6 +18,8 @@
 
         &:focus {
             outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
+            text-decoration: underline;
+            background-color: var(--hover-flat);
         }
 
         &:hover:not(:disabled) {

@@ -1,8 +1,10 @@
 @use '../../mixins/shadow.scss' as shadows;
 @use './button-loader.scss';
 @use './button-flat.scss' as flat;
+@use './button-basic.scss' as basic;
 
 @include flat.button-flat;
+@include basic.button-basic;
 
 .daio-button {
     min-width: 0;

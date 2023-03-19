@@ -11,4 +11,8 @@ export class DaioRendererService {
     public removeClass(className: string): void {
         this.renderer.removeClass(this.elementRef.nativeElement, className);
     }
+
+    public focusElement(): void {
+        this.elementRef.nativeElement.focus();
+    }
 }

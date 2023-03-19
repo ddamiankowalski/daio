@@ -18,4 +18,8 @@ export abstract class DaioButtonCommonComponent {
     protected removeClass(name: string): void {
         this.renderer.removeClass(name);
     }
+
+    protected focusButton(): void {
+        this.renderer.focusElement();
+    }
 }

@@ -9,6 +9,7 @@ export class AppComponent implements OnInit {
   title = 'daio';
   isLoading = false;
   isDisabled = false;
+  checkbox = false;
 
   ngOnInit(): void {
     console.log('minti')

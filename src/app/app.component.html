@@ -1,4 +1,4 @@
-<div class="button-container">
+<div class="container">
     <section>
         <button daioFlatButton [loading]="isLoading" (click)="handler()">Click me</button>
         <button daioFlatButton color="info">Info button</button>
@@ -45,7 +45,7 @@
         </button>
     </section>
 </div>
-<div class="checkbox-container">
-    <daio-checkbox [(ngModel)]="checkbox"></daio-checkbox>
-    {{ checkbox | json }}
+<div class="container">
+    <daio-checkbox [formControl]="checkbox" [disabled]="true">Agree to terms and conditions</daio-checkbox>
+    {{ checkbox.value | json }}
 </div>

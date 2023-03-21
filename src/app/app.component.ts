@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'daio-root',
@@ -9,7 +10,8 @@ export class AppComponent implements OnInit {
   title = 'daio';
   isLoading = false;
   isDisabled = false;
-  checkbox = false;
+
+  checkbox = new FormControl(true, {});
 
   ngOnInit(): void {
     console.log('minti')

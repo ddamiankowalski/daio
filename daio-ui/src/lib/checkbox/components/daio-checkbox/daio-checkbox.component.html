@@ -1,9 +1,18 @@
-<div class="daio-checkbox__content">
+<div 
+    class="daio-checkbox__content"
+    (blur)="onTouched()"
+    [id]="id"
+>
     <input 
+        #input
+        tabindex="0"
         type="checkbox"
-        (click)="setValue()"
+        [disabled]="disabled"
+        (blur)="onTouched()"
+        (click)="onCheckboxClick()"
     >
+    <daio-icon [iconName]="'check'" class="daio-checkbox__icon"></daio-icon>
+    <label class="daio-checkbox__label" [for]="id" (click)="onLabelClick()">
+        <ng-content></ng-content>
+    </label>
 </div>
-<label>
-    <ng-content></ng-content>
-</label>

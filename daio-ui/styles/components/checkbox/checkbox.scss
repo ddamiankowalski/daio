@@ -1,0 +1,73 @@
+@use '../../mixins/shadow.scss' as shadow;
+
+.daio-checkbox {
+    display: block;
+    width: fit-content;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: .85rem;
+    font-weight: 400;
+    user-select: none;
+    cursor: pointer;
+
+    &__content {
+        position: relative;
+        display: flex;
+        gap: .55rem;
+        justify-content: center;
+        align-items: center;
+
+        & input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            height: 1.15rem;
+            width: 1.15rem;
+            border: 1px solid var(--disabled-deep-grey);
+            border-radius: .3rem;
+
+            transition: background-color .2s ease;
+            cursor: pointer;
+
+            @include shadow.daio-shadow-checkbox;
+
+            &:hover:checked {
+                background-color: var(--primary-color-deep);
+            }
+
+            &:focus:not(:focus-visible) {
+                outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
+                outline-offset: 0px;
+            }
+
+            &:focus-visible {
+                outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
+                outline-offset: 0px;
+            }
+
+            &:checked {
+                background-color: var(--primary-color);
+                border: 1px solid var(--primary-color);
+
+                &+.daio-checkbox__icon {
+                    display: block;
+                }
+            }
+        }
+
+        &__box {
+            position: relative;
+        }
+    }
+
+    &__icon {
+        pointer-events: none;
+        display: none;
+        position: absolute;
+        left: .3125rem;
+        top: 50%;
+        font-size: .5rem;
+        transform: translateY(-50%);
+        color: var(--on-surface);
+    }
+}

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, forwardRef, HostBinding, Input, Renderer2, ViewChild, ViewEncapsulation } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, forwardRef, HostBinding, Input, ViewChild, ViewEncapsulation } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { DaioIconComponent } from "../../../icons";
 
@@ -24,7 +24,7 @@ export class DaioCheckboxComponent implements ControlValueAccessor, AfterViewIni
     @ViewChild('input') inputElement!: ElementRef<HTMLInputElement>;
 
     constructor(
-        private renderer: Renderer2 
+        private cdRef: ChangeDetectorRef
     ) {
         this.id = `${++nextUniqueId}`;
     }
@@ -40,10 +40,10 @@ export class DaioCheckboxComponent implements ControlValueAccessor, AfterViewIni
     public id?: string;
 
     private _disabled = false;
-    private checked = true;
+    private checked = false;
 
-    onChange!: (value: boolean) => void;
-    onTouched!: () => void;
+    onChange = (value: boolean): void => { value };
+    onTouched = (): void => void 0;
 
     onCheckboxClick(): void {
         this.checked = this.inputElement.nativeElement.checked;
@@ -51,10 +51,12 @@ export class DaioCheckboxComponent implements ControlValueAccessor, AfterViewIni
     }
 
     onLabelClick(): void {
-        this.checked = !this.checked;
-        this.syncNativeElement();
-        this.onChange(this.checked);
-        this.inputElement.nativeElement.focus();
+        if(!this.disabled) {
+            this.checked = !this.checked;
+            this.syncNativeElement();
+            this.onChange(this.checked);
+            this.inputElement.nativeElement.focus();
+        }
     }
 
     private syncNativeElement(): void {
@@ -81,5 +83,6 @@ export class DaioCheckboxComponent implements ControlValueAccessor, AfterViewIni
 
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
+        this.cdRef.detectChanges();
     }
 }

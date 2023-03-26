@@ -9,6 +9,10 @@
     user-select: none;
     cursor: pointer;
 
+    &__label {
+        cursor: pointer;
+    }
+
     &__content {
         position: relative;
         display: flex;
@@ -29,9 +33,7 @@
             transition: background-color .1s ease;
             cursor: pointer;
 
-            @include shadow.daio-shadow-checkbox;
-
-            &:hover:checked {
+            &:hover:checked:not(:disabled) {
                 background-color: var(--primary-color-deep);
             }
 
@@ -46,11 +48,30 @@
             }
 
             &:checked {
-                background-color: var(--primary-color);
-                border: 1px solid var(--primary-color);
-
                 &+.daio-checkbox__icon {
                     display: block;
+                }
+            }
+
+            &:checked:not(:disabled) {
+                background-color: var(--primary-color);
+                border: 1px solid var(--primary-color);
+                
+                @include shadow.daio-shadow-checkbox;
+            }
+
+            &:disabled {
+                border-color: var(--disabled-grey);
+            }
+
+            &:checked:disabled {
+                background-color: var(--disabled-grey);
+                border: none;
+
+                @include shadow.daio-shadow-checkbox;
+
+                &+.daio-checkbox__icon {
+                    color: var(--disabled-deep-grey);
                 }
             }
         }

@@ -11,10 +11,15 @@ export class AppComponent implements OnInit {
   isLoading = false;
   isDisabled = false;
 
-  checkbox = new FormControl(true, {});
+  checkbox = new FormControl(false, {});
+  checkbox2 = new FormControl(false, {});
 
   ngOnInit(): void {
-    console.log('minti')
+    this.checkbox.disable();
+
+    setTimeout(() => {
+      this.checkbox.enable();
+    }, 2000);
   }
 
   handler() {

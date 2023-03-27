@@ -51,9 +51,10 @@
 </div>
 <div class="container input row">
     <daio-input [formControl]="input" [label]="'Username'" [placeholder]="'Type in your username'"/>
-    <daio-input [formControl]="input"/>
     <button daioButton [loading]="isLoading" color="primary">
         <daio-icon iconName="user"></daio-icon>
         Login
     </button>
+
+    {{ input.valid }}
 </div>

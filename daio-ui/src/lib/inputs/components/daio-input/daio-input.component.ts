@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from "@angular/core";
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, HostBinding, Injector, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { ControlValueAccessor, FormsModule, NgControl, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 let nextUniqueId = 0;
 
@@ -18,7 +18,7 @@ let nextUniqueId = 0;
         }
     ]
 })
-export class DaioInputComponent implements ControlValueAccessor {
+export class DaioInputComponent implements ControlValueAccessor, OnInit {
     @HostBinding('class') inputClass = 'daio-input';
     @Input() label?: string;
     
@@ -40,13 +40,19 @@ export class DaioInputComponent implements ControlValueAccessor {
     onChange = (value: string): void => { value };
     onTouched = (): void => void 0;
 
-    constructor() {
+    constructor(private injector: Injector) {
         this.id = `${++nextUniqueId}`; 
     }
 
     public inputViewChange(value: string): void {
         this.value = value;
         this.onChange(value);
+    }
+
+    ngOnInit(): void {
+        setTimeout(() => {
+            console.log(this.injector.get(NgControl).valid)
+        }, 2000)
     }
 
     writeValue(value: string): void {

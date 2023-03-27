@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'daio-root',
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   checkbox = new FormControl(false, {});
   checkbox2 = new FormControl(false, {});
-  input = new FormControl('', {});
+  input = new FormControl('', Validators.required);
 
   ngOnInit(): void {
     this.checkbox.disable();

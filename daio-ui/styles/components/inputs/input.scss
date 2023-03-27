@@ -1,0 +1,50 @@
+.daio-input {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: .8rem;
+    font-weight: 400;
+    position: relative;
+
+    &__label {
+        padding: 0 .25rem;
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        transform: translateY(-50%);
+        font-size: .75rem;
+        background-color: var(--on-surface);
+
+        transition: transform .2s ease, background-color .2s ease;
+    }
+
+    input {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: .8rem;
+        font-weight: 400;
+        border: 1px solid var(--disabled-grey);
+        padding: .77rem 1.25rem;
+        border-radius: .5rem;
+        outline: none;
+
+        transition: outline .05s ease, border-color .3s ease;
+
+        &::placeholder {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: .8rem;
+        }
+
+        &:hover {
+            border-color: var(--disabled-deep-grey);
+        }
+
+        &:focus {
+            border: 1px solid var(--primary-color);
+            outline: none;
+            outline: 0.2rem solid rgba(55, 66, 250, 0.25);
+
+            & + .daio-input__label {
+                transform: translateY(calc(-50% - .8rem));
+                background-color: transparent;
+            }
+        }
+    }
+}

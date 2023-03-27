@@ -7,6 +7,14 @@
     align-items: center;
     flex-direction: column;
 
+    &.input {
+        display: flex;
+    }
+
+    &.row {
+        flex-direction: row;
+    }
+
     & section {
         display: flex;
         gap: 1rem;

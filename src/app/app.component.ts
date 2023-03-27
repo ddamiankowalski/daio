@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
 
   checkbox = new FormControl(false, {});
   checkbox2 = new FormControl(false, {});
+  input = new FormControl('', {});
 
   ngOnInit(): void {
     this.checkbox.disable();

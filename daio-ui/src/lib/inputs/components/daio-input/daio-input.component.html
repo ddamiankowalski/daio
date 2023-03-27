@@ -1,0 +1,10 @@
+<div class="daio-input__container">
+    <input 
+        type="text" 
+        [id]="id" 
+        [ngModel]="value" 
+        (ngModelChange)="inputViewChange($event)"
+        [placeholder]="placeholder"
+    >
+    <label class="daio-input__label">{{ label }}</label>
+</div>

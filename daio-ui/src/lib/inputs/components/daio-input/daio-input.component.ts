@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Injector, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, inject, Injector, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { ControlValueAccessor, FormsModule, NgControl, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 let nextUniqueId = 0;
@@ -36,12 +36,14 @@ export class DaioInputComponent implements ControlValueAccessor, OnInit {
     public disabled = false;
 
     private _placeholder = '';
+    private _injector: Injector;
 
     onChange = (value: string): void => { value };
     onTouched = (): void => void 0;
 
-    constructor(private injector: Injector) {
+    constructor() {
         this.id = `${++nextUniqueId}`; 
+        this._injector = inject(Injector);
     }
 
     public inputViewChange(value: string): void {
@@ -51,7 +53,7 @@ export class DaioInputComponent implements ControlValueAccessor, OnInit {
 
     ngOnInit(): void {
         setTimeout(() => {
-            console.log(this.injector.get(NgControl).valid)
+            console.log(this._injector.get(NgControl).valid)
         }, 2000)
     }
 

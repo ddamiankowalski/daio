@@ -46,15 +46,14 @@
     </section>
 </div>
 <div class="container">
-    <daio-checkbox [formControl]="checkbox" [disabled]="true">Agree to terms and conditions</daio-checkbox>
+    <daio-checkbox [formControl]="checkbox">Agree to terms and conditions</daio-checkbox>
     <daio-checkbox [formControl]="checkbox2">Remember me</daio-checkbox>
 </div>
 <div class="container input row">
+    <daio-input [formControl]="input2" [label]="'Email'" [placeholder]="'Type in your email'"/>
     <daio-input [formControl]="input" [label]="'Username'" [placeholder]="'Type in your username'"/>
     <button daioButton [loading]="isLoading" color="primary">
         <daio-icon iconName="user"></daio-icon>
         Login
     </button>
-
-    {{ input.valid }}
 </div>

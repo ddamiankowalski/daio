@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding, inject, Injector, Input, OnInit, ViewEncapsulation } from "@angular/core";
-import { ControlValueAccessor, FormsModule, NgControl, NG_VALUE_ACCESSOR } from "@angular/forms";
-
-let nextUniqueId = 0;
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation } from "@angular/core";
+import { NgIf } from '@angular/common';
+import { FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { DaioRendererService } from "../../../common/services/daio-renderer.service";
+import { DaioIconComponent } from "../../../icons/components";
+import { DaioInputCommon } from "../../directives/daio-input-common.directive";
+import { DaioInputValidatorService } from "../../services/daio-input-validator.service";
 
 @Component({
     standalone: true,
@@ -9,67 +12,47 @@ let nextUniqueId = 0;
     templateUrl: './daio-input.component.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [FormsModule],
+    imports: [
+        FormsModule,
+        NgIf,
+        DaioIconComponent
+    ],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: DaioInputComponent,
             multi: true
-        }
+        },
+        DaioRendererService,
+        DaioInputValidatorService
     ]
 })
-export class DaioInputComponent implements ControlValueAccessor, OnInit {
-    @HostBinding('class') inputClass = 'daio-input';
-    @Input() label?: string;
-    
-    @Input() 
-    set placeholder(value: string) {
-        this._placeholder = value;
-    }
-
-    get placeholder(): string {
-        return this._placeholder;
-    }
-
-    public id?: string;
-    public value?: string;
-    public disabled = false;
-
-    private _placeholder = '';
-    private _injector: Injector;
-
-    onChange = (value: string): void => { value };
-    onTouched = (): void => void 0;
-
-    constructor() {
-        this.id = `${++nextUniqueId}`; 
-        this._injector = inject(Injector);
+export class DaioInputComponent extends DaioInputCommon {
+    constructor(
+        protected override validator: DaioInputValidatorService,
+        protected override cdRef: ChangeDetectorRef,
+    ) {
+        super(cdRef, validator);
     }
 
     public inputViewChange(value: string): void {
         this.value = value;
         this.onChange(value);
+        this.validateInput();
     }
 
-    ngOnInit(): void {
-        setTimeout(() => {
-            console.log(this._injector.get(NgControl).valid)
-        }, 2000)
+    public inputViewBlur(): void {
+        this.onTouched();
+        this.validateInput();
     }
 
-    writeValue(value: string): void {
-        this.value = value;
+    onClearIconClick(): void {
+        this.clearInput();
+        this.validateInput();
     }
 
-    registerOnChange(fn: (value: string) => void): void {
-        this.onChange = fn;
-    }
-
-    registerOnTouched(fn: () => void): void {
-        this.onTouched = fn;
-    }
-
-    setDisabledState?(isDisabled: boolean): void {
-        this.disabled = isDisabled;
+    private clearInput(): void {
+        this.value = '';
+        this.onChange('');
     }
 }

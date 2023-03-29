@@ -1,7 +1,7 @@
 import { NgIf } from "@angular/common";
 import { Component, HostBinding, Input } from "@angular/core";
 import { IDaioButtonColor } from "../../interfaces/daio-button-configuration.interface";
-import { DaioRendererService } from "../../services/daio-renderer.service";
+import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { DaioButtonCommonComponent } from "../daio-button-common/daio-button.common";
 import { DaioButtonLoaderComponent } from "../daio-button-loader/daio-button-loader.component";
 

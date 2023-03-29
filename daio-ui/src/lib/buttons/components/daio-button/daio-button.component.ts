@@ -4,7 +4,7 @@ import {
   Input,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { DaioRendererService } from '../../services/daio-renderer.service';
+import { DaioRendererService } from '../../../common/services/daio-renderer.service';
 import { DaioButtonLoaderComponent } from '../daio-button-loader/daio-button-loader.component';
 import { DaioButtonCommonComponent } from '../daio-button-common/daio-button.common';
 import { IDaioButtonColor } from '../../interfaces/daio-button-configuration.interface';

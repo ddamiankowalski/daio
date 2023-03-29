@@ -11,15 +11,17 @@ export class AppComponent implements OnInit {
   isLoading = false;
   isDisabled = false;
 
-  checkbox = new FormControl(false, {});
+  checkbox = new FormControl({ value: false, disabled: true }, {});
   checkbox2 = new FormControl(false, {});
   input = new FormControl('', Validators.required);
+  input2 = new FormControl({ value: 'test value', disabled: true }, Validators.required);
 
   ngOnInit(): void {
     this.checkbox.disable();
 
     setTimeout(() => {
       this.checkbox.enable();
+      this.input2.enable();
     }, 2000);
   }
 

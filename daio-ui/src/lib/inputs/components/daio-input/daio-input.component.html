@@ -4,7 +4,22 @@
         [id]="id" 
         [ngModel]="value" 
         (ngModelChange)="inputViewChange($event)"
+        (blur)="inputViewBlur()"
         [placeholder]="placeholder"
+        [required]="required"
+        [ariaRequired]="required"
+        [disabled]="disabled"
     >
-    <label class="daio-input__label">{{ label }}</label>
+    <label [for]="id" class="daio-input__label">{{ label }}</label>
+    <div 
+        *ngIf="value && !disabled" 
+        class="daio-input__container__icon"
+        (click)="onClearIconClick()"
+    >
+        <daio-icon iconName="xmark"></daio-icon>
+    </div>
+    <span *ngIf="fieldMessage && fieldMessage?.type" class="daio-input__container__error">
+        <daio-icon class="daio-input__container__error--icon" iconName="circle-exclamation"></daio-icon>
+        {{ fieldMessage.message }}
+    </span>
 </div>

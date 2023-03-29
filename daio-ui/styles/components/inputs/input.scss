@@ -1,3 +1,5 @@
+@use '../../mixins/shadow.scss' as shadows;
+
 .daio-input {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: .8rem;
@@ -25,26 +27,128 @@
         border-radius: .5rem;
         outline: none;
 
-        transition: outline .05s ease, border-color .3s ease;
+        transition: outline .05s ease, border-color .3s ease, background-color .1s ease;
 
         &::placeholder {
             font-family: 'IBM Plex Sans', sans-serif;
             font-size: .8rem;
+            color: var(--disabled-flat-grey);
+
+            transition: color .3s ease;
         }
 
         &:hover {
             border-color: var(--disabled-deep-grey);
+
+            &::placeholder {
+                color: var(--disabled-deep-grey);
+            }
         }
 
         &:focus {
             border: 1px solid var(--primary-color);
-            outline: none;
             outline: 0.2rem solid rgba(55, 66, 250, 0.25);
 
             & + .daio-input__label {
                 transform: translateY(calc(-50% - .8rem));
                 background-color: transparent;
             }
+
+            &:hover {
+                &::placeholder {
+                    color: var(--disabled-deep-grey);
+                }
+            }
         }
+
+        &:disabled {
+            background-color: var(--disabled-grey);
+            color: var(--disabled-deep-grey);
+
+            & + label {
+                transform: translateY(calc(-50% - .8rem));
+                background-color: transparent;
+            }
+
+            &:hover {
+                border-color: var(--disabled-grey);
+            }
+
+            @include shadows.daio-shadow;
+        }
+    }
+
+    &__container {
+        position: relative;
+
+        &__icon {
+            position: absolute;
+            top: 50%;
+            right: .5rem;
+            padding: .5rem;
+            transform: translateY(-50%);
+            color: var(--disabled-flat-grey);
+
+            transition: color .3s ease;
+            animation-name: fadeIn;
+            animation-duration: .2s;
+
+            &:hover {
+                cursor: pointer;
+                color: var(--disabled-deep-grey);
+            }
+        }
+
+        &__error {
+            position: absolute;
+            bottom: -1.5rem;
+            left: .5rem;
+            font-size: .75rem;
+            color: var(--destructive-color);
+
+            animation-name: messageFadeIn;
+            animation-duration: .3s;
+
+            &--icon {
+                margin-right: .1rem;
+            }
+        }
+    }
+
+    &--error {
+        input {
+            border: 1px solid var(--destructive-color);
+
+            &:hover {
+                border: 1px solid var(--destructive-color);
+            }
+
+            &:focus {
+                outline: 0.2rem solid rgba(255, 71, 87, 0.25);
+                border: 1px solid var(--destructive-color);
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+}
+
+@keyframes messageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-.25rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0rem);
     }
 }

@@ -1,5 +1,5 @@
 import { IDaioButtonColor } from "../../interfaces/daio-button-configuration.interface";
-import { DaioRendererService } from "../../services/daio-renderer.service";
+import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 
 export abstract class DaioButtonCommonComponent {
     protected isLoading = false;

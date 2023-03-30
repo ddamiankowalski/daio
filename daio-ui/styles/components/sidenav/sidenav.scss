@@ -1,0 +1,14 @@
+.daio-sidenav {
+    display: flex;
+
+    &__nav {
+        width: 4rem;
+        height: 100vh;
+        background-color: red;
+
+        &__hamburger {
+            font-size: 2rem;
+            color: var(--on-surface);
+        }
+    }
+}

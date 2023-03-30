@@ -1,59 +1,61 @@
-<div class="container">
-    <section>
-        <button daioFlatButton [loading]="isLoading" (click)="handler()">Click me</button>
-        <button daioFlatButton color="info">Info button</button>
-        <button daioFlatButton color="destructive">Destructive button</button>
-        <button daioFlatButton color="success">Destructive button</button>
-        <button daioFlatButton [loading]="isLoading" [disabled]="true" (click)="handler()">Disabled</button>
-    </section>
-    <section>
-        <button daioButton [loading]="isLoading" color="primary">Destructive</button>
-        <button daioButton color="destructive">Destructive</button>
-        <button daioButton color="success">Success</button>
-        <button daioButton color="info">Info</button>
-        <button daioButton color="info" [disabled]="true">Disabled</button>
-    </section>
-    <section>
-        <button daioBasicButton>Basic button</button>
-        <button daioBasicButton color="info">Info button</button>
-        <button daioBasicButton color="destructive">Destructive button</button>
-        <button daioBasicButton color="destructive" [disabled]="true">Disabled</button>
-    </section>
-    <section>
+<daio-sidenav>
+    <div class="container">
+        <section>
+            <button daioFlatButton [loading]="isLoading" (click)="handler()">Click me</button>
+            <button daioFlatButton color="info">Info button</button>
+            <button daioFlatButton color="destructive">Destructive button</button>
+            <button daioFlatButton color="success">Destructive button</button>
+            <button daioFlatButton [loading]="isLoading" [disabled]="true" (click)="handler()">Disabled</button>
+        </section>
+        <section>
+            <button daioButton [loading]="isLoading" color="primary">Destructive</button>
+            <button daioButton color="destructive">Destructive</button>
+            <button daioButton color="success">Success</button>
+            <button daioButton color="info">Info</button>
+            <button daioButton color="info" [disabled]="true">Disabled</button>
+        </section>
+        <section>
+            <button daioBasicButton>Basic button</button>
+            <button daioBasicButton color="info">Info button</button>
+            <button daioBasicButton color="destructive">Destructive button</button>
+            <button daioBasicButton color="destructive" [disabled]="true">Disabled</button>
+        </section>
+        <section>
+            <button daioButton [loading]="isLoading" color="primary">
+                <daio-icon iconName="user"></daio-icon>
+                Destructive
+            </button>
+            <button daioButton color="destructive">
+                <daio-icon iconName="layer-group"></daio-icon>
+                Destructive
+            </button>
+            <button daioButton color="success">
+                <daio-icon iconName="pencil"></daio-icon>
+                Success
+            </button>
+            <button daioButton color="info">
+                <daio-icon iconName="cube"></daio-icon>
+                Info
+            </button>
+            <button daioButton color="info" [disabled]="true">
+                <daio-icon iconName="palette"></daio-icon>
+                Disabled
+            </button>
+            <button daioButton [loading]="isLoading" color="primary">
+                <daio-icon iconName="user"></daio-icon>
+            </button>
+        </section>
+    </div>
+    <div class="container">
+        <daio-checkbox [formControl]="checkbox">Agree to terms and conditions</daio-checkbox>
+        <daio-checkbox [formControl]="checkbox2">Remember me</daio-checkbox>
+    </div>
+    <div class="container input row">
+        <daio-input [formControl]="input2" [label]="'Email'" [placeholder]="'Type in your email'"/>
+        <daio-input [formControl]="input" [label]="'Username'" [placeholder]="'Type in your username'"/>
         <button daioButton [loading]="isLoading" color="primary">
             <daio-icon iconName="user"></daio-icon>
-            Destructive
+            Login
         </button>
-        <button daioButton color="destructive">
-            <daio-icon iconName="layer-group"></daio-icon>
-            Destructive
-        </button>
-        <button daioButton color="success">
-            <daio-icon iconName="pencil"></daio-icon>
-            Success
-        </button>
-        <button daioButton color="info">
-            <daio-icon iconName="cube"></daio-icon>
-            Info
-        </button>
-        <button daioButton color="info" [disabled]="true">
-            <daio-icon iconName="palette"></daio-icon>
-            Disabled
-        </button>
-        <button daioButton [loading]="isLoading" color="primary">
-            <daio-icon iconName="user"></daio-icon>
-        </button>
-    </section>
-</div>
-<div class="container">
-    <daio-checkbox [formControl]="checkbox">Agree to terms and conditions</daio-checkbox>
-    <daio-checkbox [formControl]="checkbox2">Remember me</daio-checkbox>
-</div>
-<div class="container input row">
-    <daio-input [formControl]="input2" [label]="'Email'" [placeholder]="'Type in your email'"/>
-    <daio-input [formControl]="input" [label]="'Username'" [placeholder]="'Type in your username'"/>
-    <button daioButton [loading]="isLoading" color="primary">
-        <daio-icon iconName="user"></daio-icon>
-        Login
-    </button>
-</div>
+    </div>
+</daio-sidenav>

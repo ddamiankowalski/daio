@@ -1,3 +1,11 @@
-<nav class="daio-sidenav__nav">
-
+<nav 
+    class="daio-sidenav__nav"
+    [class.daio-sidenav__nav--expanded]="isExpanded"
+>
+    <div class="daio-sidenav__nav__hamburger">
+        <daio-icon iconName="bars"></daio-icon>
+    </div>
 </nav>
+<section class="daio-sidanav__content">
+    <ng-content></ng-content>
+</section>

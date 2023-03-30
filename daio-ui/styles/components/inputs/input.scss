@@ -62,8 +62,9 @@
         }
 
         &:disabled {
-            background-color: var(--disabled-grey);
+            background-color: var(--focus-flat);
             color: var(--disabled-deep-grey);
+            border-color: var(--disabled-grey);
 
             & + label {
                 transform: translateY(calc(-50% - .8rem));
@@ -73,8 +74,6 @@
             &:hover {
                 border-color: var(--disabled-grey);
             }
-
-            @include shadows.daio-shadow;
         }
     }
 

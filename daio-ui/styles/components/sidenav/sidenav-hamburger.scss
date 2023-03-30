@@ -1,0 +1,29 @@
+.daio-sidenav-hamburger {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: .25rem;
+    cursor: pointer;
+
+    &--expanded {
+        & div:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        & div:nth-of-type(1) {
+            transform: rotate(43deg) translateY(.3rem) translateX(.25rem);
+        }
+
+        & div:nth-of-type(3) {
+            transform: rotate(-43deg) translateY(-.25rem) translateX(.25rem);
+        }
+    }
+
+    div {
+        width: 1.5rem;
+        height: .125rem;
+        background-color: var(--on-surface);
+
+        transition: opacity .2s ease, transform .3s ease;
+    }
+}

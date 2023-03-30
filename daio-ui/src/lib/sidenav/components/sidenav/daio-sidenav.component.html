@@ -3,7 +3,7 @@
     [class.daio-sidenav__nav--expanded]="isExpanded"
 >
     <div class="daio-sidenav__nav__hamburger">
-        <daio-icon iconName="bars"></daio-icon>
+        <daio-sidenav-hamburger (hamburgerClicked)="handleHamburgerClicked($event)"></daio-sidenav-hamburger>
     </div>
 </nav>
 <section class="daio-sidanav__content">

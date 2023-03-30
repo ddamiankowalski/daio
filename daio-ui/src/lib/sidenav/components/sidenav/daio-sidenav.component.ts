@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
-import { DaioIconComponent } from "../../../icons";
+import { DaioSidenavHamburgerComponent } from "../sidenav-hamburger/daio-sidenav-hamburger.component";
 
 @Component({
     standalone: true,
@@ -8,11 +8,16 @@ import { DaioIconComponent } from "../../../icons";
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     imports: [
-        DaioIconComponent
+        DaioSidenavHamburgerComponent
     ]
 })
 export class DaioSidenavComponent {
     @HostBinding('class') sidenavClass = 'daio-sidenav';
 
     isExpanded = false;
+
+    handleHamburgerClicked(isExpanded: boolean): void {
+        this.isExpanded = isExpanded;
+        console.log(this.isExpanded);
+    }
 }

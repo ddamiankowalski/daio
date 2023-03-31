@@ -1,9 +1,13 @@
 .daio-sidenav-hamburger {
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1.375rem;
     gap: .25rem;
     cursor: pointer;
+
+    &__line {
+        margin: auto;
+    }
 
     &--expanded {
         & div:nth-of-type(2) {

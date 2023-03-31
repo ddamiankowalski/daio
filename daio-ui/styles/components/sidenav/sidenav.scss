@@ -9,14 +9,10 @@
         height: 100vh;
         background-color: var(--dark-backround);
 
-        transition: width .5s ease-in-out;
+        transition: width .3s ease-in-out;
 
         &--expanded {
             width: 15rem;
-
-            & .daio-sidenav__nav__hamburger {
-                justify-content: flex-end;
-            }
         }
 
         &__hamburger {

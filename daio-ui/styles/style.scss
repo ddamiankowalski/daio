@@ -9,3 +9,7 @@
 // our project needs Solid + Brands
 @import "./fonts/scss/solid.scss";
 @import "./fonts/scss/brands.scss";
+
+html, body {
+    box-sizing: border-box;
+}

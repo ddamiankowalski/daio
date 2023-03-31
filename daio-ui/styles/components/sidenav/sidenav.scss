@@ -1,27 +1,56 @@
 @use './sidenav-hamburger.scss';
 
 .daio-sidenav {
-    display: flex;
+    display: grid;
+    grid-template-areas: "sidenav content";
+    grid-template-columns: 4rem auto;
+
+    transition: all .3s ease-in-out;
+
+    &--expanded {
+        grid-template-columns: 22rem auto;
+
+        & .daio-sidenav__nav__hamburger__text {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
 
     &__nav {
+        grid-area: sidenav;
         display: flex;
-        width: 4rem;
+        width: 100%;
         height: 100vh;
         background-color: var(--dark-backround);
+        overflow: hidden;
+        white-space: nowrap;
 
         transition: width .3s ease-in-out;
 
-        &--expanded {
-            width: 15rem;
-        }
-
         &__hamburger {
             display: flex;
-            justify-content: center;
+            gap: 1rem;
+            align-items: center;
             width: 100%;
             height: 2.875rem;
             margin-top: 0.5rem;
             color: var(--on-surface);
+
+            &__text {
+                opacity: 0;
+                visibility: hidden;
+                font-family: 'IBM Plex Sans', sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                min-width: 0;
+                transform: translateX(-1rem);
+
+                transition: opacity .3s ease, visibility .3s ease;
+            }
         }
+    }
+
+    &__content {
+        grid-area: content;
     }
 }

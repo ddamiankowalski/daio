@@ -1,8 +1,5 @@
 @use './sidenav-hamburger.scss';
-
-.daio-sidenav-title {
-    display: contents;
-}
+@use './sidenav-title.scss';
 
 .daio-sidenav {
     display: grid;
@@ -13,17 +10,6 @@
 
     &--expanded {
         grid-template-columns: 25rem auto;
-
-        & .daio-sidenav__nav__hamburger__text {
-            opacity: 1;
-            visibility: visible;
-            width: 100%;
-            margin-left: 1.5rem;
-
-            & daio-icon {
-                opacity: 1;
-            }
-        }
     }
 
     &__nav {
@@ -36,36 +22,12 @@
         white-space: nowrap;
 
         &__hamburger {
-            display: flex;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 4rem 1fr;
             width: 100%;
             height: 2.875rem;
             margin-top: 0.75rem;
             color: var(--on-surface);
-
-            &__text {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                opacity: 0;
-                visibility: hidden;
-                font-family: 'IBM Plex Sans', sans-serif;
-                font-size: .95rem;
-                font-weight: 500;
-                width: 0;
-                transform: translateX(-1rem);
-                margin-left: .5rem;
-
-                transition: all .2s ease;
-
-                & daio-icon {
-                    opacity: 0;
-                    font-size: 1rem;
-                    margin-right: 1.25rem;
-
-                    transition: opacity .1s ease;
-                }
-            }
         }
     }
 

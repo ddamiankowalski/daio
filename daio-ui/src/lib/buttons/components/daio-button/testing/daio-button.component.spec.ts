@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DaioRendererService } from '../../../services/daio-renderer.service';
 import { DaioButtonComponent } from '../daio-button.component';
+import { DaioRendererService } from '../../../../common/services/daio-renderer.service';
 
 describe('DaioButtonDirective', () => {
     let fixture: ComponentFixture<DaioButtonComponent>;

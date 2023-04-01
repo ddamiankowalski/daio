@@ -1,0 +1,1 @@
+export * from './directives/daio-badge/daio-badge.directive';

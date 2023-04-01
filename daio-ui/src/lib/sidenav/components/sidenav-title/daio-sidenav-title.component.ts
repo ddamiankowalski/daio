@@ -1,13 +1,14 @@
 import { Component, HostBinding, Input, ViewEncapsulation } from "@angular/core";
-import { DaioRendererService } from "daio-ui/src/lib/common/services/daio-renderer.service";
-import { DaioIconComponent } from "daio-ui/src/lib/icons";
+import { DaioIconComponent } from '../../../icons';
+import { DaioBadgeComponent } from '../../../badge/components/daio-badge/daio-badge.component';
+import { DaioRendererService } from '../../../common/services/daio-renderer.service';
 
 @Component({
     standalone: true,
     selector: 'daio-sidenav-title',
     templateUrl: './daio-sidenav-title.component.html',
     encapsulation: ViewEncapsulation.None,
-    imports: [DaioIconComponent],
+    imports: [DaioIconComponent, DaioBadgeComponent],
     providers: [DaioRendererService]
 })
 export class DaioSidenavTitleComponent {
@@ -16,6 +17,8 @@ export class DaioSidenavTitleComponent {
     constructor(
         private renderer: DaioRendererService
     ) {}
+
+    @Input() title?: string;
 
     @Input() set isExpanded(value: boolean) {
         value ? this.renderer.addClass('daio-sidenav-title--expanded') : this.renderer.removeClass('daio-sidenav-title--expanded');

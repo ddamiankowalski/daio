@@ -1,14 +1,14 @@
 import { Component, HostBinding, Input, ViewEncapsulation } from "@angular/core";
 import { DaioIconComponent } from '../../../icons';
-import { DaioBadgeComponent } from '../../../badge/components/daio-badge/daio-badge.component';
 import { DaioRendererService } from '../../../common/services/daio-renderer.service';
+import { DaioBadgeDirective } from "../../../badge/directives/daio-badge/daio-badge.directive";
 
 @Component({
     standalone: true,
     selector: 'daio-sidenav-title',
     templateUrl: './daio-sidenav-title.component.html',
     encapsulation: ViewEncapsulation.None,
-    imports: [DaioIconComponent, DaioBadgeComponent],
+    imports: [DaioIconComponent, DaioBadgeDirective],
     providers: [DaioRendererService]
 })
 export class DaioSidenavTitleComponent {

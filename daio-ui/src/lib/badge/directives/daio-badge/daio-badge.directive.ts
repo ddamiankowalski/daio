@@ -1,4 +1,4 @@
-import { AfterViewInit, ComponentRef, Directive, Input, ViewContainerRef } from "@angular/core";
+import { AfterViewInit, ComponentRef, Directive, ElementRef, Input, ViewContainerRef } from "@angular/core";
 import { DaioBadgeComponent } from "../../components/daio-badge/daio-badge.component";
 
 @Directive({
@@ -15,12 +15,14 @@ export class DaioBadgeDirective implements AfterViewInit {
     private value?: string;
 
     constructor(
-        private viewContainerRef: ViewContainerRef
+        private viewContainerRef: ViewContainerRef,
+        private elementRef: ElementRef
     ) {}
 
     ngAfterViewInit(): void {
         this.createBadgeComponent();
         this.setBadgeValue();
+        this.setBadgeStyles();
     }
 
     private createBadgeComponent(): void {
@@ -32,5 +34,9 @@ export class DaioBadgeDirective implements AfterViewInit {
             this.componentRef.instance.badgeValue = this.value;
             this.componentRef.changeDetectorRef.detectChanges();
         }
+    }
+
+    private setBadgeStyles(): void {
+        this.componentRef && this.componentRef.instance.setStyles(this.elementRef.nativeElement);
     }
 }

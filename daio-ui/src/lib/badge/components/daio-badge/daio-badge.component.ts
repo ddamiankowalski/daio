@@ -11,4 +11,9 @@ export class DaioBadgeComponent {
     @HostBinding('class') badgeClass = 'daio-badge';
 
     badgeValue?: string;
+
+    setStyles(element: HTMLElement): void {
+        console.log('setting', element);
+        
+    }
 }

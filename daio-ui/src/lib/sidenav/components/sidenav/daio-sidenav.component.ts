@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
 import { DaioSidenavHamburgerComponent } from "../sidenav-hamburger/daio-sidenav-hamburger.component";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
-import { DaioIconComponent } from "../../../icons";
+import { DaioSidenavTitleComponent } from "../sidenav-title/daio-sidenav-title.component";
 
 @Component({
     standalone: true,
@@ -9,10 +9,7 @@ import { DaioIconComponent } from "../../../icons";
     templateUrl: './daio-sidenav.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    imports: [
-        DaioSidenavHamburgerComponent,
-        DaioIconComponent
-    ],
+    imports: [DaioSidenavHamburgerComponent, DaioSidenavTitleComponent],
     providers: [DaioRendererService]
 })
 export class DaioSidenavComponent {

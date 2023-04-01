@@ -1,11 +1,15 @@
 @use './sidenav-hamburger.scss';
 
+.daio-sidenav-title {
+    display: contents;
+}
+
 .daio-sidenav {
     display: grid;
     grid-template-areas: "sidenav content";
     grid-template-columns: 4rem auto;
 
-    transition: all .3s ease-in-out;
+    transition: all .4s ease;
 
     &--expanded {
         grid-template-columns: 25rem auto;
@@ -13,8 +17,8 @@
         & .daio-sidenav__nav__hamburger__text {
             opacity: 1;
             visibility: visible;
-            padding-left: 1.25rem;
             width: 100%;
+            margin-left: 1.5rem;
 
             & daio-icon {
                 opacity: 1;
@@ -30,8 +34,6 @@
         background-color: var(--dark-backround);
         overflow: hidden;
         white-space: nowrap;
-
-        transition: width .3s ease-in-out;
 
         &__hamburger {
             display: flex;
@@ -52,8 +54,9 @@
                 font-weight: 500;
                 width: 0;
                 transform: translateX(-1rem);
+                margin-left: .5rem;
 
-                transition: all .4s ease;
+                transition: all .2s ease;
 
                 & daio-icon {
                     opacity: 0;

@@ -20,10 +20,8 @@ describe('DaioBadgeComponent', () => {
         expect('daio-badge' in fixture.debugElement.classes).toBeTruthy();
     });
 
-    it('displays the correct value inside the badge', () => {
-        fixture.detectChanges();
-
-        fixture.componentRef.setInput('value', 'valuetest');
+    it('changes the value rendered depending on the #badgeValue', () => {
+        fixture.componentInstance.setBadgeValue('valuetest');
         fixture.detectChanges();
         expect(valueEl.innerHTML).toEqual('valuetest');
     });

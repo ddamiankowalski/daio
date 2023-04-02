@@ -12,8 +12,11 @@ export class DaioBadgeComponent {
 
     badgeValue?: string;
 
+    setBadgeValue(value: string): void {
+        this.badgeValue = value;
+    }
+
     setStyles(element: HTMLElement): void {
-        console.log('setting', element);
-        
+        void 0;   
     }
 }

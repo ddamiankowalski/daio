@@ -5,6 +5,8 @@
     gap: .25rem;
     cursor: pointer;
 
+    transition: transform .3s ease;
+
     &__line {
         margin: auto;
     }
@@ -22,12 +24,20 @@
             transform: rotate(-43deg) translateY(-.25rem) translateX(.25rem);
         }
     }
+    
+    &:hover {
+        transform: translateY(-.0625rem);
+
+        div {
+            background-color: var(--on-surface);
+        }
+    }
 
     div {
         width: 1.25rem;
         height: .125rem;
-        background-color: var(--on-surface);
+        background-color: var(--disabled-grey);
 
-        transition: opacity .2s ease, transform .3s ease;
+        transition: opacity .2s ease, transform .3s ease, background-color .3s ease;
     }
 }

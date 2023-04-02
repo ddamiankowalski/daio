@@ -1,3 +1,27 @@
 .daio-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
+    background-color: var(--primary-color);
+    font-size: .7rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: .25rem;
+
+    &--right {
+        right: -50%;
+    }
+
+    &--bottom {
+        bottom: -50%;
+    }
+
+    &--top {
+        top: 50%;
+    }
+
+    &--left {
+        left: 50%;
+    }
 }

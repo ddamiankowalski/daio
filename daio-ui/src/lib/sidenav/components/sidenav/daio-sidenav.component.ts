@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } fr
 import { DaioSidenavHamburgerComponent } from "../sidenav-hamburger/daio-sidenav-hamburger.component";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { DaioSidenavTitleComponent } from "../sidenav-title/daio-sidenav-title.component";
+import { DaioSidenavMenuComponent } from '../sidenav-menu/daio-sidenav-menu.component';
 
 @Component({
     standalone: true,
@@ -9,7 +10,11 @@ import { DaioSidenavTitleComponent } from "../sidenav-title/daio-sidenav-title.c
     templateUrl: './daio-sidenav.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    imports: [DaioSidenavHamburgerComponent, DaioSidenavTitleComponent],
+    imports: [
+        DaioSidenavHamburgerComponent,
+        DaioSidenavTitleComponent,
+        DaioSidenavMenuComponent
+    ],
     providers: [DaioRendererService]
 })
 export class DaioSidenavComponent {

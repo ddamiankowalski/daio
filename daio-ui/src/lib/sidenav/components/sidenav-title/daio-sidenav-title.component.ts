@@ -13,14 +13,14 @@ import { DaioBadgeDirective } from "../../../badge/directives/daio-badge/daio-ba
 })
 export class DaioSidenavTitleComponent {
     @HostBinding('class') titleClass = 'daio-sidenav-title';
-
-    constructor(
-        private renderer: DaioRendererService
-    ) {}
-
+    
     @Input() title?: string;
 
     @Input() set isExpanded(value: boolean) {
         value ? this.renderer.addClass('daio-sidenav-title--expanded') : this.renderer.removeClass('daio-sidenav-title--expanded');
     }
+    
+    constructor(
+        private renderer: DaioRendererService
+    ) {}
 }

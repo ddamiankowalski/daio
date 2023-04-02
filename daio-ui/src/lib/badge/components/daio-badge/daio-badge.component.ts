@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } fr
     selector: 'daio-badge',
     templateUrl: './daio-badge.component.html',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DaioBadgeComponent {
     @HostBinding('class') badgeClass = 'daio-badge';
@@ -17,6 +17,6 @@ export class DaioBadgeComponent {
     }
 
     setStyles(element: HTMLElement): void {
-        void 0;   
+        console.log(element);
     }
 }

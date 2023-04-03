@@ -1,4 +1,4 @@
-<div class="daio-sidenav-menu-item__container">
-    <daio-icon class="daio-sidenav-menu__container__icon" [iconName]="icon"></daio-icon>
-    <span class="daio-sidenav-menu-item__container__text">{{ title }}</span>
+<div (click)="onMenuItemClick()" class="daio-sidenav-menu-item__container">
+    <daio-icon class="daio-sidenav-menu__container__icon" [iconName]="item.icon"></daio-icon>
+    <span class="daio-sidenav-menu-item__container__text">{{ item.title }}</span>
 </div>

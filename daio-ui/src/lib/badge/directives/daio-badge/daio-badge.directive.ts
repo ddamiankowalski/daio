@@ -21,7 +21,7 @@ export class DaioBadgeDirective implements OnChanges {
             if(!this.badgeElement) {
                 this.createBadge(changes);
             }
-            this.updateBadgeValue();
+            this.updateBadgeValue(changes['badgeValue'].currentValue);
         }
     }
 
@@ -45,7 +45,7 @@ export class DaioBadgeDirective implements OnChanges {
         }
     }
 
-    private updateBadgeValue(): void {
-        console.log('update badge value');
+    private updateBadgeValue(value: string): void {
+        this.badgeElement.textContent = value;
     }
 }

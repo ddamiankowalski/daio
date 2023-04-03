@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { DaioIconComponent } from "../../../icons";
+import { DaioSidenavService } from "../../services/daio-sidenav.service";
+import { Subscription, filter, tap } from "rxjs";
+import { IDaioMenuItem } from "../../interfaces/daio-menu-item.interface";
+import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 
 @Component({
     standalone: true,
@@ -9,11 +13,42 @@ import { DaioIconComponent } from "../../../icons";
     encapsulation: ViewEncapsulation.None,
     imports: [
         DaioIconComponent
-    ]
+    ],
+    providers: [DaioRendererService]
 })
-export class SidenavMenuItemComponent {
+export class SidenavMenuItemComponent implements OnInit, OnDestroy {
     @HostBinding('class') menuItemClass = 'daio-sidenav-menu-item';
+    @Input() item!: IDaioMenuItem;
 
-    @Input() title?: string;
-    @Input() icon?: string;
+    private subscription?: Subscription;
+    private isMenuActive = false;
+
+    constructor(
+        private sidenav: DaioSidenavService,
+        private renderer: DaioRendererService
+    ) {}
+
+    ngOnInit(): void {
+        this.subscription = this.sidenav.activeItem$.pipe(
+            tap(() => this.resetActiveState()),
+            filter(item => item?.title === this.item.title)
+        ).subscribe(() => this.setActiveItem());
+    }
+
+    ngOnDestroy(): void {
+        this.subscription?.unsubscribe();
+    }
+
+    onMenuItemClick(): void {
+        this.sidenav.setActiveItem(this.item);
+        this.sidenav.setIsExpanded(true);
+    }
+
+    private setActiveItem(): void {
+        this.renderer.addClass('daio-sidenav-menu-item--active');
+    }
+
+    private resetActiveState(): void {
+        this.renderer.removeClass('daio-sidenav-menu-item--active');
+    }
 }

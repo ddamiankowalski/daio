@@ -3,6 +3,7 @@
     color: var(--on-surface);
     
     &__container {
+        position: relative;
         display: flex;
         gap: 2rem;
         align-items: center;
@@ -21,11 +22,30 @@
         }
 
         &:hover {
-            background-color: rgba($color: #57606F, $alpha: .25);
-        }
+            background-color: var(--menu-grey);
 
-        &:active {
-            background-color: rgba($color: #57606F, $alpha: .25);
+            &::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                background-color: var(--primary-color);
+                width: .2rem;
+                height: 100%;
+            }
+        }
+    }
+
+    &--active {
+        position: relative;
+        background-color: var(--menu-grey);
+
+        &::before {
+            position: absolute;
+            content: '';
+            left: 0;
+            background-color: var(--primary-color);
+            width: .2rem;
+            height: 100%;
         }
     }
 }

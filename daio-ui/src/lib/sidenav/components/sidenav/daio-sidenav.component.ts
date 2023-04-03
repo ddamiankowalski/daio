@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { DaioSidenavHamburgerComponent } from "../sidenav-hamburger/daio-sidenav-hamburger.component";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { DaioSidenavTitleComponent } from "../sidenav-title/daio-sidenav-title.component";
 import { DaioSidenavMenuComponent } from '../sidenav-menu/daio-sidenav-menu.component';
+import { DaioSidenavService } from "../../services/daio-sidenav.service";
+import { Subscription } from "rxjs";
 
 @Component({
     standalone: true,
@@ -15,18 +17,31 @@ import { DaioSidenavMenuComponent } from '../sidenav-menu/daio-sidenav-menu.comp
         DaioSidenavTitleComponent,
         DaioSidenavMenuComponent
     ],
-    providers: [DaioRendererService]
+    providers: [
+        DaioRendererService,
+        DaioSidenavService
+    ]
 })
-export class DaioSidenavComponent {
+export class DaioSidenavComponent implements OnInit, OnDestroy {
     @HostBinding('class') sidenavClass = 'daio-sidenav';
 
-    constructor(private renderer: DaioRendererService) {}
+    private subscription?: Subscription;
 
-    isExpanded = true;
+    constructor(
+        private renderer: DaioRendererService,
+        private sidenav: DaioSidenavService
+    ) {}
 
-    handleHamburgerClicked(isExpanded: boolean): void {
-        this.isExpanded = isExpanded;
-        this.isExpanded ? this.addExpandedClass() : this.removeExpandedClass();
+    ngOnInit(): void {
+        this.subscription = this.sidenav.isExpanded$.subscribe(isExpanded => this.updateIsExpanded(isExpanded))
+    }
+
+    ngOnDestroy(): void {
+        this.subscription?.unsubscribe();
+    }
+
+    private updateIsExpanded(isExpanded: boolean): void {
+        isExpanded ? this.addExpandedClass() : this.removeExpandedClass();
     }
 
     private addExpandedClass(): void {

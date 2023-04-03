@@ -1,0 +1,31 @@
+.daio-sidenav-menu-item {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--on-surface);
+    
+    &__container {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+
+        transition: background-color .2s ease;
+
+        &__text {
+            font-size: .9rem;
+            text-transform: capitalize;
+        }
+
+        &__icon {
+            font-size: 1rem;
+        }
+
+        &:hover {
+            background-color: rgba($color: #57606F, $alpha: .25);
+        }
+
+        &:active {
+            background-color: rgba($color: #57606F, $alpha: .25);
+        }
+    }
+}

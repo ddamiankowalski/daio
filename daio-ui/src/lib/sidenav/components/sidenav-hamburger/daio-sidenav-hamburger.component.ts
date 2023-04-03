@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Output, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
+import { DaioSidenavService } from "../../services/daio-sidenav.service";
+import { Subscription } from "rxjs";
 
 @Component({
     standalone: true,
@@ -9,30 +11,39 @@ import { DaioRendererService } from "../../../common/services/daio-renderer.serv
     encapsulation: ViewEncapsulation.None,
     providers: [DaioRendererService]
 })
-export class DaioSidenavHamburgerComponent {
-    private isExpanded = false;
-    @Output() hamburgerClicked: EventEmitter<boolean> = new EventEmitter(); 
-
+export class DaioSidenavHamburgerComponent implements OnInit, OnDestroy {
     @HostBinding('class') hamburgerClass = 'daio-sidenav-hamburger';
+
+    private subscription?: Subscription;
+    private isExpanded?: boolean = false;
 
     @HostListener('click')
     onHamburgerClick() {
-        this.emitHamburgerClicked();
-        this.changeHamburgerClass();
+        this.isExpanded = !this.isExpanded;
+        this.sidenav.setIsExpanded(this.isExpanded);
     }
 
     constructor(
-        private renderer: DaioRendererService
+        private renderer: DaioRendererService,
+        private sidenav: DaioSidenavService
     ) {}
+
+    ngOnInit(): void {
+        this.subscription= this.sidenav.isExpanded$.subscribe(isExpanded => this.updateExpanded(isExpanded));
+    }
+
+    ngOnDestroy(): void {
+        this.subscription?.unsubscribe();
+    }
+
+    private updateExpanded(value: boolean) {
+        this.isExpanded = value;
+        this.changeHamburgerClass();
+    }
 
     private changeHamburgerClass(): void {
         this.isExpanded ?
             this.renderer.addClass('daio-sidenav-hamburger--expanded') :
             this.renderer.removeClass('daio-sidenav-hamburger--expanded');
-    }
-
-    private emitHamburgerClicked(): void {
-        this.isExpanded = !this.isExpanded;
-        this.hamburgerClicked.emit(this.isExpanded);
     }
 }

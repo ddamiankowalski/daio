@@ -1,5 +1,6 @@
 @use './sidenav-hamburger.scss';
 @use './sidenav-title.scss';
+@use './sidenav-menu.scss';
 
 .daio-sidenav {
     display: grid;
@@ -12,14 +13,20 @@
         grid-template-columns: 25rem auto;
     }
 
+
     &__nav {
         grid-area: sidenav;
         display: flex;
+        flex-direction: column;
         width: 100%;
         height: 100vh;
         background-color: var(--dark-backround);
         overflow: hidden;
         white-space: nowrap;
+
+        &__menu {
+            margin-top: 4rem;
+        }
 
         &__hamburger {
             display: grid;

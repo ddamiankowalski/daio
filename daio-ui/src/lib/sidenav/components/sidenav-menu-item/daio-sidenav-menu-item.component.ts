@@ -4,6 +4,7 @@ import { DaioSidenavService } from "../../services/daio-sidenav.service";
 import { Subscription, filter, tap } from "rxjs";
 import { IDaioMenuItem } from "../../interfaces/daio-menu-item.interface";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
+import { NgIf, NgFor } from "@angular/common";
 
 @Component({
     standalone: true,
@@ -12,7 +13,9 @@ import { DaioRendererService } from "../../../common/services/daio-renderer.serv
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     imports: [
-        DaioIconComponent
+        DaioIconComponent,
+        NgIf,
+        NgFor
     ],
     providers: [DaioRendererService]
 })
@@ -21,7 +24,6 @@ export class SidenavMenuItemComponent implements OnInit, OnDestroy {
     @Input() item!: IDaioMenuItem;
 
     private subscription?: Subscription;
-    private isMenuActive = false;
 
     constructor(
         private sidenav: DaioSidenavService,

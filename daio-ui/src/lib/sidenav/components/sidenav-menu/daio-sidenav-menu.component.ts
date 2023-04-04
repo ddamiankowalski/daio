@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { IDaioMenuItem } from "../../interfaces/daio-menu-item.interface";
 import { NgFor } from "@angular/common";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { SidenavMenuItemComponent } from '../sidenav-menu-item/daio-sidenav-menu-item.component'
+import { DaioSidenavService } from "../../services/daio-sidenav.service";
+import { Subscription } from "rxjs";
 
 @Component({
     standalone: true,
@@ -16,7 +18,7 @@ import { SidenavMenuItemComponent } from '../sidenav-menu-item/daio-sidenav-menu
     ],
     providers: [DaioRendererService]
 })
-export class DaioSidenavMenuComponent {
+export class DaioSidenavMenuComponent implements OnInit, OnDestroy {
     @HostBinding('class') menuClass = 'daio-sidenav-menu';
 
     public menuItems: IDaioMenuItem[] = [
@@ -36,11 +38,28 @@ export class DaioSidenavMenuComponent {
             title: 'settings', 
             icon: 'cog' 
         },
+        {
+            title: 'contacts',
+            icon: 'users'
+        }
     ];
 
+    private subscription?: Subscription;
+
     constructor(
-        private renderer: DaioRendererService
-    ) {
-        console.log(renderer);
+        private renderer: DaioRendererService,
+        private sidenav: DaioSidenavService
+    ) {}
+
+    ngOnInit(): void {
+        this.sidenav.isExpanded$?.subscribe(isExpanded => {
+            !isExpanded ? 
+                this.renderer.addClass('daio-sidenav-menu--hidden') : 
+                this.renderer.removeClass('daio-sidenav-menu--hidden');
+        })
+    }
+    
+    ngOnDestroy(): void {
+        this.subscription?.unsubscribe();
     }
 }

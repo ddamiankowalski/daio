@@ -2,3 +2,11 @@
     <daio-icon class="daio-sidenav-menu__container__icon" [iconName]="item.icon"></daio-icon>
     <span class="daio-sidenav-menu-item__container__text">{{ item.title }}</span>
 </div>
+
+<div *ngIf="item.items" class="daio-sidenav-menu-item__subitems">
+    <ng-container *ngFor="let subItem of item.items">
+        <div class="daio-sidenav-menu-item__subitems__item">
+            {{ subItem.title }}
+        </div>
+    </ng-container>
+</div>

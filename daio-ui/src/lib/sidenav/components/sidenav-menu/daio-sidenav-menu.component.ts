@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } fr
 import { IDaioMenuItem } from "../../interfaces/daio-menu-item.interface";
 import { NgFor } from "@angular/common";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
-import { SidenavMenuItemComponent } from '../sidenav-menu-item/daio-sidenav-menu-item.component'
+import { DaioSidenavMenuItemComponent } from '../sidenav-menu-item/daio-sidenav-menu-item.component'
 
 @Component({
     standalone: true,
@@ -12,7 +12,7 @@ import { SidenavMenuItemComponent } from '../sidenav-menu-item/daio-sidenav-menu
     encapsulation: ViewEncapsulation.None,
     imports: [
         NgFor,
-        SidenavMenuItemComponent
+        DaioSidenavMenuItemComponent
     ],
     providers: [DaioRendererService]
 })

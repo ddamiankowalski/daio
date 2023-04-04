@@ -4,7 +4,8 @@
     align-items: center;
     position: absolute;
     background-color: var(--primary-color);
-    font-size: .7rem;
+    font-size: .65rem;
+    font-weight: 500;
     width: 1.125rem;
     height: 1.125rem;
     border-radius: .25rem;
@@ -12,19 +13,19 @@
     font-family: 'IBM Plex Sans', sans-serif;
 
     &--right {
-        right: -50%;
+        right: -60%;
     }
 
     &--bottom {
-        bottom: -50%;
+        bottom: -60%;
     }
 
     &--top {
-        top: 50%;
+        top: 60%;
     }
 
     &--left {
-        left: 50%;
+        left: 60%;
     }
 
     &--destructive {

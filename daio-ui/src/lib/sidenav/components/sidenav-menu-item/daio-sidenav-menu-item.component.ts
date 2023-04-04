@@ -19,7 +19,7 @@ import { NgIf, NgFor } from "@angular/common";
     ],
     providers: [DaioRendererService]
 })
-export class SidenavMenuItemComponent implements OnInit, OnDestroy {
+export class DaioSidenavMenuItemComponent implements OnInit, OnDestroy {
     @HostBinding('class') menuItemClass = 'daio-sidenav-menu-item';
     @Input() item!: IDaioMenuItem;
 
@@ -35,7 +35,7 @@ export class SidenavMenuItemComponent implements OnInit, OnDestroy {
             activeItem: this.sidenav.activeItem$,
             isExpanded: this.sidenav.isExpanded$
         }).pipe(
-            tap(() => this.resetActiveState()),
+            tap(() => this.removeActiveClass()),
             filter(({ activeItem }) => activeItem?.title === this.item.title),
         ).subscribe(({ isExpanded }) => this.setActiveClass(isExpanded));
     }
@@ -44,7 +44,7 @@ export class SidenavMenuItemComponent implements OnInit, OnDestroy {
         this.subscription?.unsubscribe();
     }
 
-    toggleMenu(): void {
+    itemClicked(): void {
         this.sidenav.setActiveItem(this.item);
         this.sidenav.setIsExpanded(true);
     }
@@ -52,10 +52,10 @@ export class SidenavMenuItemComponent implements OnInit, OnDestroy {
     private setActiveClass(isExpanded: boolean): void {
         isExpanded ? 
             this.renderer.addClass('daio-sidenav-menu-item--active') :
-            this.resetActiveState();
+            this.removeActiveClass();
     }
 
-    private resetActiveState(): void {
+    private removeActiveClass(): void {
         this.renderer.removeClass('daio-sidenav-menu-item--active');
     }
 }

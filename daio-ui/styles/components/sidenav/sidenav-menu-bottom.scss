@@ -14,11 +14,18 @@
         margin: 0 2rem;
 
         &__item {
+            cursor: pointer;
             color: var(--on-menu-grey);
             font-size: 2rem;
+            transition: color .3s ease, transform .2s ease;
+
+            &:hover {
+                color: var(--disabled-deep-grey);
+                transform: translateY(-.15rem);
+            }
 
             & daio-icon {
-                font-size: 1rem;
+                font-size: 1.05rem;
             }
         }
     }

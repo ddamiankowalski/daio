@@ -1,0 +1,1 @@
+export type IDaioBadgeColor = 'primary' | 'info' | 'destructive'; 

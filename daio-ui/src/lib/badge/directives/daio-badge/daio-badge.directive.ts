@@ -1,6 +1,7 @@
 import { Directive, ElementRef, Inject, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { IDaioBadgePosition } from "../../interfaces/daio-badge-position.interface";
+import { IDaioBadgeColor } from "../../interfaces/daio-badge-color.interface";
 
 @Directive({
     standalone: true,
@@ -8,6 +9,7 @@ import { IDaioBadgePosition } from "../../interfaces/daio-badge-position.interfa
 })
 export class DaioBadgeDirective implements OnChanges {
     @Input() badgeValue?: string;
+    @Input() color?: IDaioBadgeColor;
 
     private badgeElement!: HTMLSpanElement;
 
@@ -43,9 +45,17 @@ export class DaioBadgeDirective implements OnChanges {
             this.badgeElement.classList.add('daio-badge--left');
             this.badgeElement.classList.add('daio-badge--bottom');
         }
+
+        this.setBadgeColor();
     }
 
     private updateBadgeValue(value: string): void {
         this.badgeElement.textContent = value;
+    }
+
+    private setBadgeColor(): void {
+        if(this.color) {
+            this.badgeElement.classList.add(`daio-badge--${this.color}`);
+        }
     }
 }

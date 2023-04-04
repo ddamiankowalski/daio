@@ -1,16 +1,26 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { DaioSidenavTitleComponent } from "./daio-sidenav-title.component";
 import { By } from "@angular/platform-browser";
+import { DaioSidenavService } from "../../services/daio-sidenav.service";
+import { DaioSidenavMock } from './testing/daio-sidenav-mock';
 
 describe('DaioSidenavTitleComponent', () => {
     let fixture: ComponentFixture<DaioSidenavTitleComponent>;
+    let service: DaioSidenavService;
     
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [DaioSidenavTitleComponent]
+            imports: [DaioSidenavTitleComponent],
+            providers: [
+                {
+                    provide: DaioSidenavService,
+                    useValue: DaioSidenavMock
+                }
+            ]
         });
 
         fixture = TestBed.createComponent(DaioSidenavTitleComponent);
+        service = TestBed.inject(DaioSidenavService);
     });
 
     it('sets the appropriate class', () => {
@@ -33,8 +43,12 @@ describe('DaioSidenavTitleComponent', () => {
 
         expect('daio-sidenav-title--expanded' in fixture.debugElement.classes).toBeFalsy();
 
-        fixture.componentRef.setInput('isExpanded', true);
+        service.setIsExpanded(true);
         fixture.detectChanges();
         expect('daio-sidenav-title--expanded' in fixture.debugElement.classes).toBeTruthy();
+    
+        service.setIsExpanded(false);
+        fixture.detectChanges();
+        expect('daio-sidenav-title--expanded' in fixture.debugElement.classes).toBeFalsy();
     });
 });

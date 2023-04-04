@@ -11,5 +11,5 @@
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+, "src/lib/sidenav/components/sidenav-title/testing/daio-sidenav-mock.ts"  ]
 }

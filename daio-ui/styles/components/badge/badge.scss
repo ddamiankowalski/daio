@@ -26,4 +26,16 @@
     &--left {
         left: 50%;
     }
+
+    &--destructive {
+        background-color: var(--destructive-color);
+    }
+
+    &--primary {
+        background-color: var(--primary-color);
+    }
+
+    &--info {
+        background-color: var(--info-color);
+    }
 }

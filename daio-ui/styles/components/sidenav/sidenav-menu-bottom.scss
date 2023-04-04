@@ -1,0 +1,14 @@
+.daio-sidenav-bottom-section {
+    display: block;
+    width: 100%;
+    height: 5rem;
+    background-color: var(--menu-grey-hover);
+
+    &__container {
+
+        &__item {
+            color: var(--on-surface);
+            font-size: 1rem;
+        }
+    }
+}

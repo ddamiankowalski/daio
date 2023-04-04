@@ -2,6 +2,7 @@
 @use './sidenav-title.scss';
 @use './sidenav-menu.scss';
 @use './sidenav-menu-item.scss';
+@use './sidenav-menu-bottom.scss';
 
 .daio-sidenav {
     display: grid;
@@ -10,8 +11,28 @@
 
     transition: all .4s ease;
 
+    & .daio-sidenav-menu-item__container__text {
+        opacity: 0;
+
+        transition: opacity .2s ease;
+    }
+
+    & .daio-sidenav-menu-item__subitems__item {
+        opacity: 0;
+
+        transition: opacity .2s ease;
+    }
+
     &--expanded {
         grid-template-columns: 25rem auto;
+
+        & .daio-sidenav-menu-item__container__text {
+            opacity: 1;
+        }
+
+        & .daio-sidenav-menu-item__subitems__item {
+            opacity: 1;
+        }
     }
 
 
@@ -36,6 +57,10 @@
             height: 2.875rem;
             margin-top: 0.75rem;
             color: var(--on-surface);
+        }
+
+        &__bottom {
+            margin-top: auto;
         }
     }
 

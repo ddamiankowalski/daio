@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { DaioIconComponent } from "../../../icons";
 import { DaioSidenavService } from "../../services/daio-sidenav.service";
-import { Subscription, filter, tap } from "rxjs";
+import { Subscription, combineLatest, filter, tap } from "rxjs";
 import { IDaioMenuItem } from "../../interfaces/daio-menu-item.interface";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { NgIf, NgFor } from "@angular/common";
@@ -31,23 +31,28 @@ export class SidenavMenuItemComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
-        this.subscription = this.sidenav.activeItem$.pipe(
+        this.subscription = combineLatest({
+            activeItem: this.sidenav.activeItem$,
+            isExpanded: this.sidenav.isExpanded$
+        }).pipe(
             tap(() => this.resetActiveState()),
-            filter(item => item?.title === this.item.title)
-        ).subscribe(() => this.setActiveItem());
+            filter(({ activeItem }) => activeItem?.title === this.item.title),
+        ).subscribe(({ isExpanded }) => this.setActiveClass(isExpanded));
     }
 
     ngOnDestroy(): void {
         this.subscription?.unsubscribe();
     }
 
-    onMenuItemClick(): void {
+    toggleMenu(): void {
         this.sidenav.setActiveItem(this.item);
         this.sidenav.setIsExpanded(true);
     }
 
-    private setActiveItem(): void {
-        this.renderer.addClass('daio-sidenav-menu-item--active');
+    private setActiveClass(isExpanded: boolean): void {
+        isExpanded ? 
+            this.renderer.addClass('daio-sidenav-menu-item--active') :
+            this.resetActiveState();
     }
 
     private resetActiveState(): void {

@@ -5,6 +5,7 @@ import { DaioSidenavTitleComponent } from "../sidenav-title/daio-sidenav-title.c
 import { DaioSidenavMenuComponent } from '../sidenav-menu/daio-sidenav-menu.component';
 import { DaioSidenavService } from "../../services/daio-sidenav.service";
 import { Subscription } from "rxjs";
+import { DaioSidenavBottomSectionComponent } from "../sidenav-bottom-section/daio-sidenav-bottom-section.component";
 
 @Component({
     standalone: true,
@@ -15,7 +16,8 @@ import { Subscription } from "rxjs";
     imports: [
         DaioSidenavHamburgerComponent,
         DaioSidenavTitleComponent,
-        DaioSidenavMenuComponent
+        DaioSidenavMenuComponent,
+        DaioSidenavBottomSectionComponent
     ],
     providers: [
         DaioRendererService,

@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
-import { DaioSidenavHamburgerComponent } from "../sidenav-hamburger/daio-sidenav-hamburger.component";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
-import { DaioSidenavTitleComponent } from "../sidenav-title/daio-sidenav-title.component";
-import { DaioSidenavMenuComponent } from '../sidenav-menu/daio-sidenav-menu.component';
+import { DaioSidenavMenuComponent } from '../daio-sidenav-menu/daio-sidenav-menu.component';
 import { DaioSidenavService } from "../../services/daio-sidenav.service";
 import { Subscription } from "rxjs";
-import { DaioSidenavBottomSectionComponent } from "../sidenav-bottom-section/daio-sidenav-bottom-section.component";
+import { DaioSidenavBottomSectionComponent } from "../daio-sidenav-bottom-section/daio-sidenav-bottom-section.component";
+import { DaioSidenavHamburgerComponent } from "../daio-sidenav-hamburger/daio-sidenav-hamburger.component";
+import { DaioSidenavTitleComponent } from "../daio-sidenav-title/daio-sidenav-title.component";
 
 @Component({
     standalone: true,

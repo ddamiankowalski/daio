@@ -1,1 +1,1 @@
-export * from './sidenav/daio-sidenav.component';
+export * from './daio-sidenav/daio-sidenav.component';

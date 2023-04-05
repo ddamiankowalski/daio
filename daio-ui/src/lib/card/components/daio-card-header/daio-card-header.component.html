@@ -1,4 +1,4 @@
-<div #avatar class="daio-card-header__avatar">
+<div *ngIf="showAvatar" #avatar class="daio-card-header__avatar">
     <ng-content select="[daioCardAvatar]"></ng-content>
 
     <ng-container *ngIf="!avatar.children.length"

@@ -1,7 +1,7 @@
-import { AfterViewInit, Directive, ElementRef, HostBinding, Inject, Input } from "@angular/core";
+import { AfterViewInit, Directive, HostBinding, Input } from "@angular/core";
 import { IDaioImagePosition } from "../../interfaces/daio-card-image.interface";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
-import { DOCUMENT } from "@angular/common";
+import { DaioCardComponent } from "../../components";
 
 @Directive({
     standalone: true,
@@ -14,29 +14,13 @@ export class DaioCardImageDirective implements AfterViewInit {
     @Input() imagePosition: IDaioImagePosition = 'left';
     @Input() imageSrc?: string;
 
-    private imgElement!: HTMLDivElement;
-
     constructor(
         private renderer: DaioRendererService,
-        @Inject(DOCUMENT) private document: Document,
-        private elementRef: ElementRef<HTMLElement>
+        private card: DaioCardComponent
     ) {}
 
     ngAfterViewInit(): void {
+        this.card.setCardType({ type: 'image', position: 'left' });
         this.renderer.addClass(`daio-card-image--${this.imagePosition}`);
-        this.createImgElement();
-    }
-
-    private createImgElement(): void {
-        this.imgElement = this.document.createElement('div');
-        this.addClasses();
-        this.elementRef.nativeElement.insertBefore(
-            this.imgElement, 
-            this.elementRef.nativeElement.firstChild
-        );
-    }
-
-    private addClasses(): void {
-        this.imgElement.classList.add('daio-card-image__img-container');
     }
 }

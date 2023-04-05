@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Directive, HostBinding, OnInit, ViewEncapsulation } from "@angular/core";
 import { DaioIconComponent } from "../../../icons";
 
 @Component({
@@ -15,4 +15,24 @@ import { DaioIconComponent } from "../../../icons";
 })
 export class DaioCardHeaderComponent {
     @HostBinding('class') cardHeaderClass = 'daio-card-header';
+
+    protected showAvatar = false;
+
+    public setShowAvatar(): void {
+        this.showAvatar = true;
+    }
+}
+
+@Directive({
+    standalone: true,
+    selector: 'daio-card-header[daioShowAvatar]'
+})
+export class DaioCardHeaderAvatarDirective implements OnInit {
+    constructor(
+        private header: DaioCardHeaderComponent
+    ) {}
+
+    ngOnInit(): void {
+        this.header.setShowAvatar();
+    }
 }

@@ -11,6 +11,11 @@
     padding: 1rem 1rem;
     overflow: hidden;
 
+    &__container {
+        display: flex;
+        gap: 1rem;
+    }
+
     @include shadows.daio-shadow;
     transition: filter .3s ease-in-out;
 

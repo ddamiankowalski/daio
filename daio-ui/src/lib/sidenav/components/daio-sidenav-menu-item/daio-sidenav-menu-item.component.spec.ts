@@ -69,4 +69,14 @@ describe('DaioSidenavMenuItem', () => {
         fixture.detectChanges();
         expect('daio-sidenav-menu-item--active' in fixture.debugElement.classes).toBeTruthy();
     });
+
+    it('loses the --active class when other item was clicked', () => {
+        fixture.debugElement.query(By.css('.daio-sidenav-menu-item__container')).triggerEventHandler('click');
+        fixture.detectChanges();
+        expect('daio-sidenav-menu-item--active' in fixture.debugElement.classes).toBeTruthy();
+
+        service.setActiveItem({ title: 'wrong', icon: 'test' });
+        fixture.detectChanges();
+        expect('daio-sidenav-menu-item--active' in fixture.debugElement.classes).toBeFalsy();
+    });
 });

@@ -12,12 +12,14 @@
         align-items: center;
         justify-content: space-around;
         margin: 0 2rem;
+        min-width: 18rem;
 
         &__item {
             cursor: pointer;
             color: var(--on-menu-grey);
             font-size: 2rem;
             transition: color .3s ease, transform .2s ease;
+            padding-bottom: .5rem;
 
             &:hover {
                 color: var(--disabled-deep-grey);

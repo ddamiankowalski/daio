@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DaioButtonComponent, DaioButtonFlatComponent, DaioButtonBasicComponent, DaioIconComponent, DaioCheckboxComponent, DaioInputComponent, DaioSidenavComponent, DaioCardComponent } from 'daio-ui';
 
 import { AppComponent } from './app.component';
+import { DaioCardHeaderComponent } from 'daio-ui/src/lib/card/components/daio-card-header/daio-card-header.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,8 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     DaioInputComponent,
     DaioSidenavComponent,
-    DaioCardComponent
+    DaioCardComponent,
+    DaioCardHeaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

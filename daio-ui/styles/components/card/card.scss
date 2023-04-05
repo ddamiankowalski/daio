@@ -1,5 +1,12 @@
 @use '../../mixins/shadow.scss' as shadows;
 
 .daio-card {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: .85rem;
     background-color: var(--on-surface);
+    border: 1px solid var(--hover-flat);
+    border-radius: .25rem;
+    padding: 0.8rem 1.5rem;
+
+    @include shadows.daio-shadow
 }

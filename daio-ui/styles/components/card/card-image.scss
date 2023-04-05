@@ -1,0 +1,23 @@
+.daio-card-image {
+    display: flex;
+    gap: 1rem;
+
+    &__img-container {
+        flex-basis: 40%;
+        position: relative;
+        min-width: 2.5rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            height: calc(100% + 2rem + 2px);
+            width: calc(100% + 1rem);
+            top: calc(-1rem - 1px);
+            left: calc(-1rem - 1px);
+            border-radius: .5rem 0 0 .5rem;
+            background-image: url('../../../assets/img/1.jpg');
+            background-size: cover;
+            background-position: 100% 50%;
+        }
+    }
+}

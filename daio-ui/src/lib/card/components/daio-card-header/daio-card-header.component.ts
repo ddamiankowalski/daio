@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
+import { DaioIconComponent } from "../../../icons";
 
 @Component({
     standalone: true,
@@ -7,7 +8,11 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/
     selector: 'daio-card-header',
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    imports: [CommonModule]
+    imports: [
+        CommonModule,
+        DaioIconComponent
+    ]
 })
-export class DaioCardHeaderComponent{
+export class DaioCardHeaderComponent {
+    @HostBinding('class') cardHeaderClass = 'daio-card-header';
 }

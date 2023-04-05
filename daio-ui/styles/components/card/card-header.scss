@@ -1,0 +1,40 @@
+.daio-card-header {
+    display: flex;
+    gap: .75rem;
+    white-space: nowrap;
+
+    &__text {
+        display: flex;
+        gap: .1rem;
+        justify-content: center;
+        flex-direction: column;
+        font-weight: 700;
+        font-size: .9rem;
+
+        &__subcontainer {
+            display: flex;
+            gap: .25rem;
+            font-size: .75rem;
+
+            &--sub {
+                font-weight: 500;
+                color: var(--dark-backround);
+            }
+
+            &--link {
+                color: var(--menu-grey);
+                font-weight: 400;
+            }
+        }
+    }
+
+    &__avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: .5rem;
+        border: 1px solid var(--disabled-grey);
+    }
+}

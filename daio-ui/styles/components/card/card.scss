@@ -1,12 +1,20 @@
 @use '../../mixins/shadow.scss' as shadows;
+@use './card-header.scss';
+@use './card-image.scss';
 
 .daio-card {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: .85rem;
     background-color: var(--on-surface);
     border: 1px solid var(--hover-flat);
-    border-radius: .25rem;
-    padding: 0.8rem 1.5rem;
+    border-radius: .5rem;
+    padding: 1rem 1rem;
+    overflow: hidden;
 
-    @include shadows.daio-shadow
+    @include shadows.daio-shadow;
+    transition: filter .3s ease-in-out;
+
+    &:hover {
+        @include shadows.daio-shadow-hover;
+    }
 }

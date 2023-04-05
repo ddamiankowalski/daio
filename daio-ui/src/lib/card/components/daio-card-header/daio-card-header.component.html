@@ -1,5 +1,23 @@
-<ng-content select="[daioCardAvatar]"></ng-content>
+<div #avatar class="daio-card-header__avatar">
+    <ng-content select="[daioCardAvatar]"></ng-content>
+
+    <ng-container *ngIf="!avatar.children.length"
+        [ngTemplateOutlet]="defaultAvatar"
+    ></ng-container>
+</div>
 <div class="daio-card-header__text">
     <ng-content select="[daioCardTitle]"></ng-content>
+    <div class="daio-card-header__text__subcontainer">
+        <span class="daio-card-header__text__subcontainer--sub">
+            <ng-content select="[daioCardSubtitle]"></ng-content>
+        </span>
+        <span class="daio-card-header__text__subcontainer--link">
+            <ng-content select="[daioCardSublink]"></ng-content>
+        </span>
+    </div>
 </div>
 <ng-content></ng-content>
+
+<ng-template #defaultAvatar>
+    <daio-icon iconName="question"></daio-icon>
+</ng-template>

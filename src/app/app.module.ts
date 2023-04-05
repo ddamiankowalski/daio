@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { DaioButtonComponent, DaioButtonFlatComponent, DaioButtonBasicComponent, DaioIconComponent, DaioCheckboxComponent, DaioInputComponent, DaioSidenavComponent } from 'daio-ui';
+import { DaioButtonComponent, DaioButtonFlatComponent, DaioButtonBasicComponent, DaioIconComponent, DaioCheckboxComponent, DaioInputComponent, DaioSidenavComponent, DaioCardComponent } from 'daio-ui';
 
 import { AppComponent } from './app.component';
 
@@ -17,7 +17,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     ReactiveFormsModule,
     DaioInputComponent,
-    DaioSidenavComponent
+    DaioSidenavComponent,
+    DaioCardComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

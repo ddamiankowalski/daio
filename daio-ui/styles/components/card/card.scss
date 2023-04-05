@@ -1,0 +1,5 @@
+@use '../../mixins/shadow.scss' as shadows;
+
+.daio-card {
+    background-color: var(--on-surface);
+}

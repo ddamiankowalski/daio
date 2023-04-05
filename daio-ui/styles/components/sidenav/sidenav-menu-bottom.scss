@@ -19,6 +19,8 @@
             color: var(--on-menu-grey);
             font-size: 2rem;
             transition: color .3s ease, transform .2s ease;
+            padding-left: .5rem;
+            padding-right: .5rem;
             padding-bottom: .5rem;
 
             &:hover {

@@ -16,7 +16,7 @@ describe('DaioBadgeDirective', () => {
         fixture = TestBed.createComponent(DaioBadgeDirectiveHostComponent);
     });
 
-    it('creates the correct component inside host component', () => {
-        expect(true).toBeTruthy();
+    it('defines component fixture', () => {
+        expect(fixture).toBeDefined();
     });
 });

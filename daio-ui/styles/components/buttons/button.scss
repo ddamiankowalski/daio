@@ -2,6 +2,7 @@
 @use './button-loader.scss';
 @use './button-flat.scss' as flat;
 @use './button-basic.scss' as basic;
+@use './button-text.scss';
 
 @include flat.button-flat;
 @include basic.button-basic;

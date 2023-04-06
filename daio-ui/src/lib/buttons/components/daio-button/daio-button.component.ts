@@ -11,7 +11,7 @@ import { IDaioButtonColor } from '../../interfaces/daio-button-configuration.int
 
 @Component({
   standalone: true,
-  selector: '[daioButton]',
+  selector: 'button[daioButton]',
   templateUrl: './daio-button.component.html',
   providers: [DaioRendererService],
   imports: [DaioButtonLoaderComponent, NgIf]

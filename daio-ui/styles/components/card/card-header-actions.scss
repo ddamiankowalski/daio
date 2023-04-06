@@ -1,0 +1,20 @@
+.daio-card-header-actions {
+    color: var(--menu-grey);
+    font-size: 1rem;
+
+    &__container {
+        display: flex;
+        gap: .75rem;
+        margin-left: 0.5rem;
+
+        .daio-icon {
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color .3s ease;
+
+            &:hover {
+                color: var(--disabled-flat-grey);
+            }
+        }
+    }
+}

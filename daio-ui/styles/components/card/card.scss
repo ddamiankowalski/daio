@@ -2,6 +2,8 @@
 @use './card-header.scss';
 @use './card-image.scss';
 @use './card-content.scss';
+@use './card-actions.scss';
+@use './card-header-actions.scss';
 
 .daio-card {
     font-family: 'IBM Plex Sans', sans-serif;

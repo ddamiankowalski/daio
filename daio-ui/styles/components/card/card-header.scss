@@ -37,4 +37,9 @@
         border-radius: .5rem;
         border: 1px solid var(--disabled-grey);
     }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+    }
 }

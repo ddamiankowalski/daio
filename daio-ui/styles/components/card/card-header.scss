@@ -8,7 +8,7 @@
         gap: .1rem;
         justify-content: center;
         flex-direction: column;
-        font-weight: 700;
+        font-weight: 500;
         font-size: .9rem;
 
         &__subcontainer {
@@ -17,7 +17,7 @@
             font-size: .75rem;
 
             &--sub {
-                font-weight: 500;
+                font-weight: 400;
                 color: var(--dark-backround);
             }
 

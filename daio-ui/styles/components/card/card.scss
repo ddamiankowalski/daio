@@ -1,6 +1,7 @@
 @use '../../mixins/shadow.scss' as shadows;
 @use './card-header.scss';
 @use './card-image.scss';
+@use './card-content.scss';
 
 .daio-card {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -11,7 +12,6 @@
     overflow: hidden;
 
     &__container {
-        display: flex;
         gap: 1rem;
     }
 

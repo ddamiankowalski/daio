@@ -1,26 +1,29 @@
 .daio-card-image {
     display: flex;
     gap: 1rem;
-}
 
-.daio-card {
     &__container {
-        &__image {
-            position: relative;
-            flex-basis: 4rem;
-            min-width: 4rem;
-            height: 100%;
-    
-            &::before {
-                position: absolute;
-                top: -1rem;
-                left: -1rem;
-                background: url('../../../assets/img/1.jpg');
-                content: '';
-                width: calc(100% + 1rem);
-                height: calc(100% + 2rem);
-                background-size: cover;
-            }
+        position: relative;
+        flex-basis: 4rem;
+        min-width: 4rem;
+
+        &::before {
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            background: url('../../../assets/img/1.jpg');
+            content: '';
+            width: calc(100% + 1rem);
+            height: calc(100% + 2rem);
+            background-size: cover;
+        }
+    }
+
+    &--right {
+        flex-direction: row-reverse;
+
+        & .daio-card-image__container {
+            right: -1rem;
         }
     }
 }

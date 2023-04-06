@@ -20,7 +20,7 @@ export class DaioCardImageDirective implements AfterViewInit {
     ) {}
 
     ngAfterViewInit(): void {
-        this.card.setCardType({ type: 'image', position: 'left' });
+        this.card.setCardType({ type: 'image', position: this.imagePosition });
         this.renderer.addClass(`daio-card-image--${this.imagePosition}`);
     }
 }

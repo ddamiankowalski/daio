@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, Directive, HostBinding, OnInit, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Directive, HostBinding, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { DaioIconComponent } from "../../../icons";
 
 @Component({
@@ -28,6 +28,8 @@ export class DaioCardHeaderComponent {
     selector: 'daio-card-header[daioShowAvatar]'
 })
 export class DaioCardHeaderAvatarDirective implements OnInit {
+    @Input() imageSrc?: string;
+    
     constructor(
         private header: DaioCardHeaderComponent
     ) {}

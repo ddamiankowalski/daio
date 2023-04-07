@@ -1,0 +1,1 @@
+export * from './components/daio-global-header/daio-global-header.component';

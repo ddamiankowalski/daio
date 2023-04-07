@@ -5,4 +5,7 @@ export interface IDaioCard {
     position?: IDaioImagePosition;
 }
 
-export type IDaioCardTypeName = 'normal' | 'image';
+export enum IDaioCardTypeName {
+    NORMAL = 'normal',
+    IMAGE = 'image'
+};

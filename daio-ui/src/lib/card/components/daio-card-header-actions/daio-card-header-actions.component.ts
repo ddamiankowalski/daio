@@ -10,7 +10,7 @@ import { DaioIconComponent } from "../../../icons";
     imports: [DaioIconComponent]
 })
 export class DaioCardHeaderActionsComponent {
-    @HostBinding('class') headerActionsClas = 'daio-card-header-actions';
+    @HostBinding('class') headerActionsClass = 'daio-card-header-actions';
 
     @Output() iconClicked: EventEmitter<void> = new EventEmitter<void>(); 
 

@@ -2,6 +2,7 @@ import { AfterViewInit, Directive, HostBinding, Input } from "@angular/core";
 import { IDaioImagePosition } from "../../interfaces/daio-card-image.interface";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { DaioCardComponent } from "../../components";
+import { IDaioCardTypeName } from "../../interfaces/daio-card.interface";
 
 @Directive({
     standalone: true,
@@ -20,7 +21,7 @@ export class DaioCardImageDirective implements AfterViewInit {
     ) {}
 
     ngAfterViewInit(): void {
-        this.card.setCardType({ type: 'image', position: this.imagePosition });
+        this.card.setCardType({ type: IDaioCardTypeName.IMAGE, position: this.imagePosition });
         this.renderer.addClass(`daio-card-image--${this.imagePosition}`);
     }
 }

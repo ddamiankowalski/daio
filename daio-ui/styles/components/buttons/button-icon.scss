@@ -1,0 +1,27 @@
+@use '../../mixins/shadow.scss' as shadows;
+
+.daio-button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--on-surface);
+    background-color: var(--primary-color);
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: outline .1s ease, filter .3s ease-in-out, transform .3s ease-in-out;
+    outline: .2rem solid rgba($color: #3742FA, $alpha: 0);
+    
+    @include shadows.daio-shadow;
+
+    &:hover:not(:focus) {
+        @include shadows.daio-shadow-hover;
+        transform: translateY(-.1rem);
+    }
+
+    &:focus {
+        outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
+    }
+}

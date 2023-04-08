@@ -3,6 +3,7 @@
 @use './button-flat.scss' as flat;
 @use './button-basic.scss' as basic;
 @use './button-text.scss';
+@use './button-icon.scss';
 
 @include flat.button-flat;
 @include basic.button-basic;

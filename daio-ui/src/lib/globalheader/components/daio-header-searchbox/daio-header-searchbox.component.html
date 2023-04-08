@@ -1,6 +1,8 @@
 <input 
     class="daio-header-searchbox__input" 
     [(ngModel)]="searchValue"
-    placeholder="Search in modules"
-    
+    [placeholder]="placeholder"
 />
+<div class="daio-header-searchbox__button">
+    <button (click)="onSearchSubmit()"  daioIconButton iconName="search"></button>
+</div>

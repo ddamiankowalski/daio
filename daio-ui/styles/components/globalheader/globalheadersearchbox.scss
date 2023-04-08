@@ -1,4 +1,5 @@
 .daio-header-searchbox {
+    position: relative;
     display: flex;
     align-items: center;
     flex-basis: 100%;
@@ -6,6 +7,12 @@
     
     height: 100%;
     width: calc(100% - 2rem);
+
+    &__button {
+        position: absolute;
+        right: 0;
+        transform: translateX(50%);
+    }
 
     &__input {
         font-size: 0.85rem;

@@ -50,9 +50,7 @@ export class DaioBadgeDirective implements OnInit {
     }
 
     private setBadgeColor(): void {
-        if(this.color) {
-            this._badgeElement.classList.add(`daio-badge--${this.color}`);
-        }
+        this._badgeElement.classList.add(`daio-badge--${this.color ?? 'primary'}`);
     }
 
     private setBadgePosition(position?: IDaioBadgePosition): void {

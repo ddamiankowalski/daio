@@ -4,7 +4,7 @@ import { DaioBadgeDirective } from "../daio-badge.directive";
 @Component({
     standalone: true,
     selector: 'daio-badge-host',
-    template: `<div daioBadge></div>`,
+    template: `<div daioBadge badgeValue="1"></div>`,
     imports: [DaioBadgeDirective]
 })
 export class DaioBadgeDirectiveHostComponent {

@@ -24,11 +24,14 @@ describe('DaioBadgeDirective', () => {
     it('defines component fixture', () => {
         expect(fixture).toBeDefined();
         expect(badgeEl).toBeDefined();
-        expect((badgeEl.nativeElement as HTMLElement).textContent).toEqual('');
     });
 
     it('displays the correct value inside the badge', () => {
-        fixture.detectChanges();
         expect((badgeEl.nativeElement as HTMLElement).textContent).toEqual('1');
+    });
+
+    it('displays the default color if the additional class was not provided', () => {
+        const primaryEl = fixture.debugElement.query(By.css('.daio-badge--primary'));
+        expect(primaryEl).toBeTruthy();
     });
 });

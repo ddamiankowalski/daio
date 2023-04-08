@@ -14,6 +14,22 @@
         transform: translateX(50%);
     }
 
+    &__erase-button {
+        position: absolute;
+        right: 2.25rem;
+        padding: .75rem;
+        color: var(--menu-grey);
+        cursor: pointer;
+        transition: color .3s ease, transform .3s ease;
+        animation-name: fadeIn;
+        animation-duration: .3s;
+
+        &:hover {
+            transform: translateY(-.1rem);
+            color: var(--disabled-flat-grey);
+        }
+    }
+
     &__input {
         font-size: 0.85rem;
         font-family: "IBM Plex Sans", sans-serif;
@@ -23,7 +39,8 @@
         margin-top: 1rem;
         padding-bottom: .75rem;
         padding-left: 1rem;
-        width: calc(100% - 3.5rem);
+        padding-right: 1.75rem;
+        width: calc(100% - 5.25rem);
         color: var(--on-menu-grey);
         cursor: pointer;
 
@@ -64,4 +81,14 @@
             outline: none;
         }
     }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+      }
+    
+      to {
+        opacity: 1;
+      }
 }

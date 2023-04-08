@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { DaioButtonIconComponent } from "../../../buttons/components/daio-button-icon/daio-button-icon.component";
+import { DaioIconComponent } from "../../../icons";
+import { NgIf } from "@angular/common";
 
 @Component({
     standalone: true,
@@ -10,7 +12,9 @@ import { DaioButtonIconComponent } from "../../../buttons/components/daio-button
     encapsulation: ViewEncapsulation.None,
     imports: [
         FormsModule,
-        DaioButtonIconComponent
+        DaioButtonIconComponent,
+        DaioIconComponent,
+        NgIf
     ]
 })
 export class DaioHeaderSearchboxComponent {
@@ -20,7 +24,11 @@ export class DaioHeaderSearchboxComponent {
 
     protected searchValue = '';
 
-    onSearchSubmit(): void {
+    public onSearchSubmit(): void {
         console.log(this.searchValue);
+    }
+
+    public resetSearch(): void {
+        this.searchValue = '';
     }
 }

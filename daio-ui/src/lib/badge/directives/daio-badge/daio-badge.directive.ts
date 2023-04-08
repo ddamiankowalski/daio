@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Inject, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Directive, ElementRef, Inject, Input, OnInit } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { IDaioBadgePosition } from "../../interfaces/daio-badge-position.interface";
 import { IDaioBadgeColor } from "../../interfaces/daio-badge-color.interface";
@@ -7,8 +7,12 @@ import { IDaioBadgeColor } from "../../interfaces/daio-badge-color.interface";
     standalone: true,
     selector: '[daioBadge]'
 })
-export class DaioBadgeDirective implements OnChanges {
-    @Input() badgeValue?: string;
+export class DaioBadgeDirective implements OnInit {
+    @Input() 
+    set badgeValue(value: string) {
+        this.updateBadgeValue(value);
+    }
+
     @Input() color?: IDaioBadgeColor;
 
     private badgeElement!: HTMLSpanElement;
@@ -18,26 +22,16 @@ export class DaioBadgeDirective implements OnChanges {
         private elementRef: ElementRef<HTMLElement>
     ) {}
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if('badgeValue' in changes) {
-            if(!this.badgeElement) {
-                this.createBadge(changes);
-            }
-            this.updateBadgeValue(changes['badgeValue'].currentValue);
-        }
+    ngOnInit(): void {
+        this.createBadge();
     }
 
-    private createBadge(changes: SimpleChanges): void {
-        const value = changes['badgeValue']?.currentValue;
-        const position = changes['badgePosition']?.currentValue as IDaioBadgePosition;
-
-        this.badgeElement = this.document.createElement('span');
-        this.setBadgeStyles(value, position);
-        this.elementRef.nativeElement.appendChild(this.badgeElement);
+    private createBadge(): void {
+        this.createBadgeElement();
+        this.setBadgeStyles();
     }
 
-    private setBadgeStyles(value: string, position?: IDaioBadgePosition): void {
-        this.badgeElement.textContent = value;
+    private setBadgeStyles(position?: IDaioBadgePosition): void {
         this.badgeElement.className = 'daio-badge';
         this.elementRef.nativeElement.style.position = 'relative';
 
@@ -49,8 +43,16 @@ export class DaioBadgeDirective implements OnChanges {
         this.setBadgeColor();
     }
 
+    private createBadgeElement(): void {
+        this.badgeElement = this.document.createElement('span');
+        this.elementRef.nativeElement.appendChild(this.badgeElement);
+        this.updateBadgeValue();
+    }
+
     private updateBadgeValue(value: string): void {
-        this.badgeElement.textContent = value;
+        if(this.badgeElement) {
+            this.badgeElement.textContent = value;
+        }
     }
 
     private setBadgeColor(): void {

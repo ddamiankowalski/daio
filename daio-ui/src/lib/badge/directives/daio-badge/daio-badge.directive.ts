@@ -10,20 +10,22 @@ import { IDaioBadgeColor } from "../../interfaces/daio-badge-color.interface";
 export class DaioBadgeDirective implements OnInit {
     @Input() 
     set badgeValue(value: string) {
-        this.updateBadgeValue(value);
+        this._currentValue = value;
     }
 
     @Input() color?: IDaioBadgeColor;
 
     private badgeElement!: HTMLSpanElement;
+    private _currentValue?: string;
 
     constructor(
         @Inject(DOCUMENT) private document: Document,
-        private elementRef: ElementRef<HTMLElement>
+        private elementRef: ElementRef<HTMLElement>,
     ) {}
 
     ngOnInit(): void {
         this.createBadge();
+        this.updateViewValue();
     }
 
     private createBadge(): void {
@@ -34,30 +36,27 @@ export class DaioBadgeDirective implements OnInit {
     private setBadgeStyles(position?: IDaioBadgePosition): void {
         this.badgeElement.className = 'daio-badge';
         this.elementRef.nativeElement.style.position = 'relative';
-
-        if(!position) {
-            this.badgeElement.classList.add('daio-badge--left');
-            this.badgeElement.classList.add('daio-badge--bottom');
-        }
-
+        this.setBadgePosition(position);
         this.setBadgeColor();
     }
 
     private createBadgeElement(): void {
         this.badgeElement = this.document.createElement('span');
         this.elementRef.nativeElement.appendChild(this.badgeElement);
-        this.updateBadgeValue();
     }
 
-    private updateBadgeValue(value: string): void {
-        if(this.badgeElement) {
-            this.badgeElement.textContent = value;
-        }
+    private updateViewValue(): void {
+        this.badgeElement.textContent = this._currentValue ?? '';
     }
 
     private setBadgeColor(): void {
         if(this.color) {
             this.badgeElement.classList.add(`daio-badge--${this.color}`);
         }
+    }
+
+    private setBadgePosition(position?: IDaioBadgePosition): void {
+        this.badgeElement.classList.add(`daio-badge--${position?.horizontal ?? 'left'}`);
+        this.badgeElement.classList.add('daio-badge--bottom');
     }
 }

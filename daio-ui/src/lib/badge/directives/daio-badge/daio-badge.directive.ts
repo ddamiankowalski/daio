@@ -15,7 +15,7 @@ export class DaioBadgeDirective implements OnInit {
 
     @Input() color?: IDaioBadgeColor;
 
-    private badgeElement!: HTMLSpanElement;
+    private _badgeElement!: HTMLSpanElement;
     private _currentValue?: string;
 
     constructor(
@@ -34,29 +34,29 @@ export class DaioBadgeDirective implements OnInit {
     }
 
     private setBadgeStyles(position?: IDaioBadgePosition): void {
-        this.badgeElement.className = 'daio-badge';
+        this._badgeElement.className = 'daio-badge';
         this.elementRef.nativeElement.style.position = 'relative';
         this.setBadgePosition(position);
         this.setBadgeColor();
     }
 
     private createBadgeElement(): void {
-        this.badgeElement = this.document.createElement('span');
-        this.elementRef.nativeElement.appendChild(this.badgeElement);
+        this._badgeElement = this.document.createElement('span');
+        this.elementRef.nativeElement.appendChild(this._badgeElement);
     }
 
     private updateViewValue(): void {
-        this.badgeElement.textContent = this._currentValue ?? '';
+        this._badgeElement.textContent = this._currentValue ?? '';
     }
 
     private setBadgeColor(): void {
         if(this.color) {
-            this.badgeElement.classList.add(`daio-badge--${this.color}`);
+            this._badgeElement.classList.add(`daio-badge--${this.color}`);
         }
     }
 
     private setBadgePosition(position?: IDaioBadgePosition): void {
-        this.badgeElement.classList.add(`daio-badge--${position?.horizontal ?? 'left'}`);
-        this.badgeElement.classList.add('daio-badge--bottom');
+        this._badgeElement.classList.add(`daio-badge--${position?.horizontal ?? 'left'}`);
+        this._badgeElement.classList.add('daio-badge--bottom');
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { DaioBadgeDirective } from "../daio-badge.directive";
 
 @Component({
@@ -7,4 +7,6 @@ import { DaioBadgeDirective } from "../daio-badge.directive";
     template: `<div daioBadge></div>`,
     imports: [DaioBadgeDirective]
 })
-export class DaioBadgeDirectiveHostComponent {}
+export class DaioBadgeDirectiveHostComponent {
+    @ViewChild(DaioBadgeDirective) directive!: DaioBadgeDirective;
+}

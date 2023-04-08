@@ -1,3 +1,5 @@
+@use './globalheadersearchbox.scss';
+
 .daio-global-header {
     display: flex;
     width: 100%;
@@ -9,12 +11,12 @@
         height: 100%;
 
         &__search-box {
-            flex-basis: 15%;
             min-width: 17rem;
+            background-color: var(--focus-flat);
         }
 
         &__menu {
-            flex-basis: 85%;
+            flex-basis: 100%;
             background-color: var(--dark-backround);
         }
     }

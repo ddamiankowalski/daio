@@ -1,0 +1,60 @@
+.daio-header-searchbox {
+    display: flex;
+    align-items: center;
+    flex-basis: 100%;
+    margin-left: 2rem;
+    
+    height: 100%;
+    width: calc(100% - 2rem);
+
+    &__input {
+        font-size: 0.85rem;
+        font-family: "IBM Plex Sans", sans-serif;
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid var(--menu-grey);
+        margin-top: 1rem;
+        padding-bottom: .75rem;
+        padding-left: 1rem;
+        width: calc(100% - 3.5rem);
+        color: var(--on-menu-grey);
+        cursor: pointer;
+
+        transition: color .3s ease;
+
+        &::placeholder {
+            transition: color .3s ease, transform .3s ease;
+            color: var(--disabled-deep-grey);
+        }
+
+        &:focus {
+            &::placeholder {
+                color: var(--disabled-grey);
+            }
+
+            border-color: var(--disabled-flat-grey);
+        }
+
+        &:active {
+            &::placeholder {
+                color: var(--disabled-grey);
+            }
+
+            border-color: var(--disabled-flat-grey);
+        }
+
+        &:hover:not(:focus):not(:active) {
+            color: var(--on-menu-grey);
+
+            &::placeholder {
+                position: absolute;
+                transform: translateY(-.1rem);
+                color: var(--on-menu-grey);
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

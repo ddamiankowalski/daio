@@ -1,0 +1,12 @@
+.daio-global-header-user {
+    display: flex;
+    align-items: center;
+    margin-right: 1.375rem;
+}
+
+.daio-header-user-avatar {
+    .daio-button-icon {
+        background-color: transparent;
+        border: 1px solid var(--on-surface);
+    }
+}

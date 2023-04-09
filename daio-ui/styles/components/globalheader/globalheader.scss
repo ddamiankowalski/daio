@@ -1,4 +1,6 @@
 @use './globalheadersearchbox.scss';
+@use './globalheaderactions.scss';
+@use './globalheaderuser.scss';
 
 .daio-global-header {
     display: flex;
@@ -16,6 +18,8 @@
         }
 
         &__menu {
+            display: flex;
+            justify-content: space-between;
             flex-basis: 100%;
             background-color: var(--dark-backround);
         }

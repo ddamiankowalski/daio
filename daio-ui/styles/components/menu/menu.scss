@@ -1,8 +1,41 @@
-.daio-menu {
+@use '../../mixins/shadow.scss' as shadows;
 
+.daio-menu {
     &__container {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: .85rem;
         display: flex;
         flex-direction: column;
         position: absolute;
+        background-color: var(--on-surface);
+        padding: 1rem;
+        border-radius: .5rem;
+        animation-name: fadeIn;
+        animation-duration: .3s;
+        pointer-events: all;
+        
+        @include shadows.daio-shadow;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(.9), translateY(-.15rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1), translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
     }
 }

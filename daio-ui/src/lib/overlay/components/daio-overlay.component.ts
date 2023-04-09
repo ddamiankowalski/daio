@@ -11,7 +11,7 @@ import { DaioOverlayService } from "../services/daio-overlay.service";
 export class DaioOverlayComponent implements AfterViewInit {
     @HostBinding('id') overlayClass = 'daio-overlay';
 
-    @ViewChild('ref', { read: ViewContainerRef }) outletRef?: ViewContainerRef;
+    @ViewChild('ref', { read: ViewContainerRef }) outletRef!: ViewContainerRef;
 
     constructor(
         private overlay: DaioOverlayService,

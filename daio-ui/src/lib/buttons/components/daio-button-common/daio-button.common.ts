@@ -1,22 +1,21 @@
 import { IDaioButtonColor } from "../../interfaces/daio-button-configuration.interface";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
-import { AfterViewInit, ChangeDetectorRef, Directive, Input } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Directive, Input, OnDestroy } from "@angular/core";
 import { DaioMenuComponent } from "../../../menu";
-import { DaioOverlayService } from "../../../overlay/services/daio-overlay.service";
 
 @Directive()
-export abstract class DaioButtonCommonComponent implements AfterViewInit {
+export abstract class DaioButtonCommonComponent implements AfterViewInit, OnDestroy {
     protected isLoading = false;
     protected menu?: DaioMenuComponent;
 
     @Input() set menuTrigger(menu: DaioMenuComponent) {
         this.menu = menu;
+        this.menu.hostElement = this.renderer.getElement();
     }
 
     constructor(
         protected renderer: DaioRendererService,
-        protected cdRef: ChangeDetectorRef,
-        protected overlay: DaioOverlayService
+        protected cdRef: ChangeDetectorRef
     ) {}
 
     abstract set loading(isLoading: boolean);
@@ -35,9 +34,18 @@ export abstract class DaioButtonCommonComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        setTimeout(() => {
-            this.menu && this.menu.templateRef && this.overlay.createOverlayTemplate(this.menu.templateRef);
-            this.cdRef.detectChanges();
-        }, 300)
+        if(this.menu && this.menu.templateRef) {
+            this.renderer.createMenuListeners(
+                this.menu.toggleMenu.bind(this.menu)
+            );
+        }
     }
+
+    ngOnDestroy(): void {
+        if(this.menu && this.menu.templateRef) {
+            this.renderer.removeMenuListeners(
+                this.menu.toggleMenu.bind(this.menu)
+            );
+        }
+      }
 }

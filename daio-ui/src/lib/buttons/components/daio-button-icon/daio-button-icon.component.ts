@@ -10,7 +10,6 @@ import {
   import { IDaioButtonColor } from '../../interfaces/daio-button-configuration.interface';
 import { DaioButtonLoaderComponent } from '../daio-button-loader/daio-button-loader.component';
 import { DaioIconComponent } from '../../../icons/components/daio-icon/daio-icon.component';
-import { DaioOverlayService } from '../../../overlay/services/daio-overlay.service';
   
   @Component({
     standalone: true,
@@ -28,10 +27,9 @@ import { DaioOverlayService } from '../../../overlay/services/daio-overlay.servi
   
     constructor(
       protected override renderer: DaioRendererService,
-      protected override cdRef: ChangeDetectorRef,
-      protected override overlay: DaioOverlayService
+      protected override cdRef: ChangeDetectorRef
     ) {
-      super(renderer, cdRef, overlay);
+      super(renderer, cdRef);
     }
 
     @Input() iconName?: string;

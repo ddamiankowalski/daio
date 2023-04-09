@@ -4,7 +4,6 @@ import { IDaioButtonColor } from "../../interfaces/daio-button-configuration.int
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { DaioButtonCommonComponent } from "../daio-button-common/daio-button.common";
 import { DaioButtonLoaderComponent } from "../daio-button-loader/daio-button-loader.component";
-import { DaioOverlayService } from "../../../overlay/services/daio-overlay.service";
 
 @Component({
     standalone: true,
@@ -18,10 +17,9 @@ export class DaioButtonBasicComponent extends DaioButtonCommonComponent {
 
     constructor(
         protected override renderer: DaioRendererService,
-        protected override cdRef: ChangeDetectorRef,
-        protected override overlay: DaioOverlayService
+        protected override cdRef: ChangeDetectorRef
     ) {
-        super(renderer, cdRef, overlay);
+        super(renderer, cdRef);
     }
 
     @Input() set loading(isLoading: boolean) {

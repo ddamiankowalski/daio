@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component, HostBinding, Input } from "@angular/core"
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { DaioButtonCommonComponent } from "../daio-button-common/daio-button.common";
 import { IDaioButtonColor } from "../../interfaces/daio-button-configuration.interface";
-import { DaioOverlayService } from "daio-ui/src/lib/overlay/services/daio-overlay.service";
 
 @Component({
     standalone: true,
@@ -27,8 +26,7 @@ export class DaioButtonTextComponent extends DaioButtonCommonComponent {
     constructor(
         protected override renderer: DaioRendererService,
         protected override cdRef: ChangeDetectorRef,
-        protected override overlay: DaioOverlayService
       ) {
-        super(renderer, cdRef, overlay);
+        super(renderer, cdRef);
     }
 }

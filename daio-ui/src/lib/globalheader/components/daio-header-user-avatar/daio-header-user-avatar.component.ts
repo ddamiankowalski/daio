@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
 import { DaioButtonIconComponent } from "../../../buttons";
 import { DaioMenuComponent } from "../../../menu";
+import { DaioMenuItemComponent } from "../../../menu/components/daio-menu-item/daio-menu-item.component";
 
 @Component({
     standalone: true,
@@ -10,7 +11,8 @@ import { DaioMenuComponent } from "../../../menu";
     encapsulation: ViewEncapsulation.None,
     imports: [
         DaioButtonIconComponent,
-        DaioMenuComponent
+        DaioMenuComponent,
+        DaioMenuItemComponent
     ]
 })
 export class DaioHeaderUserAvatarComponent { 

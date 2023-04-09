@@ -1,6 +1,8 @@
 @use '../../mixins/shadow.scss' as shadows;
 
 .daio-menu {
+    position: absolute;
+    
     &__container {
         font-family: 'IBM Plex Sans', sans-serif;
         font-size: .85rem;

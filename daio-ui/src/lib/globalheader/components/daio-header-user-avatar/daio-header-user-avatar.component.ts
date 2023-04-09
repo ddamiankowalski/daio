@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
 import { DaioButtonIconComponent } from "../../../buttons";
+import { DaioMenuComponent } from "../../../menu";
 
 @Component({
     standalone: true,
@@ -7,7 +8,10 @@ import { DaioButtonIconComponent } from "../../../buttons";
     templateUrl: './daio-header-user-avatar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    imports: [DaioButtonIconComponent]
+    imports: [
+        DaioButtonIconComponent,
+        DaioMenuComponent
+    ]
 })
 export class DaioHeaderUserAvatarComponent { 
     @HostBinding('class') userAvatarClass = 'daio-header-user-avatar';

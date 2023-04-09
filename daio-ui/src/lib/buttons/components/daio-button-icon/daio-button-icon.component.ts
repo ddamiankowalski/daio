@@ -1,9 +1,11 @@
 import {
+  AfterViewInit,
+  ChangeDetectorRef,
     Component,
     HostBinding,
     Input,
   } from '@angular/core';
-  import { NgIf } from '@angular/common';
+  import { CommonModule } from '@angular/common';
   import { DaioRendererService } from '../../../common/services/daio-renderer.service';
   import { DaioButtonCommonComponent } from '../daio-button-common/daio-button.common';
   import { IDaioButtonColor } from '../../interfaces/daio-button-configuration.interface';
@@ -16,18 +18,19 @@ import { DaioIconComponent } from '../../../icons/components/daio-icon/daio-icon
     templateUrl: './daio-button-icon.component.html',
     providers: [DaioRendererService],
     imports: [
-        NgIf, 
         DaioButtonLoaderComponent,
-        DaioIconComponent
+        DaioIconComponent,
+        CommonModule
     ]
   })
-  export class DaioButtonIconComponent extends DaioButtonCommonComponent {
+  export class DaioButtonIconComponent extends DaioButtonCommonComponent implements AfterViewInit {
     @HostBinding('class') buttonClass = 'daio-button-icon';
   
     constructor(
-      protected override renderer: DaioRendererService
+      protected override renderer: DaioRendererService,
+      protected override cdRef: ChangeDetectorRef
     ) {
-      super(renderer);
+      super(renderer, cdRef);
     }
 
     @Input() iconName?: string;

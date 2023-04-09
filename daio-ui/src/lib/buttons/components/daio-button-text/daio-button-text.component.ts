@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from "@angular/core";
+import { ChangeDetectorRef, Component, HostBinding, Input } from "@angular/core";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { DaioButtonCommonComponent } from "../daio-button-common/daio-button.common";
 import { IDaioButtonColor } from "../../interfaces/daio-button-configuration.interface";
@@ -24,8 +24,9 @@ export class DaioButtonTextComponent extends DaioButtonCommonComponent {
     }
 
     constructor(
-        protected override renderer: DaioRendererService
+        protected override renderer: DaioRendererService,
+        protected override cdRef: ChangeDetectorRef
       ) {
-        super(renderer);
+        super(renderer, cdRef);
     }
 }

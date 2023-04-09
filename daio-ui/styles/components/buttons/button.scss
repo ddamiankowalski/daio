@@ -4,6 +4,7 @@
 @use './button-basic.scss' as basic;
 @use './button-text.scss';
 @use './button-icon.scss';
+@use './button-menu.scss';
 
 @include flat.button-flat;
 @include basic.button-basic;

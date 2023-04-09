@@ -8,5 +8,9 @@
     .daio-button-icon {
         background-color: transparent;
         border: 1px solid var(--on-surface);
+        
+        &:focus {
+            outline-color: rgba($color: #ffffff, $alpha: 0.25);
+        }
     }
 }

@@ -1,0 +1,1 @@
+export * from './components/daio-menu/daio-menu.component';

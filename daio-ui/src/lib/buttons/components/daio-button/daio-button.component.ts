@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   HostBinding,
   Input,
@@ -20,9 +21,10 @@ export class DaioButtonComponent extends DaioButtonCommonComponent {
   @HostBinding('class') buttonClass = 'daio-button';
 
   constructor(
-    protected override renderer: DaioRendererService
+    protected override renderer: DaioRendererService,
+    protected override cdRef: ChangeDetectorRef
   ) {
-    super(renderer);
+    super(renderer, cdRef);
   }
 
   @Input() set loading(isLoading: boolean) {

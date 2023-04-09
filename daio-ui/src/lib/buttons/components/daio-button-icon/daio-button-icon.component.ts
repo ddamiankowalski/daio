@@ -1,6 +1,5 @@
 import {
-  AfterViewInit,
-  ChangeDetectorRef,
+    ChangeDetectorRef,
     Component,
     HostBinding,
     Input,
@@ -11,6 +10,7 @@ import {
   import { IDaioButtonColor } from '../../interfaces/daio-button-configuration.interface';
 import { DaioButtonLoaderComponent } from '../daio-button-loader/daio-button-loader.component';
 import { DaioIconComponent } from '../../../icons/components/daio-icon/daio-icon.component';
+import { DaioOverlayService } from '../../../overlay/services/daio-overlay.service';
   
   @Component({
     standalone: true,
@@ -23,14 +23,15 @@ import { DaioIconComponent } from '../../../icons/components/daio-icon/daio-icon
         CommonModule
     ]
   })
-  export class DaioButtonIconComponent extends DaioButtonCommonComponent implements AfterViewInit {
+  export class DaioButtonIconComponent extends DaioButtonCommonComponent {
     @HostBinding('class') buttonClass = 'daio-button-icon';
   
     constructor(
       protected override renderer: DaioRendererService,
-      protected override cdRef: ChangeDetectorRef
+      protected override cdRef: ChangeDetectorRef,
+      protected override overlay: DaioOverlayService
     ) {
-      super(renderer, cdRef);
+      super(renderer, cdRef, overlay);
     }
 
     @Input() iconName?: string;

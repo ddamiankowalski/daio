@@ -6,3 +6,4 @@ export * from './lib/sidenav';
 export * from './lib/card';
 export * from './lib/globalheader';
 export * from './lib/menu';
+export * from './lib/overlay';

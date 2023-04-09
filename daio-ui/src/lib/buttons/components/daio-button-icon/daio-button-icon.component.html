@@ -2,9 +2,3 @@
     <daio-icon [iconName]="iconName"></daio-icon>
 </div>
 <daio-button-loader *ngIf="isLoading"></daio-button-loader>
-
-<div *ngIf="menu" class="daio-button__menu">
-    <ng-container
-        [ngTemplateOutlet]="menu.templateRef"
-    ></ng-container>
-</div>

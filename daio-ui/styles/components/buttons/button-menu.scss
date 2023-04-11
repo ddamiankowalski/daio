@@ -1,5 +1,25 @@
-.daio-button {
-    &__menu {
-        position: absolute;
+.daio-button-menu {
+    background: none;
+    border: none;
+    padding: .5rem 1rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: .85rem;
+    cursor: pointer;
+    color: var(--on-menu-grey);
+    transition: color .3s ease, background-color .3s ease;
+
+    &:hover {
+        background-color: var(--hover-flat);
+        color: var(--dark-backround);
+    }
+
+    &:active {
+        background-color: var(--focus-flat);
+    }
+
+    &__text {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
     }
 }

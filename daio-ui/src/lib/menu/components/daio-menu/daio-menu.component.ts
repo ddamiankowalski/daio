@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EmbeddedViewRef, HostBinding, Inject, TemplateRef, ViewChild, ViewEncapsulation } from "@angular/core";
 import { DaioOverlayService } from "../../../overlay/services/daio-overlay.service";
 import { CommonModule, DOCUMENT } from "@angular/common";
-import { Subject, fromEvent, takeUntil } from "rxjs";
+import { Subject, debounceTime, distinctUntilChanged, filter, fromEvent, map, takeUntil, tap } from "rxjs";
 
 @Component({
     standalone: true,
@@ -38,7 +38,7 @@ export class DaioMenuComponent {
     private showMenu(): void {
         this._overlayElementRef = this.overlay.createOverlayTemplate(this.templateRef);
         const [ menuNode ] = this._overlayElementRef.rootNodes as HTMLElement[];
-        this.setNodePosition(menuNode);
+        this.setMenuPosition(menuNode);
         this.listenForClose();
     }
 
@@ -48,18 +48,32 @@ export class DaioMenuComponent {
         menuNode.onanimationend = this.destroyMenu.bind(this);
     }
 
-    private setNodePosition(node: HTMLElement): void {
-        node.style.left = 
-            ((this.hostElement?.nativeElement as HTMLElement).offsetLeft - 
-            node.clientWidth + this.hostElement?.nativeElement.clientWidth).toString() + 'px';
+    private setMenuPosition(menuNode: HTMLElement): void {
+        const hostElement = (this.hostElement?.nativeElement as HTMLElement);
+        this.positionMenuHorizontally(menuNode, hostElement);
+        this.positionMenuVertically(menuNode, hostElement);
+    }
 
-        node.style.top = 
-            ((this.hostElement?.nativeElement as HTMLElement).offsetTop + 
-            (this.hostElement?.nativeElement as HTMLElement).clientHeight + 8).toString() + 'px';
+    private positionMenuHorizontally(menuElement: HTMLElement, hostElement: HTMLElement): void {
+        menuElement.style.left = hostElement.offsetLeft + menuElement.clientWidth > window.innerWidth ?
+            (hostElement.offsetLeft - menuElement.clientWidth + this.hostElement?.nativeElement.clientWidth).toString() + 'px' :
+            (hostElement.offsetLeft - hostElement.clientWidth + this.hostElement?.nativeElement.clientWidth).toString() + 'px';
+    }
+
+    private positionMenuVertically(menuElement: HTMLElement, hostElement: HTMLElement): void {
+        menuElement.style.top = (hostElement.offsetTop + hostElement.clientHeight + 8).toString() + 'px';
     }
 
     private listenForClose(): void {
         fromEvent(this.document, 'click').pipe(
+            takeUntil(this._menuHidden$)
+        ).subscribe(() => this.hideMenu());
+
+        fromEvent(this.document, 'mousemove').pipe(
+            map((event: Event) => !this._overlayElementRef?.rootNodes[0].contains(event.target)),
+            distinctUntilChanged(),
+            debounceTime(1500),
+            filter(isOver => isOver),
             takeUntil(this._menuHidden$)
         ).subscribe(() => this.hideMenu());
     }

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
-import { DaioButtonIconComponent } from "../../../buttons";
+import { DaioButtonIconComponent, DaioButtonMenuComponent } from "../../../buttons";
 import { DaioMenuComponent } from "../../../menu";
-import { DaioMenuItemComponent } from "../../../menu/components/daio-menu-item/daio-menu-item.component";
+import { DaioIconComponent } from "daio-ui/src/lib/icons";
+import { NgFor } from "@angular/common";
 
 @Component({
     standalone: true,
@@ -12,9 +13,15 @@ import { DaioMenuItemComponent } from "../../../menu/components/daio-menu-item/d
     imports: [
         DaioButtonIconComponent,
         DaioMenuComponent,
-        DaioMenuItemComponent
+        DaioButtonMenuComponent,
+        DaioIconComponent,
+        NgFor
     ]
 })
 export class DaioHeaderUserAvatarComponent { 
     @HostBinding('class') userAvatarClass = 'daio-header-user-avatar';
+
+    handleClick(): void {
+        console.log('option clicked')
+    }
 }

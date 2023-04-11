@@ -10,13 +10,18 @@
         flex-direction: column;
         position: absolute;
         background-color: var(--on-surface);
-        padding: 1rem;
+        padding: 1rem 0rem;
         border-radius: .5rem;
         animation-name: fadeIn;
         animation-duration: .3s;
         pointer-events: all;
-        
+        transition: filter .3s ease-in-out;
+
         @include shadows.daio-shadow;
+
+        &:hover {
+            @include shadows.daio-shadow-hover;
+        }
     }
 }
 

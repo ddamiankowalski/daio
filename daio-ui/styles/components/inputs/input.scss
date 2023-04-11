@@ -89,7 +89,7 @@
             color: var(--disabled-flat-grey);
 
             transition: color .3s ease;
-            animation-name: fadeIn;
+            animation-name: fadeInInputIcon;
             animation-duration: .2s;
 
             &:hover {
@@ -130,7 +130,7 @@
     }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInInputIcon {
     from {
       opacity: 0;
     }

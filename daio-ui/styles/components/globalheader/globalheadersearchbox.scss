@@ -20,12 +20,11 @@
         padding: .75rem;
         color: var(--menu-grey);
         cursor: pointer;
-        transition: color .3s ease, transform .3s ease;
+        transition: color .3s ease;
         animation-name: fadeIn;
         animation-duration: .3s;
 
         &:hover {
-            transform: translateY(-.1rem);
             color: var(--disabled-flat-grey);
         }
     }

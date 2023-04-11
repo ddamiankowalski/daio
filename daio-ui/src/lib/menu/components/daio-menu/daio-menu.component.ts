@@ -14,13 +14,13 @@ import { Subject, fromEvent, takeUntil } from "rxjs";
 })
 export class DaioMenuComponent {
     @HostBinding('class') menuClass = 'daio-menu';
-    @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
+    @ViewChild(TemplateRef) templateRef!: TemplateRef<unknown>;
 
     public hostElement?: ElementRef;
-    public overlayElementRef?: EmbeddedViewRef<unknown>;
-    public menuHidden$: Subject<void> = new Subject();
-
-    private isAnimationRunning = false;
+    
+    private _overlayElementRef?: EmbeddedViewRef<unknown> | null = null;
+    private _menuHidden$: Subject<void> = new Subject();
+    private _animationRunning = false;
 
     constructor(
         private overlay: DaioOverlayService,
@@ -28,30 +28,24 @@ export class DaioMenuComponent {
     ) {}
 
     public toggleMenu(event: Event): void {
-        if(!this.isAnimationRunning) {
+        if(!this._animationRunning) {
+            this._overlayElementRef ? this.hideMenu() : this.showMenu();
             event.preventDefault();
             event.stopImmediatePropagation();
-            this.overlayElementRef ? this.hideMenu() : this.showMenu();
         }
     }
 
     private showMenu(): void {
-        this.overlayElementRef = this.overlay.createOverlayTemplate(this.templateRef);
-        const [ htmlNode ] = this.overlayElementRef.rootNodes as HTMLElement[];
-        this.setNodePosition(htmlNode);
+        this._overlayElementRef = this.overlay.createOverlayTemplate(this.templateRef);
+        const [ menuNode ] = this._overlayElementRef.rootNodes as HTMLElement[];
+        this.setNodePosition(menuNode);
         this.listenForClose();
     }
 
     private hideMenu(): void {
-        const [ htmlNode ] = this.overlayElementRef?.rootNodes as HTMLElement[];
-        this.isAnimationRunning = true;
-        htmlNode.style.animation="fadeOut .1s";
-        htmlNode.onanimationend = () => {
-            this.menuHidden$.next();
-            this.overlayElementRef?.destroy();
-            this.overlayElementRef = undefined;
-            this.isAnimationRunning = false;
-        }
+        const [ menuNode ] = this._overlayElementRef?.rootNodes as HTMLElement[];
+        this.startHideAnimation(menuNode);
+        menuNode.onanimationend = this.destroyMenu.bind(this);
     }
 
     private setNodePosition(node: HTMLElement): void {
@@ -66,7 +60,19 @@ export class DaioMenuComponent {
 
     private listenForClose(): void {
         fromEvent(this.document, 'click').pipe(
-            takeUntil(this.menuHidden$)
+            takeUntil(this._menuHidden$)
         ).subscribe(() => this.hideMenu());
+    }
+
+    private startHideAnimation(menuNode: HTMLElement): void {
+        this._animationRunning = true;
+        menuNode.style.animation="fadeOut .1s";
+    }
+
+    private destroyMenu(): void {
+        this._menuHidden$.next();
+        this._overlayElementRef?.destroy();
+        this._overlayElementRef = null;
+        this._animationRunning = false;
     }
 }

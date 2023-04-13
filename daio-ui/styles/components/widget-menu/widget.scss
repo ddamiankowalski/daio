@@ -66,11 +66,11 @@
 
                 > .daio-widget__text__subtitle {
                     opacity: 1;
-                    transform: translateY(1.75rem);
+                    transform: translateY(1.55rem);
                 }
 
                 > .daio-widget__text__description {
-                    transform: translateY(1.15rem);
+                    transform: translateY(.6rem);
                     opacity: 1;
                 }
             }
@@ -97,7 +97,7 @@
             text-overflow: ellipsis;
             font-size: .85rem;
             font-weight: 400; 
-            line-height: 1.15rem;
+            line-height: 1.5rem;
             transition: all .3s ease;
         }
     }

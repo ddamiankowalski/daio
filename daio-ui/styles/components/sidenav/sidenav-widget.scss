@@ -1,0 +1,10 @@
+.daio-sidenav-widget {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    padding-left: 2rem;
+    width: 100%;
+    min-height: 11rem;
+    background-color: var(--focus-flat);
+    cursor: pointer;
+}

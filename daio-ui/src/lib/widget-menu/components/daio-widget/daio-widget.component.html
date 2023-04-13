@@ -1,0 +1,11 @@
+<ng-container *ngIf="widget">
+    <section class="daio-widget__content"
+        [style.background-image]="'url(./assets/img/' + widget.image + '.jpg)'"
+        [style.background-position-y]="widget.yImagePos"
+    >
+        <div class="daio-widget__text__container">
+            <span class="daio-widget__text__header">{{ widget.title }}</span>
+            <span class="daio-widget__text__description">{{ widget.description }}</span>
+        </div>
+    </section>
+</ng-container>

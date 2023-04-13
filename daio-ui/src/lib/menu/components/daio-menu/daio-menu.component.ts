@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EmbeddedViewRef, HostBinding, Inject, TemplateRef, ViewChild, ViewEncapsulation } from "@angular/core";
 import { DaioOverlayService } from "../../../overlay/services/daio-overlay.service";
-import { CommonModule, DOCUMENT } from "@angular/common";
-import { Subject, debounceTime, distinctUntilChanged, filter, fromEvent, map, takeUntil, tap } from "rxjs";
+import { DOCUMENT } from "@angular/common";
+import { Subject, debounceTime, distinctUntilChanged, filter, fromEvent, map, takeUntil } from "rxjs";
 
 @Component({
     standalone: true,
@@ -9,8 +9,7 @@ import { Subject, debounceTime, distinctUntilChanged, filter, fromEvent, map, ta
     templateUrl: './daio-menu.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    exportAs: 'daioMenu',
-    imports: [CommonModule]
+    exportAs: 'daioMenu'
 })
 export class DaioMenuComponent {
     @HostBinding('class') menuClass = 'daio-menu';

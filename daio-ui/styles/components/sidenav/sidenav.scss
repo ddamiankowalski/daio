@@ -3,14 +3,16 @@
 @use './sidenav-menu.scss';
 @use './sidenav-menu-item.scss';
 @use './sidenav-menu-bottom.scss';
+@use './sidenav-widget.scss';
 
 .daio-sidenav {
     display: grid;
     grid-template-areas: 
         "sidenav header"
+        "sidenav widget"
         "sidnav content";
     grid-template-columns: 4rem auto;
-    grid-template-rows: 4rem auto;
+    grid-template-rows: 4rem 11rem auto;
 
     transition: all .4s ease;
 

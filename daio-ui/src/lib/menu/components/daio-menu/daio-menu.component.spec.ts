@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, fakeAsync } from "@angular/core/testing";
 import { DaioMenuComponent } from "./daio-menu.component";
 import { DaioButtonIconComponent } from "../../../buttons/components/daio-button-icon/daio-button-icon.component";
 import { DaioButtonMenuComponent } from "../../../buttons/components/daio-button-menu/daio-button-menu.component";
@@ -61,7 +61,7 @@ describe('DaioMenuComponent', () => {
         expect(getOverlayElements(overlayFixture)).toEqual(1);
     });
 
-    it('starts the hiding animation after the #toggleMenu was clicked again', () => {
+    it('starts the hiding animation after the #toggleMenu was clicked again', fakeAsync(() => {
         fixture.componentInstance.menu.toggleMenu(new MouseEvent('click'));
         fixture.detectChanges();
         
@@ -73,5 +73,5 @@ describe('DaioMenuComponent', () => {
 
         menuEl = getFirstOverlayElement(overlayFixture).children[0].nativeElement as HTMLElement;
         expect(menuEl.style.animation).toEqual('fadeOut .1s');
-    });
+    }));
 });

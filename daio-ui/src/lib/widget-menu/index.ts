@@ -1,0 +1,1 @@
+export * from '../sidenav/components/daio-sidenav-widget/daio-sidenav-widget.component';

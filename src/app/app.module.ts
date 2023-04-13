@@ -5,10 +5,17 @@ import { DaioButtonComponent, DaioButtonFlatComponent, DaioButtonBasicComponent,
 
 import { AppComponent } from './app.component';
 import { DaioCardHeaderAvatarDirective, DaioCardHeaderComponent } from 'daio-ui/src/lib/card/components/daio-card-header/daio-card-header.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    RouterModule.forRoot([
+      { 
+        path: '', 
+        loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DaioDashboardModule) 
+      }
+    ]),
     BrowserModule,
     DaioButtonComponent,
     DaioButtonFlatComponent,

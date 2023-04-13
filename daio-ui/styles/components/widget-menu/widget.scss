@@ -1,8 +1,9 @@
 @use '../../mixins/shadow.scss' as shadows;
+@use './widget-gradient.scss';
 
 .daio-widget {
-    width: 12rem;
-    height: 7rem;
+    width: 13rem;
+    height: 8rem;
     border-radius: .5rem;
     transition: filter .3s ease-in-out, transform .3s ease;
 
@@ -47,7 +48,7 @@
         &__container {
             display: flex;
             flex-direction: column;
-            gap: .6rem;
+            gap: 1.25rem;
             position: relative;
             z-index: 1;
             padding: 1.5rem 1.5rem;
@@ -58,17 +59,24 @@
 
             &:hover {
                 > .daio-widget__text__header {
+                    opacity: 1;
                     transform: translateY(-.25rem);
+                }
+
+                > .daio-widget__text__subtitle {
+                    opacity: 1;
+                    transform: translateY(1.5rem);
                 }
 
                 > .daio-widget__text__description {
                     transform: translateY(.6rem);
-                    opacity: .7;
+                    opacity: 1;
                 }
             }
         }
 
         &__header {
+            opacity: .9;
             transition: all .3s ease;
         }
 
@@ -80,6 +88,7 @@
         }
 
         &__description {
+            opacity: .7;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;

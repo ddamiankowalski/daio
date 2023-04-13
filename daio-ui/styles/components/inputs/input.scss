@@ -12,7 +12,7 @@
         top: 0;
         left: 1rem;
         transform: translateY(-50%);
-        font-size: .75rem;
+        font-size: .85rem;
         background-color: var(--on-surface);
 
         transition: transform .2s ease, background-color .2s ease;
@@ -102,7 +102,7 @@
             position: absolute;
             bottom: -1.5rem;
             left: .5rem;
-            font-size: .75rem;
+            font-size: .85rem;
             color: var(--destructive-color);
 
             animation-name: messageFadeIn;

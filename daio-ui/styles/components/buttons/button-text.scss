@@ -15,4 +15,13 @@
     &:focus {
         text-decoration: underline;
     }
+
+    &:disabled {
+        color: var(--menu-grey);
+        cursor: unset;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }

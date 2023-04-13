@@ -1,0 +1,16 @@
+<div class="daio-widget-gradient__container">
+    <span class="daio-widget-gradient__title">
+        {{ widget?.title }}
+    </span>
+    <daio-card class="daio-widget-gradient__card">
+        <span class="daio-widget-gradient__card__calendar">24 March, Monday</span>
+        <span class="daio-widget-gradient__card__subtitle">recruitments</span>
+        <div class="daio-widget-gradient__card__content">
+            This is where you can supply time trackers on your current day
+        </div>
+        <div class="daio-widget-gradient__card__buttons">
+            <button daioTextButton>Next message</button>
+            <button daioTextButton [disabled]="true">Previous message</button>
+        </div>
+    </daio-card>
+</div>

@@ -5,3 +5,7 @@ export interface IDaioWidget {
     image: string;
     yImagePos?: string;
 }
+
+export interface IDaioGradientWidget {
+    title: string;
+}

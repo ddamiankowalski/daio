@@ -35,13 +35,12 @@
 
     &__badge {
         display: flex;
-        gap: .75rem;
         top: .75rem;
         left: 2rem;
         position: absolute;
 
         &--icon {
-            font-size: .5rem;
+            font-size: .5725rem;
             margin-right: .25rem;
         }
     }
@@ -121,7 +120,7 @@
 
         &__content {
             margin-top: .75rem;
-            font-size: .85rem;
+            font-size: .875rem;
             font-weight: 400;
             color: var(--disabled-deep-grey);
             line-height: 1.5rem;

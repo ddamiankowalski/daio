@@ -8,14 +8,14 @@
         gap: 1.5rem;
         align-items: center;
         font-family: 'IBM Plex Sans', sans-serif;
-        font-size: .85rem;
+        font-size: .875rem;
         color: var(--on-surface);
     }
 
     &__message {
 
         &--username {
-            font-weight: 500;
+            font-weight: 700;
         }
     }
 }

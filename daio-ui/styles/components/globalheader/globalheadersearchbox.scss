@@ -18,14 +18,14 @@
         position: absolute;
         right: 2.25rem;
         padding: .75rem;
-        color: var(--menu-grey);
+        color: var(--disabled-flat-grey);
         cursor: pointer;
         transition: color .3s ease;
         animation-name: fadeIn;
         animation-duration: .3s;
 
         &:hover {
-            color: var(--disabled-flat-grey);
+            color: var(--disabled-deep-grey);
         }
     }
 

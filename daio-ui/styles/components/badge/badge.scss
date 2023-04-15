@@ -46,9 +46,10 @@
     
     &__container {        
         display: flex;
+        gap: .125rem;
         justify-content: center;
         align-items: center;
-        font-size: .65rem;
+        font-size: .685rem;
         font-weight: 500;
         color: var(--on-surface);
         padding: .25rem .5rem;

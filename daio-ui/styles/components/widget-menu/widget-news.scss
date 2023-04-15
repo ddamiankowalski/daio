@@ -55,22 +55,6 @@
         position: absolute;
         top: 0;
         right: -1rem;
-
-        &--delete {
-            background-color: var(--destructive-color);
-
-            &:focus {
-                outline: .2rem solid rgba($color: #FF4757, $alpha: .25);
-            }
-        }
-
-        &--save {
-            background-color: var(--success-color);
-            
-            &:focus {
-                outline: .2rem solid rgba($color: #2ED573, $alpha: .25);
-            }
-        }
     }
 
     &__title {

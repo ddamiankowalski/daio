@@ -6,6 +6,7 @@
     height: 9rem;
     border-radius: .5rem;
     transition: filter .3s ease-in-out, transform .3s ease;
+    flex-shrink: 0;
     cursor: pointer;
 
     @include shadows.daio-shadow;

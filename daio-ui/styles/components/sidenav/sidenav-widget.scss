@@ -1,9 +1,7 @@
 .daio-sidenav-widget {
     display: grid;
-    gap: 2rem;
     grid-template-columns: 50% 50%;
     transition: all .5s;
-    padding-left: 2rem;
     width: 100%;
     height: 15rem;
     background-color: var(--focus-flat);
@@ -14,9 +12,11 @@
         justify-content: flex-start;
         align-items: center;
         gap: 1.75rem;
+        overflow-x: scroll;
     }
 
     &__news_container {
+        position: relative;
         display: flex;
         gap: 2rem;
         height: 100%;
@@ -25,9 +25,32 @@
         > * {
             flex-basis: 100%;
         }
+
+        &--icon {
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 2rem;
+            background-color: var(--primary-color);
+            top: 50%;
+            transform: translateY(-50%);
+            left: -1.15rem;
+            animation-name: fadeInWidgetIcon;
+            animation-duration: .3s;
+        }
     }
 
     &--hidden {
         grid-template-columns: 100% 0;
+    }
+}
+
+@keyframes fadeInWidgetIcon {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }

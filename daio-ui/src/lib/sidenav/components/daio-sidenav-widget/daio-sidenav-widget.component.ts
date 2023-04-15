@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { DaioWidgetComponent } from "../../../widget-menu/components/daio-widget/daio-widget.component";
 import { IDaioWidget } from "../../../widget-menu/interfaces/daio-widget.interface";
-import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { DaioWidgetNewsComponent } from "../../../widget-menu/components/daio-widget-news/daio-widget-news.component";
 import { DaioSidenavService } from "../../services/daio-sidenav.service";
 import { Subscription } from "rxjs";
@@ -14,7 +14,7 @@ import { Subscription } from "rxjs";
     encapsulation: ViewEncapsulation.None,
     imports: [
         DaioWidgetComponent,
-        NgFor,
+        CommonModule,
         DaioWidgetNewsComponent
     ]
 })
@@ -26,7 +26,7 @@ export class DaioSidenavWidgetComponent implements OnInit, OnDestroy {
 
     private _subscription?: Subscription;
 
-    constructor(private sidenav: DaioSidenavService) {}
+    constructor(protected sidenav: DaioSidenavService) {}
 
     ngOnInit(): void {
         this._subscription = this.sidenav.isExpanded$.subscribe(isExpanded => this.toggleWidget(isExpanded));

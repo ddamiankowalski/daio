@@ -39,6 +39,11 @@
         top: .75rem;
         left: 2rem;
         position: absolute;
+
+        &--icon {
+            font-size: .5rem;
+            margin-right: .25rem;
+        }
     }
 
     &__actions {

@@ -46,10 +46,13 @@
     
     &__container {        
         display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: .65rem;
         font-weight: 500;
         color: var(--on-surface);
         padding: .25rem .5rem;
+        cursor: pointer;
     }
 
     &--primary {

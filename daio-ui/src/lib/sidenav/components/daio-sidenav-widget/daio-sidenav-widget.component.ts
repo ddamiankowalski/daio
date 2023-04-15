@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulati
 import { DaioWidgetComponent } from "../../../widget-menu/components/daio-widget/daio-widget.component";
 import { IDaioWidget } from "../../../widget-menu/interfaces/daio-widget.interface";
 import { NgFor } from '@angular/common';
-import { DaioWidgetGradientComponent } from "../../../widget-menu/components/daio-widget-gradient/daio-widget-gradient.component";
+import { DaioWidgetNewsComponent } from "../../../widget-menu/components/daio-widget-news/daio-widget-news.component";
 
 @Component({
     standalone: true,
@@ -13,7 +13,7 @@ import { DaioWidgetGradientComponent } from "../../../widget-menu/components/dai
     imports: [
         DaioWidgetComponent,
         NgFor,
-        DaioWidgetGradientComponent
+        DaioWidgetNewsComponent
     ]
 })
 export class DaioSidenavWidgetComponent {

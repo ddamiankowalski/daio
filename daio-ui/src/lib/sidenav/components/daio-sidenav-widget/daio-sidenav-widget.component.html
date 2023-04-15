@@ -1,7 +1,7 @@
 <div class="daio-sidenav-widget__items">
     <daio-widget *ngFor="let widget of widgets" [widget]="widget"></daio-widget>
 </div>
-<ng-content></ng-content>
 <div class="daio-sidenav-widget__news_container">
-    <daio-widget-gradient></daio-widget-gradient>
+    <daio-widget-news></daio-widget-news>
+    <ng-content></ng-content>
 </div>

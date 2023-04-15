@@ -1,11 +1,12 @@
 .daio-sidenav-widget {
     display: grid;
     gap: 2rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 50rem) 1fr;
     padding-left: 2rem;
     width: 100%;
     height: 15rem;
     background-color: var(--focus-flat);
+    overflow: hidden;
 
     &__items {
         display: flex;
@@ -15,6 +16,7 @@
     }
 
     &__news_container {
+        display: flex;
         height: 100%;
         background: rgba($color: #3039dd, $alpha: .05);
     }

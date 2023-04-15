@@ -6,8 +6,8 @@ import { DaioBadgeComponent } from "../../../badge";
 
 @Component({
     standalone: true,
-    selector: 'daio-widget-gradient',
-    templateUrl: './daio-widget-gradient.component.html',
+    selector: 'daio-widget-news',
+    templateUrl: './daio-widget-news.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     imports: [
@@ -19,6 +19,6 @@ import { DaioBadgeComponent } from "../../../badge";
         DaioButtonIconComponent
     ]
 })
-export class DaioWidgetGradientComponent {
-    @HostBinding('class') widgetGradientClass = 'daio-widget-gradient';
+export class DaioWidgetNewsComponent {
+    @HostBinding('class') widgetNewsClass = 'daio-widget-news';
 }

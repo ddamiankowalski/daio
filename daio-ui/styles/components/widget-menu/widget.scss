@@ -1,5 +1,5 @@
 @use '../../mixins/shadow.scss' as shadows;
-@use './widget-gradient.scss';
+@use './widget-news.scss';
 
 .daio-widget {
     width: 15rem;
@@ -78,6 +78,7 @@
         }
 
         &__header {
+            white-space: nowrap;
             opacity: .9;
             transition: all .3s ease;
         }

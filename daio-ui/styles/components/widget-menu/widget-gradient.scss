@@ -20,14 +20,53 @@
 
         &:first-of-type {
             margin-left: 2rem;
-            margin-right: 2rem;
+            margin-right: 3rem;
+        }
+
+        .daio-card__container {
+            padding-right: 1rem;
+        }
+
+        .daio-button-icon {
+            width: 2.25rem;
+            height: 2.25rem;
         }
     }
 
     &__badge {
+        display: flex;
+        gap: .75rem;
         top: .75rem;
         left: 2rem;
         position: absolute;
+    }
+
+    &__actions {
+        display: flex;
+        z-index: 1;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: -1rem;
+
+        &--delete {
+            background-color: var(--destructive-color);
+
+            &:focus {
+                outline: .2rem solid rgba($color: #FF4757, $alpha: .25);
+            }
+        }
+
+        &--save {
+            background-color: var(--success-color);
+            
+            &:focus {
+                outline: .2rem solid rgba($color: #2ED573, $alpha: .25);
+            }
+        }
     }
 
     &__title {
@@ -40,6 +79,7 @@
         max-width: 17rem;
         padding: 1.25rem;
         padding-right: 1.5rem;
+        overflow: visible;
 
         &__calendar {
             font-size: .75rem;

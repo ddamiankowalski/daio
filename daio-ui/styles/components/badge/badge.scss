@@ -1,9 +1,10 @@
+@use '../../mixins/shadow.scss' as shadows;
+
 .daio-badge {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    background-color: var(--primary-color);
     font-size: .65rem;
     font-weight: 500;
     width: 1.125rem;
@@ -43,25 +44,37 @@
 
 .daio-badge-standalone {
     
-    &__container {
+    &__container {        
         display: flex;
         font-size: .65rem;
         font-weight: 500;
-        border-radius: .25rem;
         color: var(--on-surface);
         padding: .25rem .5rem;
-        background-color: var(--primary-color);
     }
 
     &--primary {
+        display: block;
+        border-radius: .25rem;
         background-color: var(--primary-color);
+
+        @include shadows.daio-shadow-checkbox;
+
     }
 
     &--info {
+        display: block;
+        border-radius: .25rem;
         background-color: var(--info-color);
+
+        @include shadows.daio-shadow-checkbox;
+
     }
 
     &--destructive-color {
+        display: block;
+        border-radius: .25rem;
         background-color: var(--destructive-color);
+
+        @include shadows.daio-shadow-checkbox;
     }
 }

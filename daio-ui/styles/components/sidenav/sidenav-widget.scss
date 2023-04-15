@@ -1,9 +1,21 @@
 .daio-sidenav-widget {
-    display: flex;
-    align-items: center;
-    gap: 1.75rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
     padding-left: 2rem;
     width: 100%;
     height: 15rem;
     background-color: var(--focus-flat);
+
+    &__items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    &__news_container {
+        height: 100%;
+        background: rgba($color: #3039dd, $alpha: .05);
+    }
 }

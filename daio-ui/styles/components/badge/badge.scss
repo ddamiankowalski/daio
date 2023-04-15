@@ -40,3 +40,28 @@
         background-color: var(--info-color);
     }
 }
+
+.daio-badge-standalone {
+    
+    &__container {
+        display: flex;
+        font-size: .65rem;
+        font-weight: 500;
+        border-radius: .25rem;
+        color: var(--on-surface);
+        padding: .25rem .5rem;
+        background-color: var(--primary-color);
+    }
+
+    &--primary {
+        background-color: var(--primary-color);
+    }
+
+    &--info {
+        background-color: var(--info-color);
+    }
+
+    &--destructive-color {
+        background-color: var(--destructive-color);
+    }
+}

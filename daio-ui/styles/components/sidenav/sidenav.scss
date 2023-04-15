@@ -77,5 +77,6 @@
 
     &__header {
         grid-area: header;
+        min-width: 0;
     }
 }

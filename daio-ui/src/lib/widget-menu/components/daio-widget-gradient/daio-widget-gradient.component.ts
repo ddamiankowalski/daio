@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from "@angular/core";
 import { IDaioGradientWidget } from "../../interfaces/daio-widget.interface";
-import { DaioCardComponent, DaioCardHeaderComponent } from "daio-ui/src/lib/card";
-import { DaioButtonTextComponent } from "daio-ui/src/lib/buttons";
+import { DaioCardComponent, DaioCardHeaderComponent } from "../../../card";
+import { DaioButtonTextComponent } from "../../../buttons";
+import { DaioIconComponent } from "../../../icons";
+import { DaioBadgeComponent } from "../../../badge";
 
 @Component({
     standalone: true,
@@ -12,7 +14,9 @@ import { DaioButtonTextComponent } from "daio-ui/src/lib/buttons";
     imports: [
         DaioCardComponent, 
         DaioCardHeaderComponent, 
-        DaioButtonTextComponent
+        DaioButtonTextComponent,
+        DaioIconComponent,
+        DaioBadgeComponent
     ]
 })
 export class DaioWidgetGradientComponent {

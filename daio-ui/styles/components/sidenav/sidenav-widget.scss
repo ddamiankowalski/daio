@@ -17,7 +17,12 @@
 
     &__news_container {
         display: flex;
+        gap: 2rem;
         height: 100%;
         background: rgba($color: #3039dd, $alpha: .05);
+
+        > * {
+            flex-basis: 100%;
+        }
     }
 }

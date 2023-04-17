@@ -1,3 +1,5 @@
+@use '../../mixins/shadow.scss' as shadows;
+
 .daio-sidenav-widget {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -13,6 +15,7 @@
         align-items: center;
         gap: 1.75rem;
         overflow-x: scroll;
+        padding-left: 2rem;
     }
 
     &__news_container {
@@ -28,15 +31,25 @@
 
         &--icon {
             position: absolute;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 2rem;
+            width: 3rem;
+            height: 80%;
+            border-radius: .5rem;
             background-color: var(--primary-color);
             top: 50%;
             transform: translateY(-50%);
-            left: -1.15rem;
-            animation-name: fadeInWidgetIcon;
-            animation-duration: .3s;
+            left: -4rem;
+            cursor: pointer;
+            transition: outline .1s ease, filter .3s ease-in-out, transform .3s ease-in-out;
+
+            @include shadows.daio-shadow;
+
+            animation: fadeInWidgetIcon;
+            animation-duration: 3s;
+
+            &:hover {
+                @include shadows.daio-shadow-hover;
+                transform: translateY(-52%);
+            }
         }
     }
 

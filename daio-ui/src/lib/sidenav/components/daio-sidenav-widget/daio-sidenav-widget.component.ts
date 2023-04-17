@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { DaioWidgetComponent } from "../../../widget-menu/components/daio-widget/daio-widget.component";
 import { IDaioWidget } from "../../../widget-menu/interfaces/daio-widget.interface";
 import { CommonModule } from '@angular/common';
@@ -26,7 +26,10 @@ export class DaioSidenavWidgetComponent implements OnInit, OnDestroy {
 
     private _subscription?: Subscription;
 
-    constructor(protected sidenav: DaioSidenavService) {}
+    constructor(
+        protected sidenav: DaioSidenavService,
+        private cdRef: ChangeDetectorRef
+        ) {}
 
     ngOnInit(): void {
         this._subscription = this.sidenav.isExpanded$.subscribe(isExpanded => this.toggleWidget(isExpanded));
@@ -38,5 +41,6 @@ export class DaioSidenavWidgetComponent implements OnInit, OnDestroy {
 
     private toggleWidget(isExpanded: boolean) {
         this.widgetHidden = isExpanded;
+        this.cdRef.detectChanges();
     }
 }

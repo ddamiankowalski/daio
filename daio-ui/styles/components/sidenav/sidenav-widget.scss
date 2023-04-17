@@ -1,6 +1,7 @@
 @use '../../mixins/shadow.scss' as shadows;
 
 .daio-sidenav-widget {
+    position: relative;
     display: grid;
     grid-template-columns: 50% 50%;
     transition: all .5s;
@@ -18,7 +19,7 @@
         padding-left: 2rem;
     }
 
-    &__news_container {
+    &__news-container {
         position: relative;
         display: flex;
         gap: 2rem;
@@ -28,75 +29,74 @@
         > * {
             flex-basis: 100%;
         }
-
-        &__icon {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--on-surface);
-            width: 3rem;
-            height: 80%;
-            border-radius: .5rem;
-            background-color: var(--primary-color);
-            top: 50%;
-            transform: translateY(-50%);
-            left: -4rem;
-            cursor: pointer;
-            transition: outline .1s ease, filter .3s ease-in-out, transform .3s ease-in-out;
-
-            @include shadows.daio-shadow;
-
-            animation: fadeInWidgetIcon;
-            animation-duration: 1s;
-
-            &:hover {
-                @include shadows.daio-shadow-hover;
-                transform: translateY(-52%);
-            }
-
-            &:focus {
-                outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
-            }
-
-            &--hidden {
-                animation: fadeOutWidgetIcon;
-                animation-duration: .2s;
-                visibility: hidden;
-                opacity: 0;
-            }
-        }
     }
 
     &--hidden {
         grid-template-columns: 100% 0;
+    }
+
+    &__icon {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--on-surface);
+        width: 3rem;
+        height: 80%;
+        border-radius: .5rem;
+        background-color: var(--primary-color);
+        top: 50%;
+        transform: translateY(-50%);
+        right: 1rem;
+        cursor: pointer;
+        z-index: 1;
+        transition: outline .1s ease, filter .3s ease-in-out, transform .3s ease-in-out;
+
+        @include shadows.daio-shadow;
+
+        animation: fadeInWidgetIcon;
+        animation-duration: 1s;
+
+        &:hover {
+            @include shadows.daio-shadow-hover;
+            transform: translateY(-52%);
+        }
+
+        &:focus {
+            outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
+        }
+
+        &--hidden {
+            animation: fadeOutWidgetIcon;
+            animation-duration: .3s;
+            right: -5rem;
+        }
     }
 }
 
 @keyframes fadeInWidgetIcon {
     0% {
         opacity: 0;
+        right: -3.5rem;
     }
 
-    50% {
+    60% {
         opacity: 0;
-        left: 0;
+        right: -3.5rem;
     }
 
     100% {
         opacity: 1;
-        left: -4rem;
+        right: 1rem;
     }
 }
 
 @keyframes fadeOutWidgetIcon {
     0% {
-        visibility: visible;
-        opacity: 1;
+        right: 1rem;
     }
 
     100% {
-        visibility: hidden;
-        opacity: 0;
+        right: -5rem;
     }
 }

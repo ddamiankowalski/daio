@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DaioWidgetNewsComponent } from "../../../widget-menu/components/daio-widget-news/daio-widget-news.component";
 import { DaioSidenavService } from "../../services/daio-sidenav.service";
 import { Subscription } from "rxjs";
+import { DaioIconComponent } from "../../../icons";
 
 @Component({
     standalone: true,
@@ -15,7 +16,8 @@ import { Subscription } from "rxjs";
     imports: [
         DaioWidgetComponent,
         CommonModule,
-        DaioWidgetNewsComponent
+        DaioWidgetNewsComponent,
+        DaioIconComponent
     ]
 })
 export class DaioSidenavWidgetComponent implements OnInit, OnDestroy {
@@ -37,6 +39,10 @@ export class DaioSidenavWidgetComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this._subscription?.unsubscribe();
+    }
+
+    protected onIconClick(): void {
+        this.sidenav.setIsExpanded(false);
     }
 
     private toggleWidget(isExpanded: boolean) {

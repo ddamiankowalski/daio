@@ -29,8 +29,12 @@
             flex-basis: 100%;
         }
 
-        &--icon {
+        &__icon {
             position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--on-surface);
             width: 3rem;
             height: 80%;
             border-radius: .5rem;
@@ -44,11 +48,22 @@
             @include shadows.daio-shadow;
 
             animation: fadeInWidgetIcon;
-            animation-duration: 3s;
+            animation-duration: 1s;
 
             &:hover {
                 @include shadows.daio-shadow-hover;
                 transform: translateY(-52%);
+            }
+
+            &:focus {
+                outline: .2rem solid rgba($color: #3742FA, $alpha: .25);
+            }
+
+            &--hidden {
+                animation: fadeOutWidgetIcon;
+                animation-duration: .2s;
+                visibility: hidden;
+                opacity: 0;
             }
         }
     }
@@ -59,11 +74,29 @@
 }
 
 @keyframes fadeInWidgetIcon {
-    from {
+    0% {
         opacity: 0;
     }
 
-    to {
+    50% {
+        opacity: 0;
+        left: 0;
+    }
+
+    100% {
         opacity: 1;
+        left: -4rem;
+    }
+}
+
+@keyframes fadeOutWidgetIcon {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
     }
 }

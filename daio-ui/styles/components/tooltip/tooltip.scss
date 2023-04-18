@@ -1,0 +1,21 @@
+.daio-tooltip {
+    color: var(--on-surface);
+    background-color: var(--dark-backround);
+    padding: .25rem .5rem;
+    border-radius: .25rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: .875rem;
+
+    animation: tooltipFadeIn;
+    animation-duration: .3s;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

@@ -5,6 +5,7 @@ import { Subscription, combineLatest, filter, tap } from "rxjs";
 import { IDaioMenuItem } from "../../interfaces/daio-menu-item.interface";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
 import { NgIf, NgFor } from "@angular/common";
+import { DaioTooltipDirective } from "../../../tooltip/directives/daio-tooltip/daio-tooltip.directive";
 
 @Component({
     standalone: true,
@@ -15,7 +16,8 @@ import { NgIf, NgFor } from "@angular/common";
     imports: [
         DaioIconComponent,
         NgIf,
-        NgFor
+        NgFor,
+        DaioTooltipDirective
     ],
     providers: [DaioRendererService]
 })

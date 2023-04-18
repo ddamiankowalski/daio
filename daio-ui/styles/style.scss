@@ -13,5 +13,8 @@
 html, body {
     box-sizing: border-box;
     overflow: hidden;
-    font-smooth: always;
+
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
 }

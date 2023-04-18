@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from "@angular/core";
 import { DaioIconComponent } from "../../../icons";
 import { DaioButtonIconComponent } from "../../../buttons";
+import { DaioTooltipDirective } from "daio-ui/src/lib/tooltip";
 
 @Component({
     standalone: true,
@@ -10,7 +11,8 @@ import { DaioButtonIconComponent } from "../../../buttons";
     encapsulation: ViewEncapsulation.None,
     imports: [
         DaioIconComponent,
-        DaioButtonIconComponent
+        DaioButtonIconComponent,
+        DaioTooltipDirective
     ]
 })
 export class DaioHeaderActionsComponent {

@@ -42,12 +42,12 @@ export class DaioTooltipComponent {
     }
 
     private setBottomTooltipPosition(rect: DOMRect, tooltipEl: HTMLElement): void {
-        tooltipEl.style.bottom = rect['top'] + 4 + 'px';
-        tooltipEl.style.top = rect.top + (rect.height / 2 - tooltipEl.offsetHeight / 2) + 'px';
+        tooltipEl.style.top = rect['bottom'] + 8 + 'px';
+        tooltipEl.style.left = rect.left - (rect.width / 2) + 'px';
     }
 
     private setLeftTooltipPosition(rect: DOMRect, tooltipEl: HTMLElement): void {
-        tooltipEl.style.left = rect['right'] - 4 + 'px';
+        tooltipEl.style.left = rect['right'] - 8 + 'px';
         tooltipEl.style.top = rect.top + (rect.height / 2 - tooltipEl.offsetHeight / 2) + 'px';
     }
 

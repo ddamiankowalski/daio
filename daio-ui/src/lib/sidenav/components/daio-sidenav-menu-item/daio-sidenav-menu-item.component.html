@@ -1,5 +1,10 @@
 <div (click)="itemClicked()" class="daio-sidenav-menu-item__container">
-    <div class="daio-sidenav-menu__container__icon" daioTooltip [tooltipText]="item.title" [tooltipIf]="!!!(sidenav.isExpanded$ | async)">
+    <div 
+        class="daio-sidenav-menu__container__icon" 
+        daioTooltip 
+        [tooltipText]="item.title | titlecase" 
+        [tooltipIf]="!!!(sidenav.isExpanded$ | async)"
+    >
         <daio-icon [iconName]="item.icon"></daio-icon>
     </div>
     <span class="daio-sidenav-menu-item__container__text">{{ item.title }}</span>

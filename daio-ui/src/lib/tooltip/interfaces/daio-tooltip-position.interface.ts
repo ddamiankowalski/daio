@@ -1,0 +1,1 @@
+export type IDaioTooltipPosition = 'left' | 'right' | 'top' | 'bottom';

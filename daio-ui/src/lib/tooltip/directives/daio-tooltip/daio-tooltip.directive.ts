@@ -1,7 +1,9 @@
-import { Directive, AfterViewInit, ComponentRef, ElementRef, OnDestroy, NgZone, Input } from '@angular/core';
+import { Directive, AfterViewInit, ComponentRef, ElementRef, OnDestroy, NgZone, Input, Inject } from '@angular/core';
 import { DaioOverlayService } from '../../../overlay/services/daio-overlay.service';
 import { DaioTooltipComponent } from '../../components/daio-tooltip/daio-tooltip.component';
-import { fromEvent, take } from 'rxjs';
+import { fromEvent, merge, take } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { IDaioTooltipPosition } from '../../interfaces/daio-tooltip-position.interface';
 
 @Directive({
     standalone: true,
@@ -10,6 +12,7 @@ import { fromEvent, take } from 'rxjs';
 export class DaioTooltipDirective implements AfterViewInit, OnDestroy {
     @Input() tooltipText?: string;
     @Input() tooltipIf = true;
+    @Input() tooltipPosition: IDaioTooltipPosition = 'right';
 
     private _tooltip?: ComponentRef<DaioTooltipComponent> | null;
     private _hostElement!: HTMLElement;
@@ -17,7 +20,8 @@ export class DaioTooltipDirective implements AfterViewInit, OnDestroy {
     constructor(
         private overlay: DaioOverlayService,
         private element: ElementRef,
-        private ngZone: NgZone
+        private ngZone: NgZone,
+        @Inject(DOCUMENT) private document: Document
     ) {}
 
     ngAfterViewInit(): void {
@@ -44,9 +48,10 @@ export class DaioTooltipDirective implements AfterViewInit, OnDestroy {
     }
 
     private listenForMouseLeave(): void {
-        fromEvent(this._hostElement, 'mouseleave')
-            .pipe(take(1))
-            .subscribe(() => this.destroyTooltip())
+        merge(
+            fromEvent(this._hostElement, 'mouseleave'),
+            fromEvent(this.document, 'click')
+        ).pipe(take(1)).subscribe(() => this.destroyTooltip());
     }
 
     private setTooltipContent(): void {
@@ -54,7 +59,7 @@ export class DaioTooltipDirective implements AfterViewInit, OnDestroy {
             throw new Error('DAIO_TOOLTIP_ERROR: No content for tooltip was provided!');
         }
         this._tooltip?.instance.setTooltipContent(this.tooltipText);
-        this._tooltip?.instance.setTooltipPosition(this._hostElement);
+        this._tooltip?.instance.setTooltipPosition(this._hostElement, this.tooltipPosition);
     }
 
     private destroyTooltip(): void {

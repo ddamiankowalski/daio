@@ -4,7 +4,7 @@ import { DaioSidenavService } from "../../services/daio-sidenav.service";
 import { Subscription, combineLatest, filter, tap } from "rxjs";
 import { IDaioMenuItem } from "../../interfaces/daio-menu-item.interface";
 import { DaioRendererService } from "../../../common/services/daio-renderer.service";
-import { NgIf, NgFor } from "@angular/common";
+import { NgIf, NgFor, AsyncPipe } from "@angular/common";
 import { DaioTooltipDirective } from "../../../tooltip/directives/daio-tooltip/daio-tooltip.directive";
 
 @Component({
@@ -17,7 +17,8 @@ import { DaioTooltipDirective } from "../../../tooltip/directives/daio-tooltip/d
         DaioIconComponent,
         NgIf,
         NgFor,
-        DaioTooltipDirective
+        DaioTooltipDirective,
+        AsyncPipe
     ],
     providers: [DaioRendererService]
 })
@@ -28,7 +29,7 @@ export class DaioSidenavMenuItemComponent implements OnInit, OnDestroy {
     private subscription?: Subscription;
 
     constructor(
-        private sidenav: DaioSidenavService,
+        protected sidenav: DaioSidenavService,
         private renderer: DaioRendererService
     ) {}
 

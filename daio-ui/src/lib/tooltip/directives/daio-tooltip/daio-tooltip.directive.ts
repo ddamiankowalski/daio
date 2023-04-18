@@ -9,6 +9,7 @@ import { fromEvent, take } from 'rxjs';
 })
 export class DaioTooltipDirective implements AfterViewInit, OnDestroy {
     @Input() tooltipText?: string;
+    @Input() tooltipIf = true;
 
     private _tooltip?: ComponentRef<DaioTooltipComponent> | null;
     private _hostElement!: HTMLElement;
@@ -35,7 +36,7 @@ export class DaioTooltipDirective implements AfterViewInit, OnDestroy {
     }
 
     private handleHover(): void {
-        if(!this._tooltip) {
+        if(!this._tooltip && this.tooltipIf) {
             this._tooltip = this.overlay.createOverlayComponent(DaioTooltipComponent);
             this.setTooltipContent();
             this.listenForMouseLeave();

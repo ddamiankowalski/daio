@@ -131,5 +131,8 @@
         display: flex;
         overflow: hidden;
         white-space: nowrap;
+        color: var(--dark-backround);
+        font-weight: 800;
+        font-size: 1.125rem;
     }
 }

@@ -1,3 +1,5 @@
+@use '../../mixins/shadow.scss' as shadows;
+
 .daio-sidenav-widget {
     position: relative;
     display: grid;
@@ -6,7 +8,7 @@
     width: 100%;
     height: 15rem;
     background-color: var(--focus-flat);
-    overflow: hidden;
+    
 
     &__items {
         display: flex;
@@ -24,6 +26,10 @@
         height: 100%;
         background: rgba($color: #3039dd, $alpha: .05);
 
+        box-shadow: -3px 0px 30px rgba(0,0,0,0.3);
+        z-index: 100;
+        clip-path: inset(0px 0px 0px -100px);
+
         > * {
             flex-basis: 100%;
         }
@@ -38,11 +44,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: var(--primary-color);
+        color: var(--on-surface);
         width: 3rem;
         height: 80%;
         border-radius: .5rem;
-        border: 2px solid var(--primary-color);
+        background-color: var(--primary-color);
         top: 50%;
         transform: translateY(-50%);
         right: 1rem;
@@ -53,8 +59,11 @@
         animation: fadeInWidgetIcon;
         animation-duration: 1s;
 
+        @include shadows.daio-shadow;
+
         &:hover {
             transform: translateY(-52%);
+            @include shadows.daio-shadow-hover;
         }
 
         &:focus {

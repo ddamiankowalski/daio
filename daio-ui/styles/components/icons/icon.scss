@@ -1,3 +1,15 @@
 .daio-icon {
     font-size: .875rem;
+    
+    &--destructive {
+        color: var(--destructive-color);
+    }
+
+    &--info {
+        color: var(--info-color);
+    }
+
+    &--success {
+        color: var(--success-color);
+    }
 }

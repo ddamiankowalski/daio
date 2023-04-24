@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { DaioIconRegistryService } from "../../services/daio-icon-registry.service";
-import { IDaioIconColor } from "../../interfaces/icon-color";
 @Component({
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,5 +17,4 @@ export class DaioIconComponent {
 
     @Input() iconName?: string;
     @Input() iconType?: string;
-    @Input() color?: IDaioIconColor;
 }

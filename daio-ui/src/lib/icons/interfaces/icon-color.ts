@@ -1,1 +1,0 @@
-export type IDaioIconColor = 'primary' | 'destructive' | 'info' | 'success';

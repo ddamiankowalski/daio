@@ -5,7 +5,20 @@
     >
         <div class="daio-widget__text__container">
             <span class="daio-widget__text__header">{{ widget.title }}</span>
-            <span class="daio-widget__text__subtitle">{{ widget.subtitle }}</span>
+            <div class="daio-widget__text__subtitle">
+                <div class="daio-widget__text__subtitle__container">
+                    <daio-icon class="daio-widget__text__subtitle--icon" iconName="message"></daio-icon>
+                    <span class="daio-widget__text__subtitle--text">{{ '0' }}</span>
+                </div>
+                <div class="daio-widget__text__subtitle__container">
+                    <daio-icon class="daio-widget__text__subtitle--icon" iconName="square-minus"></daio-icon>
+                    <span class="daio-widget__text__subtitle--text">{{ '3' }}</span>
+                </div>
+                <div class="daio-widget__text__subtitle__container">
+                    <daio-icon class="daio-widget__text__subtitle--icon" iconName="heart"></daio-icon>
+                    <span class="daio-widget__text__subtitle--text">{{ '24' }}</span>
+                </div>
+            </div>
             <span class="daio-widget__text__description">{{ widget.description }}</span>
         </div>
     </section>

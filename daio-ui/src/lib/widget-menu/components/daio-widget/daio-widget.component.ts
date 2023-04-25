@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from "@angular/core";
 import { IDaioWidget } from "../../interfaces/daio-widget.interface";
 import { NgIf } from '@angular/common';
+import { DaioIconComponent } from "../../../icons";
 
 @Component({
     standalone: true,
@@ -8,7 +9,7 @@ import { NgIf } from '@angular/common';
     templateUrl: './daio-widget.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    imports: [NgIf]
+    imports: [NgIf, DaioIconComponent]
 })
 export class DaioWidgetComponent {
     @HostBinding('class') widgetClass = 'daio-widget';

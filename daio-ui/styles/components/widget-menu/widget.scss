@@ -62,7 +62,7 @@
             &:hover {
                 > .daio-widget__text__header {
                     opacity: 1;
-                    transform: translateY(-.25rem);
+                    transform: translateY(-.45rem);
                 }
 
                 > .daio-widget__text__subtitle {
@@ -72,7 +72,7 @@
                 }
 
                 > .daio-widget__text__description {
-                    transform: translateY(.6rem);
+                    transform: translateY(.85rem);
                     opacity: 1;
                 }
             }
@@ -85,10 +85,36 @@
         }
 
         &__subtitle {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            align-items: center;
             position: absolute;
             opacity: 0;
-            font-size: .75rem;
+            font-size: .7925rem;
             font-weight: 500;
+            padding: .25rem .25rem;
+            transition: .3s background-color;
+
+            &__container {
+                display: flex;
+                align-items: center;
+                gap: .25rem;
+
+                &:hover {
+                    .daio-widget__text__subtitle--icon {
+                        transform: translateY(-.15rem);
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &--icon {
+                font-size: .725rem;
+                opacity: .6;
+                
+                transition: .3s transform ease, .3s opacity;
+            }
         }
 
         &__description {
@@ -98,8 +124,8 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: .875rem;
-            font-weight: 400; 
+            font-size: .8125rem;
+            font-weight: 500; 
             line-height: 1.5rem;
             transition: all .3s ease;
         }

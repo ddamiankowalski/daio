@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulati
 import { IDaioWidget } from "../../interfaces/daio-widget.interface";
 import { NgIf } from '@angular/common';
 import { DaioIconComponent } from "../../../icons";
+import { DaioTooltipDirective } from "../../../tooltip";
 
 @Component({
     standalone: true,
@@ -9,7 +10,7 @@ import { DaioIconComponent } from "../../../icons";
     templateUrl: './daio-widget.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    imports: [NgIf, DaioIconComponent]
+    imports: [NgIf, DaioIconComponent, DaioTooltipDirective]
 })
 export class DaioWidgetComponent {
     @HostBinding('class') widgetClass = 'daio-widget';

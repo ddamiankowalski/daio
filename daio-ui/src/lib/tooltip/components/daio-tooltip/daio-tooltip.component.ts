@@ -43,7 +43,7 @@ export class DaioTooltipComponent {
 
     private setBottomTooltipPosition(rect: DOMRect, tooltipEl: HTMLElement): void {
         tooltipEl.style.top = rect['bottom'] + 8 + 'px';
-        tooltipEl.style.left = rect.left - (rect.width / 2) + 'px';
+        tooltipEl.style.left = rect.left + rect.width / 2 - tooltipEl.offsetWidth / 2 + 'px';
     }
 
     private setLeftTooltipPosition(rect: DOMRect, tooltipEl: HTMLElement): void {

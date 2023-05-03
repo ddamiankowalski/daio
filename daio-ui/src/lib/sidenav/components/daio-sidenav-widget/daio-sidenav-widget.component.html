@@ -1,14 +1,14 @@
 <span
-    tabindex="0" 
-    class="daio-sidenav-widget__icon"
-    [class.daio-sidenav-widget__icon--hidden]="!widgetHidden"
-    (click)="onIconClick()"
-    >
-    <daio-icon iconName="chevron-left"></daio-icon>
+  tabindex="0"
+  class="daio-sidenav-widget__icon"
+  [class.daio-sidenav-widget__icon--hidden]="!widgetHidden"
+  (click)="onIconClick()"
+>
+  <daio-icon iconName="chevron-left"></daio-icon>
 </span>
-<div class="daio-sidenav-widget__items">
-    <daio-widget *ngFor="let widget of widgets" [widget]="widget"></daio-widget>
+<div class="daio-sidenav-widget__left">
+  <ng-content select="[daioSidenavLeft]"></ng-content>
 </div>
-<div class="daio-sidenav-widget__news-container">
-    <ng-content></ng-content>
+<div class="daio-sidenav-widget__expand">
+  <ng-content select="[daioSidenavExpand]"></ng-content>
 </div>
